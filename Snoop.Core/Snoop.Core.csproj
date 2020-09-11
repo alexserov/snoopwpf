@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;netcoreapp3.0;net40</TargetFrameworks>
 
     <RootNamespace>Snoop</RootNamespace>
 
     <UseWpf>true</UseWpf>
     <UseWindowsForms>true</UseWindowsForms>
+    <TargetFramework>net472</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,15 +22,9 @@
     <_WpfCommonNetFxReference Remove="System.Windows.Controls.Ribbon" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
-    <PackageReference Include="microsoft.powershell.3.referenceassemblies" PrivateAssets="All" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
-    <PackageReference Include="System.Management.Automation" PrivateAssets="All" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
-    <PackageReference Include="System.Management.Automation" PrivateAssets="All" />
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2020.2.0-eap" />
+    <PackageReference Include="Microsoft.PowerShell.5.ReferenceAssemblies" Version="1.1.0" />
+    <PackageReference Include="Microsoft.PowerShell.Native" Version="7.0.0" />
   </ItemGroup>
 </Project>

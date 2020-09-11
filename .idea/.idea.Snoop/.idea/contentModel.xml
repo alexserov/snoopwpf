@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Github\snoopwpf" t="IncludeFlat">
+      <e p=".build" t="IncludeRecursive">
+        <e p="_build.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="boot" t="Include" />
+        <e p="Build.cs" t="Include" />
+        <e p="ci" t="Include" />
+        <e p="config" t="Include" />
+        <e p="Directory.build.props" t="Include" />
+        <e p="Directory.build.targets" t="Include" />
+        <e p="FileHelper.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="_build.AssemblyInfo.cs" t="Include" />
+            <e p="RefitStubs.g.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p=".editorconfig" t="Include" />
+      <e p=".nuke" t="Include" />
+      <e p="appveyor.yml" t="Include" />
+      <e p="Artwork" t="Include">
+        <e p="Banner.bmp" t="Include" />
+        <e p="Dialog.bmp" t="Include" />
+        <e p="Snoop.ico" t="Include" />
+        <e p="snoop.png" t="Include" />
+        <e p="SnoopCamera.design" t="Include" />
+      </e>
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="build.ps1" t="Include" />
+      <e p="build.sh" t="Include" />
+      <e p="Changelog.md" t="Include" />
+      <e p="Directory.build.props" t="Include" />
+      <e p="Directory.build.targets" t="Include" />
+      <e p="GitVersion.yml" t="Include" />
+      <e p="global.json" t="Include" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="paket.dependencies" t="Include" />
+      <e p="paket.lock" t="Include" />
+      <e p="README.md" t="Include" />
+      <e p="Shared" t="Include">
+        <e p="app.manifest" t="Include" />
+        <e p="InjectorData.cs" t="Include" />
+      </e>
+      <e p="Snoop" t="IncludeRecursive">
+        <e p="app.config" t="Include" />
+        <e p="App.xaml" t="Include" />
+        <e p="App.xaml.cs" t="Include" />
+        <e p="AppChooser.xaml" t="Include" />
+        <e p="AppChooser.xaml.cs" t="Include" />
+        <e p="Converters" t="Include">
+          <e p="SystemIconToImageSourceConverter.cs" t="Include" />
+        </e>
+        <e p="Data" t="Include">
+          <e p="KeyGestureEx.cs" t="Include" />
+        </e>
+        <e p="Infrastructure" t="Include">
+          <e p="LowLevelKeyboardHook.cs" t="Include" />
+          <e p="LowLevelMouseHook.cs" t="Include" />
+          <e p="SystemIconHelper.cs" t="Include" />
+        </e>
+        <e p="InjectorLauncherManager.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="App.g.cs" t="Include" />
+            <e p="AppChooser.g.cs" t="Include" />
+            <e p="GeneratedInternalTypeHelper.g.cs" t="Include" />
+            <e p="Snoop.AssemblyInfo.cs" t="Include" />
+            <e p="Views" t="Include">
+              <e p="SettingsView.g.cs" t="Include" />
+            </e>
+            <e p="WindowFinder.g.cs" t="Include" />
+            <e p="WindowInfoControl.g.cs" t="Include" />
+          </e>
+        </e>
+        <e p="ProcessInfo.cs" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Settings.cs" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+        <e p="Simple Styles.xaml" t="Include" />
+        <e p="Snoop.csproj" t="IncludeRecursive" />
+        <e p="SnoopCommandLineOptions.cs" t="Include" />
+        <e p="Views" t="Include">
+          <e p="SettingsView.xaml" t="Include" />
+          <e p="SettingsView.xaml.cs" t="Include" />
+        </e>
+        <e p="WindowFinder.xaml" t="Include" />
+        <e p="WindowFinder.xaml.cs" t="Include" />
+        <e p="WindowInfo.cs" t="Include" />
+        <e p="WindowInfoControl.xaml" t="Include" />
+        <e p="WindowInfoControl.xaml.cs" t="Include" />
+      </e>
+      <e p="Snoop.Console" t="IncludeRecursive">
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="Snoop.Console.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Snoop.Console.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Snoop.Core" t="IncludeRecursive">
+        <e p="AttachedProperties" t="Include">
+          <e p="SnoopAttachedProperties.cs" t="Include" />
+        </e>
+        <e p="Controls" t="Include">
+          <e p="AdornerContainer.cs" t="Include" />
+          <e p="EditTextBox.cs" t="Include" />
+          <e p="Inspector.cs" t="Include" />
+          <e p="Previewer.xaml" t="Include" />
+          <e p="Previewer.xaml.cs" t="Include" />
+          <e p="ProperTreeView.cs" t="Include" />
+          <e p="ProperTreeViewResources.xaml" t="Include" />
+          <e p="PropertyGrid2.xaml" t="Include" />
+          <e p="PropertyGrid2.xaml.cs" t="Include" />
+          <e p="PropertyInspector.xaml" t="Include" />
+          <e p="PropertyInspector.xaml.cs" t="Include" />
+          <e p="ValueEditors" t="Include">
+            <e p="BoolValueEditor.cs" t="Include" />
+            <e p="BrushValueEditor.cs" t="Include" />
+            <e p="Details" t="Include">
+              <e p="ValueEditorDetailsWindow.xaml" t="Include" />
+              <e p="ValueEditorDetailsWindow.xaml.cs" t="Include" />
+            </e>
+            <e p="EditorTemplates.xaml" t="Include" />
+            <e p="EnumValueEditor.cs" t="Include" />
+            <e p="MouseWheelValueEditor.xaml" t="Include" />
+            <e p="MouseWheelValueEditor.xaml.cs" t="Include" />
+            <e p="StandardValueEditor.cs" t="Include" />
+            <e p="StringValueEditor.cs" t="Include" />
+            <e p="ValueEditor.cs" t="Include" />
+            <e p="ValueEditorTemplateSelector.cs" t="Include" />
+          </e>
+          <e p="VisualTree3DView.cs" t="Include" />
+          <e p="ZoomerControl.xaml" t="Include" />
+          <e p="ZoomerControl.xaml.cs" t="Include" />
+        </e>
+        <e p="Converters" t="Include">
+          <e p="ArgbToPartsConverter.cs" t="Include" />
+          <e p="BoolToVisibilityConverter.cs" t="Include" />
+          <e p="BrushStopsConverter.cs" t="Include" />
+          <e p="CsvStringToArrayConverter.cs" t="Include" />
+          <e p="DynamicResourceToValueConverter.cs" t="Include" />
+          <e p="FilterTypeToIntConverter.cs" t="Include" />
+          <e p="InvertBoolConverter.cs" t="Include" />
+          <e p="IsPowerShellAvailableToVisibilityConverter.cs" t="Include" />
+          <e p="IsSupportedRuntimeTypeConverter.cs" t="Include" />
+          <e p="NullStyleConverter.cs" t="Include" />
+          <e p="ObjectToStringConverter.cs" t="Include" />
+          <e p="SnoopParameterInfoConverter.cs" t="Include" />
+          <e p="StringValueConverter.cs" t="Include" />
+        </e>
+        <e p="Data" t="Include">
+          <e p="TransientSettingsData.cs" t="Include" />
+          <e p="Tree" t="Include">
+            <e p="ApplicationTreeItem.cs" t="Include" />
+            <e p="AutomationPeerTreeItem.cs" t="Include" />
+            <e p="ChildWindowsTreeItem.cs" t="Include" />
+            <e p="DependencyObjectTreeItem.cs" t="Include" />
+            <e p="PopupTreeItem.cs" t="Include" />
+            <e p="ResourceContainerTreeItem.cs" t="Include" />
+            <e p="ResourceDictionaryTreeItem.cs" t="Include" />
+            <e p="TreeItem.cs" t="Include" />
+            <e p="TreeService.cs" t="Include" />
+            <e p="WindowTreeItem.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Extensions" t="Include">
+          <e p="FreezableExtensions.cs" t="Include" />
+          <e p="Markup" t="Include">
+            <e p="EnumBindingSourceExtension.cs" t="Include" />
+          </e>
+          <e p="MouseDeviceExtensions.cs" t="Include" />
+          <e p="StringExtensions.cs" t="Include" />
+        </e>
+        <e p="Icons.xaml" t="Include" />
+        <e p="Infrastructure" t="Include">
+          <e p="AttachedPropertyManager.cs" t="Include" />
+          <e p="BringIntoViewBehavior.cs" t="Include" />
+          <e p="ComboBoxSettings.cs" t="Include" />
+          <e p="DelayedCall.cs" t="Include" />
+          <e p="EventsListener.cs" t="Include" />
+          <e p="EventTracker.cs" t="Include" />
+          <e p="ExceptionHandler.cs" t="Include" />
+          <e p="ExtensionMethods.cs" t="Include" />
+          <e p="Extensions" t="Include">
+            <e p="ObservableCollectionExtensions.cs" t="Include" />
+            <e p="WindowExtensions.cs" t="Include" />
+          </e>
+          <e p="Helpers" t="Include">
+            <e p="AppDomainHelper.cs" t="Include" />
+            <e p="BindingDisplayHelper.cs" t="Include" />
+            <e p="ClipboardHelper.cs" t="Include" />
+            <e p="DoubleHelper.cs" t="Include" />
+            <e p="ResourceDictionaryKeyHelpers.cs" t="Include" />
+            <e p="TemplateHelper.cs" t="Include" />
+            <e p="VisualTreeHelper2.cs" t="Include" />
+            <e p="WindowHelper.cs" t="Include" />
+            <e p="XamlWriterHelper.cs" t="Include" />
+          </e>
+          <e p="InvariantThreadCultureScope.cs" t="Include" />
+          <e p="ISkipDelve.cs" t="Include" />
+          <e p="NativeMethods.cs" t="Include" />
+          <e p="PertinentPropertyFilter.cs" t="Include" />
+          <e p="PropertyFilter.cs" t="Include" />
+          <e p="PropertyInformation.cs" t="Include" />
+          <e p="RelayCommand.cs" t="Include" />
+          <e p="ResourceKeyCache.cs" t="Include" />
+          <e p="SnoopManager.cs" t="Include" />
+          <e p="SnoopModes.cs" t="Include" />
+          <e p="SnoopPartsRegistry.cs" t="Include" />
+          <e p="SnoopWindowUtils.cs" t="Include" />
+          <e p="TrackballBehavior.cs" t="Include" />
+          <e p="VisualCaptureUtil.cs" t="Include" />
+          <e p="WhenLoaded.cs" t="Include" />
+          <e p="ZoomerUtilities.cs" t="Include" />
+        </e>
+        <e p="mscoree" t="Include">
+          <e p="_COR_GC_STATS.cs" t="Include" />
+          <e p="_COR_GC_THREAD_STATS.cs" t="Include" />
+          <e p="CorRuntimeHost.cs" t="Include" />
+          <e p="CorRuntimeHostClass.cs" t="Include" />
+          <e p="ICorConfiguration.cs" t="Include" />
+          <e p="ICorRuntimeHost.cs" t="Include" />
+          <e p="IDebuggerInfo.cs" t="Include" />
+          <e p="IDebuggerThreadControl.cs" t="Include" />
+          <e p="IGCHost.cs" t="Include" />
+          <e p="IGCHostControl.cs" t="Include" />
+          <e p="IGCThreadControl.cs" t="Include" />
+          <e p="IValidator.cs" t="Include" />
+          <e p="IVEHandler.cs" t="Include" />
+          <e p="tag_VerError.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net472" t="Include">
+              <e p="Controls" t="Include">
+                <e p="Previewer.g.cs" t="Include" />
+                <e p="PropertyGrid2.g.cs" t="Include" />
+                <e p="PropertyInspector.g.cs" t="Include" />
+                <e p="ValueEditors" t="Include">
+                  <e p="Details" t="Include">
+                    <e p="ValueEditorDetailsWindow.g.cs" t="Include" />
+                  </e>
+                  <e p="MouseWheelValueEditor.g.cs" t="Include" />
+                </e>
+                <e p="ZoomerControl.g.cs" t="Include" />
+              </e>
+              <e p="GeneratedInternalTypeHelper.g.cs" t="Include" />
+              <e p="PowerShell" t="Include">
+                <e p="EmbeddedShellView.g.cs" t="Include" />
+              </e>
+              <e p="SampleData" t="Include">
+                <e p="ScreenshotVisualSample.g.cs" t="Include" />
+              </e>
+              <e p="Snoop.Core.AssemblyInfo.cs" t="Include" />
+              <e p="Views" t="Include">
+                <e p="BehaviorsTab" t="Include">
+                  <e p="BehaviorsView.g.cs" t="Include" />
+                </e>
+                <e p="DebugListenerTab" t="Include">
+                  <e p="DebugListenerControl.g.cs" t="Include" />
+                  <e p="SetFiltersWindow.g.cs" t="Include" />
+                </e>
+                <e p="EventsView.g.cs" t="Include" />
+                <e p="MethodsTab" t="Include">
+                  <e p="FullTypeSelector.g.cs" t="Include" />
+                  <e p="MethodsControl.g.cs" t="Include" />
+                  <e p="ParameterCreator.g.cs" t="Include" />
+                  <e p="TypeSelector.g.cs" t="Include" />
+                </e>
+                <e p="TriggersTab" t="Include">
+                  <e p="TriggersView.g.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Windows" t="Include">
+                <e p="EditUserFilters.g.cs" t="Include" />
+                <e p="ErrorDialog.g.cs" t="Include" />
+                <e p="ScreenshotDialog.g.cs" t="Include" />
+                <e p="SnoopUI.g.cs" t="Include" />
+                <e p="Zoomer.g.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="PowerShell" t="Include">
+          <e p="EmbeddedShellView.xaml" t="Include" />
+          <e p="EmbeddedShellView.xaml.cs" t="Include" />
+          <e p="ShellConstants.cs" t="Include" />
+          <e p="SnoopPSHost.cs" t="Include" />
+          <e p="SnoopPSHostRawUserInterface.cs" t="Include" />
+          <e p="SnoopPSHostUserInterface.cs" t="Include" />
+          <e p="VisualTreeProvider.cs" t="Include" />
+        </e>
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Settings.cs" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+        <e p="SampleData" t="Include">
+          <e p="ScreenshotVisualSample.xaml" t="Include" />
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Snoop.psm1" t="Include" />
+        </e>
+        <e p="Simple Styles.xaml" t="Include" />
+        <e p="Snoop.Core.csproj" t="IncludeRecursive" />
+        <e p="Views" t="Include">
+          <e p="BehaviorsTab" t="Include">
+            <e p="BehaviorsView.xaml" t="Include" />
+            <e p="BehaviorsView.xaml.cs" t="Include" />
+          </e>
+          <e p="DebugListenerTab" t="Include">
+            <e p="DebugListenerControl.xaml" t="Include" />
+            <e p="DebugListenerControl.xaml.cs" t="Include" />
+            <e p="FiltersViewModel.cs" t="Include" />
+            <e p="FilterType.cs" t="Include" />
+            <e p="IListener.cs" t="Include" />
+            <e p="SetFiltersWindow.xaml" t="Include" />
+            <e p="SetFiltersWindow.xaml.cs" t="Include" />
+            <e p="SnoopDebugListener.cs" t="Include" />
+            <e p="SnoopFilter.cs" t="Include" />
+            <e p="SnoopMultipleFilter.cs" t="Include" />
+            <e p="SnoopSingleFilter.cs" t="Include" />
+          </e>
+          <e p="EventsView.xaml" t="Include" />
+          <e p="EventsView.xaml.cs" t="Include" />
+          <e p="MethodsTab" t="Include">
+            <e p="AssemblyNamePair.cs" t="Include" />
+            <e p="FullTypeSelector.xaml" t="Include" />
+            <e p="FullTypeSelector.xaml.cs" t="Include" />
+            <e p="ITypeSelector.cs" t="Include" />
+            <e p="MethodsControl.xaml" t="Include" />
+            <e p="MethodsControl.xaml.cs" t="Include" />
+            <e p="ParameterCreator.xaml" t="Include" />
+            <e p="ParameterCreator.xaml.cs" t="Include" />
+            <e p="SnoopMethodInformation.cs" t="Include" />
+            <e p="SnoopParameterInformation.cs" t="Include" />
+            <e p="SnoopParameterInformationTemplateSelector.cs" t="Include" />
+            <e p="TypeComparerByName.cs" t="Include" />
+            <e p="TypeNamePair.cs" t="Include" />
+            <e p="TypeSelector.xaml" t="Include" />
+            <e p="TypeSelector.xaml.cs" t="Include" />
+          </e>
+          <e p="TriggersTab" t="Include">
+            <e p="Triggers" t="Include">
+              <e p="ConditionItem.cs" t="Include" />
+              <e p="DataTriggerItem.cs" t="Include" />
+              <e p="EventTriggerItem.cs" t="Include" />
+              <e p="MultiDataTriggerItem.cs" t="Include" />
+              <e p="MultiTriggerItem.cs" t="Include" />
+              <e p="SetterItem.cs" t="Include" />
+              <e p="TriggerActionItem.cs" t="Include" />
+              <e p="TriggerActionItemFactory.cs" t="Include" />
+              <e p="TriggerItem.cs" t="Include" />
+              <e p="TriggerItemBase.cs" t="Include" />
+              <e p="TriggerItemFactory.cs" t="Include" />
+            </e>
+            <e p="TriggersView.xaml" t="Include" />
+            <e p="TriggersView.xaml.cs" t="Include" />
+          </e>
+        </e>
+        <e p="VisualTreeItem.cd" t="Include" />
+        <e p="Windows" t="Include">
+          <e p="EditUserFilters.xaml" t="Include" />
+          <e p="EditUserFilters.xaml.cs" t="Include" />
+          <e p="ErrorDialog.xaml" t="Include" />
+          <e p="ErrorDialog.xaml.cs" t="Include" />
+          <e p="ScreenshotDialog.xaml" t="Include" />
+          <e p="ScreenshotDialog.xaml.cs" t="Include" />
+          <e p="SnoopBaseWindow.cs" t="Include" />
+          <e p="SnoopMainBaseWindow.cs" t="Include" />
+          <e p="SnoopUI.xaml" t="Include" />
+          <e p="SnoopUI.xaml.cs" t="Include" />
+          <e p="Zoomer.xaml" t="Include" />
+          <e p="Zoomer.xaml.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Snoop.DataAccess.Generic" t="IncludeRecursive">
+        <e p="Client" t="Include">
+          <e p="Client.cs" t="Include" />
+        </e>
+        <e p="Interfaces" t="Include">
+          <e p="Internal" t="Include">
+            <e p="IDataAccess.cs" t="Include" />
+          </e>
+          <e p="IWindowInfo.cs" t="Include" />
+        </e>
+        <e p="Interfaces.cs" t="Include" />
+        <e p="Interfaces.tt" t="Include" />
+        <e p="Marshaller.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Snoop.DataAccess.Generic.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Server" t="Include">
+          <e p="Server.cs" t="Include" />
+        </e>
+        <e p="Session.cs" t="Include" />
+        <e p="Snoop.DataAccess.Generic.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Snoop.DataAccess.WinUI3" t="IncludeRecursive">
+        <e p="Class1.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net5.0" t="Include">
+              <e p="Snoop.DataAccess.WinUI3.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Snoop.DataAccess.WinUI3.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Snoop.DataAccess.Wpf" t="IncludeRecursive">
+        <e p="Class1.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="Snoop.DataAccess.Wpf.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Snoop.DataAccess.Wpf.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Snoop.GenericInjector" t="IncludeRecursive">
+        <e p="dllmain.cpp" t="Include" />
+        <e p="Executor.cpp" t="Include" />
+        <e p="framework.h" t="Include" />
+        <e p="FrameworkExecutor.h" t="Include" />
+        <e p="NetCoreApp3_0Executor.cpp" t="Include" />
+        <e p="NetCoreApp3_0Executor.h" t="Include" />
+        <e p="NetFull4_0Executor.cpp" t="Include" />
+        <e p="NetFull4_0Executor.h" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="pch.cpp" t="Include" />
+        <e p="pch.h" t="Include" />
+        <e p="resource.h" t="Include" />
+        <e p="Snoop.GenericInjector.vcxproj" t="IncludeRecursive" />
+        <e p="version.h" t="Include" />
+        <e p="version.rc" t="Include" />
+      </e>
+      <e p="Snoop.InjectorLauncher" t="IncludeRecursive">
+        <e p="Directory.build.props" t="Include" />
+        <e p="Injector.cs" t="Include" />
+        <e p="InjectorLauncherCommandLineOptions.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="x86" t="Include">
+            <e p="Debug" t="Include">
+              <e p="Snoop.InjectorLauncher.AssemblyInfo.cs" t="Include" />
+              <e p="Snoop.InjectorLauncher.x86.exe.manifest" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="ProcessWrapper.cs" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Snoop.InjectorLauncher.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Snoop.ruleset" t="Include" />
+      <e p="Snoop.sln" t="IncludeFlat" />
+      <e p="Solution Items" t="Include" />
+    </e>
+    <e p="C:\Users\serov.alexey\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\serov.alexey\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Snoop.-683336641.00" t="ExcludeRecursive" />
+  </component>
+</project>

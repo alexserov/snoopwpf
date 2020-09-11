@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <TargetFramework>net40</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputType>WinExe</OutputType>
     <UseWpf>true</UseWpf>
@@ -32,10 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
-     <ProjectReference Include="../Snoop.Core/Snoop.Core.csproj" /> 
+     <ProjectReference Include="../Snoop.Core/Snoop.Core.csproj" />
+     <ProjectReference Include="..\Snoop.DataAccess.Generic\Snoop.DataAccess.Generic.csproj" /> 
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommandLineParser" />
+    <PackageReference Include="CommandLineParser" Version="2.9.0-preview1" />
   </ItemGroup>
 </Project>

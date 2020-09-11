@@ -1,0 +1,172 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="$(TargetPath)" #>
+<#@ assembly name="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Snoop.DataAccess.Sessions" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Security.Principal" #>
+using System;
+using Snoop.DataAccess.Interfaces;
+using Snoop.DataAccess.Sessions;
+// ReSharper disable HeapView.BoxingAllocation
+
+namespace Snoop.DataAccess.Impl {
+
+<#
+    var interfaces = typeof(ISession).Assembly.GetTypes().Where(x => x.IsInterface).Where(x => x.Namespace.StartsWith("Snoop.DataAccess.Interfaces")).ToList();
+    foreach (var type in interfaces)
+    {
+#>     
+    sealed class <#=type.Name#>Server {
+        readonly <#=type.Name#> source;
+        readonly string id;
+        public <#=type.Name#>Server(<#=type.Name#> source){
+            this.source = source;
+            this.id = Guid.NewGuid().ToString();
+        }
+        public object Execute(string methodName, string[] parameters) {
+<#
+    foreach (var property in type.GetProperties())
+    {
+        if (property.GetMethod != null)
+        {
+#>
+            if(methodName=="<#=property.GetMethod.Name #>") {
+                return source.<#=property.Name #>;
+            }
+<#
+        }
+        if (property.SetMethod != null)
+        {
+#>
+            if(methodName=="<#=property.SetMethod.Name #>") {
+                source.<#=property.Name #> = Marshaller.Unwrap<<#=property.PropertyType #>>(parameters[0]);
+                return null;
+            }
+<#
+        }
+    }
+    foreach (var method in type.GetMethods())
+    {
+        if (method.IsSpecialName)
+            continue;
+#>
+            if(methodName=="<#=method.Name #>") {
+<#
+        if (method.ReturnType != typeof(void))
+            Write("                return ");
+        else
+            Write("                ");
+#>source.<#=method.Name#>(<#WriteServerMethodCallParameters(method);#>);<#
+        if (method.ReturnType == typeof(void))
+            Write("\r\n                return null;");
+#>                 
+            }
+<#        
+    }
+#>
+            return null;
+        }
+    }
+    sealed class <#=type.Name #>Client : <#=type #> {
+        readonly string id;
+        public <#=type.Name #>Client(string id) {
+            this.id = id;
+        }
+        public string Id { get { return id; } }
+<#
+//PROPERTY
+    foreach (var property in type.GetProperties())
+    {
+#>
+        public <#=property.PropertyType #> <#=property.Name #> {
+<#
+//PROPERTY GETTER
+    getter:
+    if (property.GetMethod == null)
+        goto setter;
+#>
+            get { return Marshaller.Call<<#=type #>, <#=property.PropertyType #>>(this, "<#=property.GetMethod.Name #>"); }
+<#
+//PROPERTY SETTER
+    setter:
+    if (property.SetMethod == null)
+        goto propertyEnd;
+#>
+            set { Marshaller.Call<<#=type #>, <#=property.PropertyType #>>(this, "<#=property.SetMethod.Name #>", value); }
+<#
+    propertyEnd:
+#>
+        }
+<#
+    }
+//METHOD
+    foreach (var method in type.GetMethods())
+    {
+        if (method.IsSpecialName)
+            continue;
+        var mrt = method.ReturnType == typeof(void) ? (object)"void" : method.ReturnType;
+#>
+        public <#=mrt#> <#=method.Name#>(<#WriteClientMethodParameters(method.GetParameters());#>) { <#WriteMethodCall(type, method);#> }
+<#
+    }
+
+#>    }
+<#
+    }
+#>
+}<#
+
+    void WriteClientMethodParameters(ParameterInfo[] parameterInfos)
+    {
+        if(parameterInfos.Length == 0)
+            return;
+        for (int i = 0; i < parameterInfos.Length; i++)
+        {
+            var pi = parameterInfos[i];
+            Write($"{pi.ParameterType} {pi.Name}");
+            if(i == parameterInfos.Length-1)
+                break;
+            Write(", ");
+        }
+    }
+#><#+
+    string WriteClientMethodCallArgs(ParameterInfo[] parameterInfos)
+    {
+        if(parameterInfos.Length == 0)
+            return "";
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < parameterInfos.Length; i++)
+        {
+            var pi = parameterInfos[i];
+            builder.Append($", {pi.Name}");
+        }
+        return builder.ToString();
+    }
+    private void WriteMethodCall(Type source, MethodInfo method)
+    {
+        var mType = typeof(object);
+        if (method.ReturnType != typeof(void))
+        {
+            Write("return ");
+            mType = method.ReturnType;
+        }
+
+        Write($@"Marshaller.Call<{source}, {mType}>(this, ""{method.Name}""{WriteClientMethodCallArgs(method.GetParameters())});");
+    }
+
+    void WriteServerMethodCallParameters(MethodInfo method)
+    {
+        var parameters = method.GetParameters();
+        for (int i = 0; i < parameters.Length; i++)
+        {
+            var pi = parameters[i];
+            Write($@"Marshaller.Unwrap<{pi.ParameterType}>(parameters[{i}])");
+            if(i == parameters.Length-1)
+                break;
+            Write(", ");
+        }
+    }
+#>
