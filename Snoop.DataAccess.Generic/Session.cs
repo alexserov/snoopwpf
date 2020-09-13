@@ -1,25 +1,37 @@
 ﻿namespace Snoop.DataAccess.Sessions
 {
     using System;
+    using System.Diagnostics;
+    using System.Threading.Tasks;
     using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Internal.Interfaces;
 
     public interface ISession
     {
-        string Send(string value);
+        string Send(string value, string type,  bool wait);
+        Task Start();
+        void Stop();
+        Action<string> Logger { get; set; }
+        int OwnerPId { get; set; }
     }
     public class Session
     {
-        static ISession Current
+        
+        public static int IpPortFromName(string name)
         {
-            get
+            //todo better port generation
+            var value = 9000;
+            switch (name)
             {
-                throw  new InvalidOperationException();
+                case "WinUI3":
+                    value = 9004;
+                    break;
+                case "Wpf":
+                    value = 9001;
+                    break;
             }
-        }
-        public static string Send(string value)
-        {
-            return Current.Send(value);
+
+            return value;
         }
 
         public static void Register(IDataAccess element)

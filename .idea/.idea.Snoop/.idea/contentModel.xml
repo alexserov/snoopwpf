@@ -388,15 +388,20 @@
         <e p="Client" t="Include">
           <e p="Client.cs" t="Include" />
         </e>
+        <e p="Extension.cs" t="Include" />
         <e p="Interfaces" t="Include">
           <e p="Internal" t="Include">
             <e p="IDataAccess.cs" t="Include" />
+            <e p="IDataAccessStatic.cs" t="Include" />
+            <e p="IExecutor.cs" t="Include" />
           </e>
           <e p="IWindowInfo.cs" t="Include" />
         </e>
         <e p="Interfaces.cs" t="Include" />
         <e p="Interfaces.tt" t="Include" />
         <e p="Marshaller.cs" t="Include" />
+        <e p="Message.cs" t="Include" />
+        <e p="NativeMethods.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
@@ -422,7 +427,7 @@
         <e p="Snoop.DataAccess.WinUI3.csproj" t="IncludeRecursive" />
       </e>
       <e p="Snoop.DataAccess.Wpf" t="IncludeRecursive">
-        <e p="Class1.cs" t="Include" />
+        <e p="Main.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
@@ -431,6 +436,7 @@
           </e>
         </e>
         <e p="Snoop.DataAccess.Wpf.csproj" t="IncludeRecursive" />
+        <e p="WindowInfo.cs" t="Include" />
       </e>
       <e p="Snoop.GenericInjector" t="IncludeRecursive">
         <e p="dllmain.cpp" t="Include" />

@@ -26,9 +26,10 @@
     <Compile Include="..\Snoop.Core\Data\TransientSettingsData.cs" Link="Data\TransientSettingsData.cs" />
     <Compile Include="..\Snoop.Core\Infrastructure\NativeMethods.cs" Link="NativeMethods.cs" />
   </ItemGroup>
-
+  
   <ItemGroup>
-    <PackageReference Include="CommandLineParser" />
+    <PackageReference Include="CommandLineParser" Version="2.9.0-preview1" />
+    <PackageReference Include="JetBrains.Annotations" Version="2020.2.0-eap" />
   </ItemGroup>
    
   <Target Name="Compilex64" AfterTargets="Build" Condition="'$(PlatformTarget)' == 'x86'">

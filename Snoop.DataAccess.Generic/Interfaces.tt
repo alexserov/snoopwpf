@@ -8,25 +8,51 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Security.Principal" #>
 using System;
+using System.Linq;
+using System.Collections.Generic;
 using Snoop.DataAccess.Interfaces;
 using Snoop.DataAccess.Sessions;
+using Snoop.DataAccess.Internal.Interfaces;
 // ReSharper disable HeapView.BoxingAllocation
 
 namespace Snoop.DataAccess.Impl {
 
 <#
     var interfaces = typeof(ISession).Assembly.GetTypes().Where(x => x.IsInterface).Where(x => x.Namespace.StartsWith("Snoop.DataAccess.Interfaces")).ToList();
+#>
+    partial class Marshaller {
+        static List<(Type tInterface, Func<object, IExecutor> factoryServer, Func<ISession, string, IDataAccess> factoryClient)> registeredTypes = new List<(Type tInterface, Func<object, IExecutor> factoryServer, Func<ISession, string, IDataAccess> factoryClient)>
+        {<#
+    foreach (var type in interfaces)
+        
+    {
+#> 
+            (typeof(<#=type#>), x=>new <#=type.Name#>Server((<#=type#>)x), (s, x)=>new <#=type.Name#>Client(s, x) ),
+<#        
+    }
+#>
+        };
+        public static IExecutor CreateServerExecutor(Type type, object instance) {
+            var info = registeredTypes.FirstOrDefault(x => x.tInterface == type);
+            return info.factoryServer(instance);
+        }
+        public static IDataAccess CreateClientExecutor(ISession session, Type type, string id) {
+            var info = registeredTypes.FirstOrDefault(x => x.tInterface == type);
+            return info.factoryClient(session, id);
+        }
+    }
+<#
     foreach (var type in interfaces)
     {
 #>     
-    sealed class <#=type.Name#>Server {
+    public sealed class <#=type.Name#>Server : IExecutor {
         readonly <#=type.Name#> source;
         readonly string id;
         public <#=type.Name#>Server(<#=type.Name#> source){
             this.source = source;
             this.id = Guid.NewGuid().ToString();
         }
-        public object Execute(string methodName, string[] parameters) {
+        public object Execute(string methodName, ICallInfo parameters) {
 <#
     foreach (var property in type.GetProperties())
     {
@@ -42,7 +68,7 @@ namespace Snoop.DataAccess.Impl {
         {
 #>
             if(methodName=="<#=property.SetMethod.Name #>") {
-                source.<#=property.Name #> = Marshaller.Unwrap<<#=property.PropertyType #>>(parameters[0]);
+                source.<#=property.Name #> = ((CallInfo<<#=type.Name#>Client.PackedArgs_<#=property.SetMethod.Name #>>)parameters).Args.value;
                 return null;
             }
 <#
@@ -70,13 +96,30 @@ namespace Snoop.DataAccess.Impl {
             return null;
         }
     }
-    sealed class <#=type.Name #>Client : <#=type #> {
+    public sealed class <#=type.Name #>Client : <#=type #>, IDataAccessClient {
         readonly string id;
-        public <#=type.Name #>Client(string id) {
+        public ISession Session {get; set;}
+        public <#=type.Name #>Client(ISession session, string id) {
             this.id = id;
+            Session = session;
         }
         public string Id { get { return id; } }
 <#
+    foreach (var method in type.GetMethods())
+    {
+#>
+        public class PackedArgs_<#=method.Name#> {
+<#
+    foreach (var pi in method.GetParameters())
+    {
+        #>
+        public <#=pi.ParameterType#> <#=pi.Name#> { get; set; }
+<#
+    }
+#>
+        } 
+<#
+    }
 //PROPERTY
     foreach (var property in type.GetProperties())
     {
@@ -88,14 +131,14 @@ namespace Snoop.DataAccess.Impl {
     if (property.GetMethod == null)
         goto setter;
 #>
-            get { return Marshaller.Call<<#=type #>, <#=property.PropertyType #>>(this, "<#=property.GetMethod.Name #>"); }
+            get { return Marshaller.Call<<#=type #>, <#=property.PropertyType #>, object>(this, true, "<#=property.GetMethod.Name #>", null); }
 <#
 //PROPERTY SETTER
     setter:
     if (property.SetMethod == null)
         goto propertyEnd;
 #>
-            set { Marshaller.Call<<#=type #>, <#=property.PropertyType #>>(this, "<#=property.SetMethod.Name #>", value); }
+            set { Marshaller.Call<<#=type #>, <#=property.PropertyType #>, PackedArgs_<#=property.SetMethod.Name#>>(this, false, "<#=property.SetMethod.Name #>", value, new PackedArgs_<#=property.SetMethod.Name#>() { value = value }); }
 <#
     propertyEnd:
 #>
@@ -133,16 +176,19 @@ namespace Snoop.DataAccess.Impl {
         }
     }
 #><#+
-    string WriteClientMethodCallArgs(ParameterInfo[] parameterInfos)
+    string WriteClientMethodCallArgs(MethodInfo method)
     {
-        if(parameterInfos.Length == 0)
-            return "";
+        var parameterInfos = method.GetParameters();
         StringBuilder builder = new StringBuilder();
+        builder.Append($"new PackedArgs_{method.Name}(){{");
         for (int i = 0; i < parameterInfos.Length; i++)
         {
+            if (i != 0)
+                builder.Append(", ");
             var pi = parameterInfos[i];
-            builder.Append($", {pi.Name}");
+            builder.Append($"{pi.Name} = {pi.Name}");
         }
+        builder.Append("}");
         return builder.ToString();
     }
     private void WriteMethodCall(Type source, MethodInfo method)
@@ -153,8 +199,9 @@ namespace Snoop.DataAccess.Impl {
             Write("return ");
             mType = method.ReturnType;
         }
+        var wait = method.ReturnType != typeof(void) ? "true" : "false";
 
-        Write($@"Marshaller.Call<{source}, {mType}>(this, ""{method.Name}""{WriteClientMethodCallArgs(method.GetParameters())});");
+        Write($@"Marshaller.Call<{source}, {mType}, PackedArgs_{method.Name}>(this, {wait}, ""{method.Name}"", {WriteClientMethodCallArgs(method)});");
     }
 
     void WriteServerMethodCallParameters(MethodInfo method)
@@ -163,7 +210,7 @@ namespace Snoop.DataAccess.Impl {
         for (int i = 0; i < parameters.Length; i++)
         {
             var pi = parameters[i];
-            Write($@"Marshaller.Unwrap<{pi.ParameterType}>(parameters[{i}])");
+            Write($@"((CallInfo<{method.DeclaringType.Name}Client.PackedArgs_{method.Name}>)parameters).Args.{pi.Name}");
             if(i == parameters.Length-1)
                 break;
             Write(", ");

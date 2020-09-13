@@ -2,11 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices;
     using System.Windows;
     using CommandLine;
+    using Snoop.DataAccess.Sessions;
 
     public static class Program
     {
@@ -24,12 +26,24 @@
 
             var parser = new Parser(x => x.HelpWriter = helpWriter);
 
+            InitDataAccessExtensions();
+
             return parser.ParseArguments<InspectCommandLineOptions, MagnifyCommandLineOptions, SnoopCommandLineOptions>(args)
                     .MapResult(
                         (InspectCommandLineOptions options) => Inspect(options),
                         (MagnifyCommandLineOptions options) => Magnify(options),
                         (SnoopCommandLineOptions options) => Run(options),
                         errs => ErrorHandler(args, errs.ToList(), helpWriter));
+        }
+
+        private static void InitDataAccessExtensions()
+        {
+            var snoopDir = Path.GetDirectoryName(typeof(App).Assembly.Location);
+            var extensions = Directory.GetFiles(snoopDir, "Snoop.DataAccess.*.exe", SearchOption.AllDirectories);
+            foreach (var element in extensions)
+            {
+                Extension.Start(element);
+            }
         }
 
         private static int Inspect(InspectCommandLineOptions options)
