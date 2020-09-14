@@ -2,11 +2,9 @@
 <#@ assembly name="$(TargetPath)" #>
 <#@ assembly name="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" #>
 <#@ import namespace="System.Linq" #>
-<#@ import namespace="Snoop.DataAccess.Sessions" #>
-<#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Reflection" #>
 <#@ import namespace="System.Text" #>
-<#@ import namespace="System.Security.Principal" #>
+<#@ import namespace="Snoop.DataAccess.Sessions" #>
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -23,12 +21,10 @@ namespace Snoop.DataAccess.Impl {
     partial class Marshaller {
         static List<(Type tInterface, Func<object, IExecutor> factoryServer, Func<ISession, string, IDataAccess> factoryClient)> registeredTypes = new List<(Type tInterface, Func<object, IExecutor> factoryServer, Func<ISession, string, IDataAccess> factoryClient)>
         {<#
-    foreach (var type in interfaces)
-        
-    {
+    foreach (var type in interfaces) {
 #> 
-            (typeof(<#=type#>), x=>new <#=type.Name#>Server((<#=type#>)x), (s, x)=>new <#=type.Name#>Client(s, x) ),
-<#        
+            (typeof(<#=type #>), x=>new <#=type.Name #>Server((<#=type #>)x), (s, x)=>new <#=type.Name #>Client(s, x) ),
+<#
     }
 #>
         };
@@ -42,40 +38,84 @@ namespace Snoop.DataAccess.Impl {
         }
     }
 <#
-    foreach (var type in interfaces)
-    {
+    foreach (var type in interfaces) {
+        var iMap = type.GetInterfaceMap(type);
 #>     
-    public sealed class <#=type.Name#>Server : IExecutor {
-        readonly <#=type.Name#> source;
-        readonly string id;
-        public <#=type.Name#>Server(<#=type.Name#> source){
+    public sealed class <#=type.Name #>Server : IExecutor {
+        readonly <#=type.Name #> source;
+        public string Id { get; }
+        readonly Dictionary<string, int> eventCounter; 
+        public <#=type.Name #>Server(<#=type.Name #> source){
             this.source = source;
-            this.id = Guid.NewGuid().ToString();
+            this.Id = source.Id;
+            this.eventCounter = new Dictionary<string, int>();
+<#
+    foreach (var eventInfo in type.GetEvents(BindingFlags.Instance|BindingFlags.Public|BindingFlags.FlattenHierarchy)) {
+#>
+            this.eventCounter["<#=eventInfo.Name #>"] = 0;
+<#
+    }
+#>
         }
+<#
+    foreach (var eventInfo in type.GetEvents(BindingFlags.Instance|BindingFlags.Public|BindingFlags.FlattenHierarchy)) {
+        var ehInvoke = eventInfo.EventHandlerType.GetMethod("Invoke");
+#>
+        <#=ehInvoke.ReturnType == typeof(void) ? "void" : ehInvoke.ReturnType.ToString() #> On<#=eventInfo.Name #>(<#
+        WriteClientMethodParameters(ehInvoke.GetParameters()); #>){
+            <#=ehInvoke.ReturnType==typeof(void) ? "" : "return "#>Marshaller.Call<<#=type#>, <#=ehInvoke.ReturnType#>, <#=type.Name#>Client.PackedArgs_<#=eventInfo.Name#>>(this, <#=ehInvoke.ReturnType!=typeof(void) ? "true" : "false"#>, "Raise<#=eventInfo.Name #>", <#=WriteClientMethodCallArgs(ehInvoke,eventInfo.Name, $"{type.Name}Client.")#>);
+        }
+<#
+    }
+#>
+
         public object Execute(string methodName, ICallInfo parameters) {
 <#
-    foreach (var property in type.GetProperties())
-    {
-        if (property.GetMethod != null)
-        {
+    //events
+    foreach (var eventInfo in type.GetEvents(BindingFlags.Instance|BindingFlags.Public|BindingFlags.FlattenHierarchy)) {
+        if (eventInfo.AddMethod != null) {
+#>
+            if(methodName=="<#=eventInfo.AddMethod.Name #>") {
+                var count = eventCounter["<#=eventInfo.Name#>"];
+                if(count==0) {
+                    source.<#=eventInfo.Name #> += On<#=eventInfo.Name #>;
+                }
+                eventCounter["<#=eventInfo.Name#>"] = count + 1;
+            }
+<#
+        }
+        if (eventInfo.RemoveMethod != null) {
+#>
+            if(methodName=="<#=eventInfo.RemoveMethod.Name #>") {
+                var count = eventCounter["<#=eventInfo.Name#>"];
+                if(count==1) {
+                    source.<#=eventInfo.Name #> -= On<#=eventInfo.Name #>;
+                }
+                eventCounter["<#=eventInfo.Name#>"] = count - 1;
+            }
+<#
+        }
+    }
+    //properties
+    foreach (var property in type.GetProperties(BindingFlags.Instance|BindingFlags.Public|BindingFlags.FlattenHierarchy)) {
+        if (property.GetMethod != null) {
 #>
             if(methodName=="<#=property.GetMethod.Name #>") {
                 return source.<#=property.Name #>;
             }
 <#
         }
-        if (property.SetMethod != null)
-        {
+        if (property.SetMethod != null) {
 #>
             if(methodName=="<#=property.SetMethod.Name #>") {
-                source.<#=property.Name #> = ((CallInfo<<#=type.Name#>Client.PackedArgs_<#=property.SetMethod.Name #>>)parameters).Args.value;
+                source.<#=property.Name #> = ((CallInfo<<#=type.Name #>Client.PackedArgs_<#=property.SetMethod.Name #>>)parameters).Args.value;
                 return null;
             }
 <#
         }
     }
-    foreach (var method in type.GetMethods())
-    {
+    //methods
+    foreach (var method in type.GetMethods(BindingFlags.Instance|BindingFlags.Public|BindingFlags.FlattenHierarchy)) {
         if (method.IsSpecialName)
             continue;
 #>
@@ -85,12 +125,13 @@ namespace Snoop.DataAccess.Impl {
             Write("                return ");
         else
             Write("                ");
-#>source.<#=method.Name#>(<#WriteServerMethodCallParameters(method);#>);<#
+#>source.<#=method.Name #>(<#
+        WriteServerMethodCallParameters(method); #>);<#
         if (method.ReturnType == typeof(void))
             Write("\r\n                return null;");
 #>                 
             }
-<#        
+<#
     }
 #>
             return null;
@@ -105,54 +146,46 @@ namespace Snoop.DataAccess.Impl {
         }
         public string Id { get { return id; } }
 <#
-    foreach (var method in type.GetMethods())
-    {
-#>
-        public class PackedArgs_<#=method.Name#> {
-<#
-    foreach (var pi in method.GetParameters())
-    {
-        #>
-        public <#=pi.ParameterType#> <#=pi.Name#> { get; set; }
-<#
+    foreach (var method in type.GetMethods(BindingFlags.Instance|BindingFlags.Public|BindingFlags.FlattenHierarchy)) {
+        if (method.IsSpecialName && method.Name.StartsWith("add_") || method.Name.StartsWith("remove_"))
+            continue;
+        DefinePackedArgs(method, method.Name);
     }
-#>
-        } 
-<#
+    foreach (var eventInfo in type.GetEvents(BindingFlags.Instance|BindingFlags.Public|BindingFlags.FlattenHierarchy)) {
+        DefinePackedArgs(eventInfo.EventHandlerType.GetMethod("Invoke"), eventInfo.Name);
     }
-//PROPERTY
-    foreach (var property in type.GetProperties())
-    {
+    //PROPERTY
+    foreach (var property in type.GetProperties(BindingFlags.Instance|BindingFlags.Public|BindingFlags.FlattenHierarchy)) {
 #>
         public <#=property.PropertyType #> <#=property.Name #> {
 <#
-//PROPERTY GETTER
-    getter:
+    //PROPERTY GETTER
     if (property.GetMethod == null)
         goto setter;
 #>
             get { return Marshaller.Call<<#=type #>, <#=property.PropertyType #>, object>(this, true, "<#=property.GetMethod.Name #>", null); }
 <#
-//PROPERTY SETTER
+    //PROPERTY SETTER
     setter:
     if (property.SetMethod == null)
         goto propertyEnd;
 #>
-            set { Marshaller.Call<<#=type #>, <#=property.PropertyType #>, PackedArgs_<#=property.SetMethod.Name#>>(this, false, "<#=property.SetMethod.Name #>", value, new PackedArgs_<#=property.SetMethod.Name#>() { value = value }); }
+            set { Marshaller.Call<<#=type #>, <#=property.PropertyType #>, PackedArgs_<#=property.SetMethod.Name #>>(this, false, "<#=property.SetMethod.Name #>", new PackedArgs_<#=property.SetMethod.Name #>() { value = value }); }
 <#
     propertyEnd:
 #>
         }
 <#
     }
-//METHOD
-    foreach (var method in type.GetMethods())
-    {
+    //METHOD
+    foreach (var method in type.GetMethods(BindingFlags.Instance|BindingFlags.Public|BindingFlags.FlattenHierarchy)) {
         if (method.IsSpecialName)
             continue;
         var mrt = method.ReturnType == typeof(void) ? (object)"void" : method.ReturnType;
 #>
-        public <#=mrt#> <#=method.Name#>(<#WriteClientMethodParameters(method.GetParameters());#>) { <#WriteMethodCall(type, method);#> }
+        public <#=mrt #> <#=method.Name #>(<#
+        WriteClientMethodParameters(method.GetParameters()); #>) { <#
+        WriteMethodCall(type, method); #> }
 <#
     }
 
@@ -162,27 +195,38 @@ namespace Snoop.DataAccess.Impl {
 #>
 }<#
 
-    void WriteClientMethodParameters(ParameterInfo[] parameterInfos)
-    {
-        if(parameterInfos.Length == 0)
+    void WriteClientMethodParameters(ParameterInfo[] parameterInfos) {
+        if (parameterInfos.Length == 0)
             return;
-        for (int i = 0; i < parameterInfos.Length; i++)
-        {
+        for (var i = 0; i < parameterInfos.Length; i++) {
             var pi = parameterInfos[i];
             Write($"{pi.ParameterType} {pi.Name}");
-            if(i == parameterInfos.Length-1)
+            if (i == parameterInfos.Length - 1)
                 break;
             Write(", ");
         }
     }
+
+    void DefinePackedArgs(MethodInfo method, string name) {
+#>
+        public class PackedArgs_<#=name #> {
+<#
+    foreach (var pi in method.GetParameters()) {
+#>
+        public <#=pi.ParameterType #> <#=pi.Name #> { get; set; }
+<#
+    }
+#>
+        }
+<#
+    }
+
 #><#+
-    string WriteClientMethodCallArgs(MethodInfo method)
-    {
+    string WriteClientMethodCallArgs(MethodInfo method, string name, string prefix = "") {
         var parameterInfos = method.GetParameters();
-        StringBuilder builder = new StringBuilder();
-        builder.Append($"new PackedArgs_{method.Name}(){{");
-        for (int i = 0; i < parameterInfos.Length; i++)
-        {
+        var builder = new StringBuilder();
+        builder.Append($"new {prefix}PackedArgs_{name}(){{");
+        for (var i = 0; i < parameterInfos.Length; i++) {
             if (i != 0)
                 builder.Append(", ");
             var pi = parameterInfos[i];
@@ -191,29 +235,25 @@ namespace Snoop.DataAccess.Impl {
         builder.Append("}");
         return builder.ToString();
     }
-    private void WriteMethodCall(Type source, MethodInfo method)
-    {
+
+    void WriteMethodCall(Type source, MethodInfo method) {
         var mType = typeof(object);
-        if (method.ReturnType != typeof(void))
-        {
+        if (method.ReturnType != typeof(void)) {
             Write("return ");
             mType = method.ReturnType;
         }
         var wait = method.ReturnType != typeof(void) ? "true" : "false";
 
-        Write($@"Marshaller.Call<{source}, {mType}, PackedArgs_{method.Name}>(this, {wait}, ""{method.Name}"", {WriteClientMethodCallArgs(method)});");
+        Write($@"Marshaller.Call<{source}, {mType}, PackedArgs_{method.Name}>(this, {wait}, ""{method.Name}"", {WriteClientMethodCallArgs(method, method.Name)});");
     }
 
-    void WriteServerMethodCallParameters(MethodInfo method)
-    {
+    void WriteServerMethodCallParameters(MethodInfo method) {
         var parameters = method.GetParameters();
-        for (int i = 0; i < parameters.Length; i++)
-        {
+        for (var i = 0; i < parameters.Length; i++) {
             var pi = parameters[i];
             Write($@"((CallInfo<{method.DeclaringType.Name}Client.PackedArgs_{method.Name}>)parameters).Args.{pi.Name}");
-            if(i == parameters.Length-1)
+            if (i == parameters.Length - 1)
                 break;
             Write(", ");
         }
-    }
-#>
+    }#>

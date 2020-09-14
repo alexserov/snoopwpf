@@ -21,6 +21,8 @@ namespace Snoop.Windows
     using JetBrains.Annotations;
     using Snoop.Core.Properties;
     using Snoop.Data.Tree;
+    using Snoop.DataAccess.Interfaces;
+    using Snoop.DataAccess.Sessions;
     using Snoop.Infrastructure;
     using Snoop.Infrastructure.Helpers;
 
@@ -52,7 +54,7 @@ namespace Snoop.Windows
 
         #region Public Constructor
 
-        public SnoopUI()
+        public SnoopUI(Extension extension) : base(extension)
         {
             this.TreeService = TreeService.From(this.CurrentTreeType);
 
@@ -76,7 +78,6 @@ namespace Snoop.Windows
                 // swallow this exception since you can snoop just fine anyways.
             }
 
-            this.CommandBindings.Add(new CommandBinding(IntrospectCommand, this.HandleIntrospection));
             this.CommandBindings.Add(new CommandBinding(RefreshCommand, this.HandleRefresh));
             this.CommandBindings.Add(new CommandBinding(HelpCommand, this.HandleHelp));
 
@@ -148,12 +149,12 @@ namespace Snoop.Windows
         /// <summary>
         /// root is the object you are inspecting.
         /// </summary>
-        private object root;
+        private ISnoopObject root;
         #endregion
 
         #region CurrentSelection
 
-        public override object Target
+        public override ISnoopObject Target
         {
             get => this.CurrentSelection?.Target;
             set => this.CurrentSelection = this.FindItem(value);
@@ -412,14 +413,7 @@ namespace Snoop.Windows
         #endregion
 
         #region Private Routed Event Handlers
-
-        /// <summary>
-        /// Just for fun, the ability to run Snoop on itself :)
-        /// </summary>
-        private void HandleIntrospection(object sender, ExecutedRoutedEventArgs e)
-        {
-            this.Load(this);
-        }
+        
 
         private void HandleRefresh(object sender, ExecutedRoutedEventArgs e)
         {
@@ -703,7 +697,6 @@ namespace Snoop.Windows
 
             this.TreeItems.Clear();
 
-            // cplotts todo: we've got to come up with a better way to do this.
             if (this.filter == "Clear any filter applied to the tree view")
             {
                 this.SetFilter(string.Empty);
@@ -752,7 +745,7 @@ namespace Snoop.Windows
             }
         }
 
-        protected override void Load(object newRoot)
+        protected override void Load(ISnoopObject newRoot)
         {
             this.root = newRoot;
 

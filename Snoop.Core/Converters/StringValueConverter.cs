@@ -41,7 +41,6 @@
                 }
                 catch
                 {
-                    // todo: How should we notify the user about failures?
                 }
             }
 
@@ -83,7 +82,6 @@
                 }
                 catch
                 {
-                    // todo: How should we notify the user about failures?
                 }
             }
 

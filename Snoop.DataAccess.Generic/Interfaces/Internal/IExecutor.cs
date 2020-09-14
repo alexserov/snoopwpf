@@ -1,6 +1,6 @@
 ﻿namespace Snoop.DataAccess.Internal.Interfaces
 {
-    public interface IExecutor
+    public interface IExecutor : IDataAccess
     {
         object Execute(string methodName, ICallInfo parameters);
     }

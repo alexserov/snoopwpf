@@ -13,6 +13,7 @@ namespace Snoop.Data.Tree
     using System.Windows.Automation;
     using System.Windows.Media;
     using JetBrains.Annotations;
+    using Snoop.DataAccess.Interfaces;
 
     public class TreeItem : INotifyPropertyChanged
     {
@@ -24,12 +25,12 @@ namespace Snoop.Data.Tree
         private readonly string typeNameLower;
         private int childItemCount;
 
-        public TreeItem(object target, TreeItem parent, TreeService treeService)
+        public TreeItem(ISnoopObject target, TreeItem parent, TreeService treeService)
         {
             this.Target = target ?? throw new ArgumentNullException(nameof(target));
-            this.TargetType = this.Target.GetType();
+            this.TargetType = this.Target.TypeName;
 
-            this.typeNameLower = this.TargetType.Name.ToLower();
+            this.typeNameLower = this.TargetType.ToLower();
 
             this.Parent = parent;
             this.TreeService = treeService;
@@ -43,9 +44,9 @@ namespace Snoop.Data.Tree
         /// <summary>
         /// The WPF object that this instance is wrapping
         /// </summary>
-        public object Target { get; }
+        public ISnoopObject Target { get; }
 
-        public Type TargetType { get; }
+        public string TargetType { get; }
 
         /// <summary>
         /// The parent of this instance
@@ -144,10 +145,10 @@ namespace Snoop.Data.Tree
 
         public override string ToString()
         {
-            var sb = new StringBuilder(4 + 1 + this.Name.Length + 2 + this.TargetType.Name.Length + 1 + this.childItemCount > 0 ? 3 : 0);
+            var sb = new StringBuilder(4 + 1 + this.Name.Length + 2 + this.TargetType.Length + 1 + this.childItemCount > 0 ? 3 : 0);
 
             // [depth] name (type) numberOfChildren
-            sb.AppendFormat("[{0:D3}] {1} ({2})", this.Depth, this.Name, this.TargetType.Name);
+            sb.AppendFormat("[{0:D3}] {1} ({2})", this.Depth, this.Name, this.TargetType);
 
             if (this.childItemCount != 0)
             {
@@ -190,10 +191,7 @@ namespace Snoop.Data.Tree
             // calculate the number of dependency object children
             foreach (var child in this.Children)
             {
-                if (child is DependencyObjectTreeItem)
-                {
-                    this.childItemCount++;
-                }
+                this.childItemCount++;
 
                 this.childItemCount += child.childItemCount;
             }

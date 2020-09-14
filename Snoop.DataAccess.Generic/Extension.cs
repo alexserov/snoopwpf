@@ -1,5 +1,6 @@
 ﻿namespace Snoop.DataAccess.Sessions
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
@@ -41,9 +42,15 @@
             this.client.Start();
         }
 
+        public static Extension Select<T>(Func<Func<T>, bool> requestPredicate) where T : IDataAccessStatic {
+            return extensions.FirstOrDefault(x => requestPredicate(x.client.Request<T>));
+        }
         public static IEnumerable<T> Request<T>() where T : IDataAccessStatic
         {
             return extensions.Select(x => x.client.Request<T>()).Where(x => x != null);
+        }
+        public T Get<T>() where T: IDataAccessStatic {
+            return this.client.Request<T>();
         }
     }
 }

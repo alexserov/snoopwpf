@@ -4,8 +4,10 @@
     using System.Diagnostics;
     using System.Windows.Input;
     using Snoop.Data;
+    using Snoop.DataAccess.Sessions;
     using Snoop.Infrastructure;
     using Snoop.Properties;
+    using NativeMethods = Snoop.Infrastructure.NativeMethods;
 
     public class ProcessInfo
     {
@@ -36,7 +38,8 @@
 
             try
             {
-                InjectorLauncherManager.Launch(this, targetHwnd, typeof(SnoopManager).GetMethod(nameof(SnoopManager.StartSnoop)), CreateTransientSettingsData(SnoopStartTarget.SnoopUI, targetHwnd));
+                InjectorLauncherManager.Launch(this, targetHwnd, typeof(SnoopManager).GetMethod(nameof(ServerLauncher.StartSnoop)), CreateTransientSettingsData(SnoopStartTarget.SnoopUI, targetHwnd));
+                SnoopManager.StartSnoop();
             }
             catch (Exception e)
             {

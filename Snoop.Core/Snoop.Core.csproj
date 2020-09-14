@@ -27,4 +27,8 @@
     <PackageReference Include="Microsoft.PowerShell.5.ReferenceAssemblies" Version="1.1.0" />
     <PackageReference Include="Microsoft.PowerShell.Native" Version="7.0.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Snoop.DataAccess.Generic\Snoop.DataAccess.Generic.csproj" />
+  </ItemGroup>
 </Project>

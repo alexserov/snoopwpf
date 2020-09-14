@@ -69,7 +69,7 @@
             public ICallInfo Info { get; set; }
         }
 
-        public static TResult Call<TCaller, TResult, TPackedArgs>(TCaller caller, bool wait, string method, TPackedArgs args) where TCaller : IDataAccess
+        public static TResult Call<TCaller, TResult, TPackedArgs>(IDataAccess caller, bool wait, string method, TPackedArgs args) where TCaller : IDataAccess
         {
             // JsonConvert.SerializeObject()
             var ci = new CallInfoGeneric() { TypeName = typeof(TPackedArgs).FullName, Info = new CallInfo<TPackedArgs>(caller, method, args) };

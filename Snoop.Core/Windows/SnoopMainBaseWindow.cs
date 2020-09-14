@@ -3,11 +3,14 @@
     using System.Diagnostics;
     using System.Windows;
     using System.Windows.Forms.Integration;
+    using Snoop.DataAccess.Interfaces;
+    using Snoop.DataAccess.Sessions;
     using Snoop.Infrastructure;
 
     public abstract class SnoopMainBaseWindow : SnoopBaseWindow
     {
-        public abstract object Target { get; set; }
+        public Extension Extension { get; }
+        public abstract ISnoopObject Target { get; set; }
 
         public bool Inspect()
         {
@@ -39,7 +42,9 @@
             return true;
         }
 
-        public void Inspect(object rootToInspect)
+        public SnoopMainBaseWindow(Extension extension) { this.Extension = extension; }
+
+        public void Inspect(ISnoopObject rootToInspect)
         {
             ExceptionHandler.AddExceptionHandler(this.Dispatcher);
 
@@ -55,9 +60,9 @@
             Trace.WriteLine("Shown and activated snoop UI.");
         }
 
-        protected abstract void Load(object rootToInspect);
+        protected abstract void Load(ISnoopObject rootToInspect);
 
-        protected virtual object FindRoot()
+        protected virtual ISnoopObject FindRoot()
         {
             object foundRoot = null;
 
@@ -93,16 +98,6 @@
                         break;
                     }
                 }
-            }
-
-            if (System.Windows.Forms.Application.OpenForms.Count > 0)
-            {
-                // this is windows forms -> wpf interop
-
-                // call ElementHost.EnableModelessKeyboardInterop to allow the Snoop UI window
-                // to receive keyboard messages. if you don't call this method,
-                // you will be unable to edit properties in the property grid for windows forms interop.
-                ElementHost.EnableModelessKeyboardInterop(this);
             }
 
             return foundRoot;

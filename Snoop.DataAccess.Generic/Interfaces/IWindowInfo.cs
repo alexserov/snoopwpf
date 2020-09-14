@@ -12,7 +12,7 @@
     {
         bool DoSomethingIllegal(IFakeInterface2 element, bool value, string hello);
     }
-    public interface IFakeInterface2 : IDataAccessStatic
-    {
+    public interface IFakeInterface2 : IDataAccessStatic {
+        event Func<int, bool, string> SomeEvent;
     }
 }

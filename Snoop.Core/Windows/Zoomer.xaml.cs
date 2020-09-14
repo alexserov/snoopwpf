@@ -15,6 +15,8 @@ namespace Snoop.Windows
     using System.Windows.Media;
     using Snoop.Controls;
     using Snoop.Core.Properties;
+    using Snoop.DataAccess.Interfaces;
+    using Snoop.DataAccess.Sessions;
     using Snoop.Infrastructure;
 
     public sealed partial class Zoomer
@@ -23,7 +25,7 @@ namespace Snoop.Windows
         private readonly ScaleTransform zoom = new ScaleTransform();
         private readonly TransformGroup transform = new TransformGroup();
         private Point downPoint;
-        private object target;
+        private ISnoopObject target;
         private Visual targetVisual;
         private VisualTree3DView visualTree3DView;
 
@@ -55,7 +57,7 @@ namespace Snoop.Windows
             SwitchTo3DCommand.InputGestures.Add(new KeyGesture(Key.F3));
         }
 
-        public Zoomer()
+        public Zoomer(Extension x) : base(x)
         {
             this.CommandBindings.Add(new CommandBinding(ResetCommand, this.HandleReset, this.CanReset));
             this.CommandBindings.Add(new CommandBinding(ZoomInCommand, this.HandleZoomIn));
@@ -75,12 +77,12 @@ namespace Snoop.Windows
             this.Viewbox.RenderTransform = this.transform;
         }
 
-        protected override void Load(object root)
+        protected override void Load(ISnoopObject root)
         {
             this.Target = root;
         }
 
-        public override object Target
+        public override ISnoopObject Target
         {
             get => this.target;
 
@@ -122,35 +124,35 @@ namespace Snoop.Windows
         }
 
         /// <inheritdoc />
-        protected override object FindRoot()
-        {
-            var root = base.FindRoot();
-
-            if (root is Application application)
-            {
-                // try to use the application's main window (if visible) as the root
-                if (application.MainWindow != null
-                    && application.MainWindow.Visibility == Visibility.Visible)
-                {
-                    root = application.MainWindow;
-                }
-                else
-                {
-                    // else search for the first visible window in the list of the application's windows
-                    foreach (Window appWindow in application.Windows)
-                    {
-                        if (appWindow.CheckAccess()
-                            && appWindow.Visibility == Visibility.Visible)
-                        {
-                            root = appWindow;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            return root;
-        }
+        // protected override ISnoopObject FindRoot()
+        // {
+        //     var root = base.FindRoot();
+        //
+        //     if (root is Application application)
+        //     {
+        //         // try to use the application's main window (if visible) as the root
+        //         if (application.MainWindow != null
+        //             && application.MainWindow.Visibility == Visibility.Visible)
+        //         {
+        //             root = application.MainWindow;
+        //         }
+        //         else
+        //         {
+        //             // else search for the first visible window in the list of the application's windows
+        //             foreach (Window appWindow in application.Windows)
+        //             {
+        //                 if (appWindow.CheckAccess()
+        //                     && appWindow.Visibility == Visibility.Visible)
+        //                 {
+        //                     root = appWindow;
+        //                     break;
+        //                 }
+        //             }
+        //         }
+        //     }
+        //
+        //     return root;
+        // }
 
         private void HandleReset(object sender, ExecutedRoutedEventArgs args)
         {

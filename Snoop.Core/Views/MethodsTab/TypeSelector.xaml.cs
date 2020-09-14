@@ -17,7 +17,6 @@ namespace Snoop.Views.MethodsTab
             this.Loaded += this.TypeSelector_Loaded;
         }
 
-        //TODO: MOVE SOMEWHERE ELSE. MACIEK
         public static List<Type> GetDerivedTypes(Type baseType)
         {
             var typesAssignable = new List<Type>();

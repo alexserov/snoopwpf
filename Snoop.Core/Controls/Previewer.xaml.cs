@@ -8,6 +8,7 @@ namespace Snoop.Controls
     using System.Windows;
     using System.Windows.Input;
     using System.Windows.Media;
+    using Snoop.DataAccess.Interfaces;
     using Snoop.Infrastructure.Extensions;
     using Snoop.Windows;
 
@@ -29,9 +30,9 @@ namespace Snoop.Controls
         /// <summary>
         /// Gets or sets the Target property.
         /// </summary>
-        public object Target
+        public ISnoopObject Target
         {
-            get { return (object)this.GetValue(TargetProperty); }
+            get { return (ISnoopObject)this.GetValue(TargetProperty); }
             set { this.SetValue(TargetProperty, value); }
         }
 
@@ -41,10 +42,10 @@ namespace Snoop.Controls
         public static readonly DependencyProperty TargetProperty =
             DependencyProperty.Register(
                 nameof(Target),
-                typeof(object),
+                typeof(ISnoopObject),
                 typeof(Previewer),
                 new FrameworkPropertyMetadata(
-                    (object)null,
+                    (ISnoopObject)null,
                     OnTargetChanged));
 
         /// <summary>

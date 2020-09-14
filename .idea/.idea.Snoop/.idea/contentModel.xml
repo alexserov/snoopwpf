@@ -387,6 +387,7 @@
       <e p="Snoop.DataAccess.Generic" t="IncludeRecursive">
         <e p="Client" t="Include">
           <e p="Client.cs" t="Include" />
+          <e p="DataAccessBase.cs" t="Include" />
         </e>
         <e p="Extension.cs" t="Include" />
         <e p="Interfaces" t="Include">
@@ -395,7 +396,10 @@
             <e p="IDataAccessStatic.cs" t="Include" />
             <e p="IExecutor.cs" t="Include" />
           </e>
+          <e p="ISnoopObject.cs" t="Include" />
+          <e p="IWindowHelper.cs" t="Include" />
           <e p="IWindowInfo.cs" t="Include" />
+          <e p="IWindowInstance.cs" t="Include" />
         </e>
         <e p="Interfaces.cs" t="Include" />
         <e p="Interfaces.tt" t="Include" />
@@ -411,6 +415,7 @@
         </e>
         <e p="Server" t="Include">
           <e p="Server.cs" t="Include" />
+          <e p="ServerLauncher.cs" t="Include" />
         </e>
         <e p="Session.cs" t="Include" />
         <e p="Snoop.DataAccess.Generic.csproj" t="IncludeRecursive" />
@@ -436,7 +441,10 @@
           </e>
         </e>
         <e p="Snoop.DataAccess.Wpf.csproj" t="IncludeRecursive" />
+        <e p="Tree.cs" t="Include" />
+        <e p="WindowHelper.cs" t="Include" />
         <e p="WindowInfo.cs" t="Include" />
+        <e p="WindowInstance.cs" t="Include" />
       </e>
       <e p="Snoop.GenericInjector" t="IncludeRecursive">
         <e p="dllmain.cpp" t="Include" />
