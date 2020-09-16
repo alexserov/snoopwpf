@@ -33,7 +33,7 @@ namespace Snoop.DataAccess.Impl {
         }
     }
      
-    public sealed class ISnoopObjectServer : IExecutor, IDataAccess {
+    public sealed class ISnoopObjectServer : IExecutor {
         readonly ISnoopObject source;
         public string Id { get; }
         readonly Dictionary<string, int> eventCounter; 
@@ -65,7 +65,7 @@ namespace Snoop.DataAccess.Impl {
         }
     }
      
-    public sealed class IWindowHelperServer : IExecutor, IDataAccess {
+    public sealed class IWindowHelperServer : IExecutor {
         readonly IWindowHelper source;
         public string Id { get; }
         readonly Dictionary<string, int> eventCounter; 
@@ -96,7 +96,7 @@ namespace Snoop.DataAccess.Impl {
         public Snoop.DataAccess.Interfaces.IWindowInstance GetVisibleWindow(System.Int64 hwnd) { return Marshaller.Call<Snoop.DataAccess.Interfaces.IWindowHelper, Snoop.DataAccess.Interfaces.IWindowInstance, PackedArgs_GetVisibleWindow>(this, true, "GetVisibleWindow", new PackedArgs_GetVisibleWindow(){hwnd = hwnd}); }
     }
      
-    public sealed class IWindowInfoServer : IExecutor, IDataAccess {
+    public sealed class IWindowInfoServer : IExecutor {
         readonly IWindowInfo source;
         public string Id { get; }
         readonly Dictionary<string, int> eventCounter; 
@@ -127,7 +127,7 @@ namespace Snoop.DataAccess.Impl {
         public System.Boolean GetIsValidProcess(System.IntPtr hwnd) { return Marshaller.Call<Snoop.DataAccess.Interfaces.IWindowInfo, System.Boolean, PackedArgs_GetIsValidProcess>(this, true, "GetIsValidProcess", new PackedArgs_GetIsValidProcess(){hwnd = hwnd}); }
     }
      
-    public sealed class IFakeInterfaceServer : IExecutor, IDataAccess {
+    public sealed class IFakeInterfaceServer : IExecutor {
         readonly IFakeInterface source;
         public string Id { get; }
         readonly Dictionary<string, int> eventCounter; 
@@ -160,7 +160,7 @@ namespace Snoop.DataAccess.Impl {
         public System.Boolean DoSomethingIllegal(Snoop.DataAccess.Interfaces.IFakeInterface2 element, System.Boolean value, System.String hello) { return Marshaller.Call<Snoop.DataAccess.Interfaces.IFakeInterface, System.Boolean, PackedArgs_DoSomethingIllegal>(this, true, "DoSomethingIllegal", new PackedArgs_DoSomethingIllegal(){element = element, value = value, hello = hello}); }
     }
      
-    public sealed class IFakeInterface2Server : IExecutor, IDataAccess {
+    public sealed class IFakeInterface2Server : IExecutor {
         readonly IFakeInterface2 source;
         public string Id { get; }
         readonly Dictionary<string, int> eventCounter; 
@@ -204,9 +204,23 @@ namespace Snoop.DataAccess.Impl {
         public System.Int32 arg1 { get; set; }
         public System.Boolean arg2 { get; set; }
         }
+    System.Func<System.Int32, System.Boolean, System.String> _SomeEvent;
+        public event System.Func<System.Int32, System.Boolean, System.String> SomeEvent {
+            add {  
+                 _SomeEvent += value;
+                 Marshaller.Call<Snoop.DataAccess.Interfaces.IFakeInterface2, object, object>(this, true, "add_SomeEvent", null); 
+            }
+            remove {
+                 _SomeEvent -= value;
+                 Marshaller.Call<Snoop.DataAccess.Interfaces.IFakeInterface2, object, object>(this, true, "remove_SomeEvent", null);
+            }
+        }
+        public System.String RaiseSomeEvent(System.Int32 arg1, System.Boolean arg2) {
+            return _SomeEvent(arg1, arg2);
+        }
     }
      
-    public sealed class IWindowInstanceServer : IExecutor, IDataAccess {
+    public sealed class IWindowInstanceServer : IExecutor {
         readonly IWindowInstance source;
         public string Id { get; }
         readonly Dictionary<string, int> eventCounter; 
@@ -217,6 +231,9 @@ namespace Snoop.DataAccess.Impl {
         }
 
         public object Execute(string methodName, ICallInfo parameters) {
+            if(methodName=="get_TypeName") {
+                return source.TypeName;
+            }
             if(methodName=="get_Title") {
                 return source.Title;
             }
@@ -235,10 +252,15 @@ namespace Snoop.DataAccess.Impl {
             Session = session;
         }
         public string Id { get { return id; } }
+        public class PackedArgs_get_TypeName {
+        }
         public class PackedArgs_get_Title {
         }
         public class PackedArgs_set_Title {
         public System.String value { get; set; }
+        }
+        public System.String TypeName {
+            get { return Marshaller.Call<Snoop.DataAccess.Interfaces.IWindowInstance, System.String, object>(this, true, "get_TypeName", null); }
         }
         public System.String Title {
             get { return Marshaller.Call<Snoop.DataAccess.Interfaces.IWindowInstance, System.String, object>(this, true, "get_Title", null); }

@@ -31,43 +31,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1024641b-ea11-470b-aa2b-bdad9337612d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Client/DataAccessBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/ISnoopObject.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/IWindowHelper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/IWindowInstance.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Server/ServerLauncher.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Tree.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowHelper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowInstance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Snoop/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snoop/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snoop/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snoop/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Controls/Previewer.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Controls/Previewer.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Converters/StringValueConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Converters/StringValueConverter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Data/Tree/ApplicationTreeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Data/Tree/ApplicationTreeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Data/Tree/AutomationPeerTreeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Data/Tree/AutomationPeerTreeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Data/Tree/ChildWindowsTreeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Data/Tree/ChildWindowsTreeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Data/Tree/DependencyObjectTreeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Data/Tree/DependencyObjectTreeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Data/Tree/PopupTreeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Data/Tree/PopupTreeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Data/Tree/ResourceContainerTreeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Data/Tree/ResourceContainerTreeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Data/Tree/ResourceDictionaryTreeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Data/Tree/ResourceDictionaryTreeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Data/Tree/TreeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Data/Tree/TreeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Data/Tree/TreeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Data/Tree/TreeService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Data/Tree/WindowTreeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Data/Tree/WindowTreeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Infrastructure/Helpers/WindowHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Infrastructure/Helpers/WindowHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Infrastructure/SnoopManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Infrastructure/SnoopManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Snoop.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Snoop.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Views/MethodsTab/TypeSelector.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Views/MethodsTab/TypeSelector.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Windows/SnoopMainBaseWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Windows/SnoopMainBaseWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Windows/SnoopUI.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Windows/SnoopUI.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Windows/Zoomer.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Windows/Zoomer.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Extension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Extension.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.tt" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.tt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/IWindowInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/IWindowInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Internal/IExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Internal/IExecutor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Marshaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Marshaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Snoop.DataAccess.Wpf.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Snoop.DataAccess.Wpf.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop/ProcessInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop/ProcessInfo.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,9 +101,9 @@
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowInstance.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Internal/IExecutor.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/IWindowInfo.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Marshaller.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.tt" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.cs" />
       </list>
     </option>
   </component>
@@ -279,7 +245,8 @@
       <option name="presentableId" value="Default" />
       <updated>1599980829903</updated>
       <workItem from="1599980836816" duration="16950000" />
-      <workItem from="1600072962250" duration="6607000" />
+      <workItem from="1600072962250" duration="9777000" />
+      <workItem from="1600246263639" duration="2100000" />
     </task>
     <servers />
   </component>
@@ -312,22 +279,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="423" height="464" key="DebuggerActiveHint/0.0.2560.1400@0.0.2560.1400" timestamp="1600001351556" />
-    <state width="1258" height="400" key="GridCell.Tab.0.bottom" timestamp="1600101902947">
+    <state width="2517" height="400" key="GridCell.Tab.0.bottom" timestamp="1600247894139">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1258" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600101902947" />
-    <state width="1258" height="400" key="GridCell.Tab.0.center" timestamp="1600101902947">
+    <state width="2517" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600247894139" />
+    <state width="2517" height="400" key="GridCell.Tab.0.center" timestamp="1600247894138">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1258" height="400" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600101902947" />
-    <state width="1258" height="400" key="GridCell.Tab.0.left" timestamp="1600101902947">
+    <state width="2517" height="400" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600247894138" />
+    <state width="2517" height="400" key="GridCell.Tab.0.left" timestamp="1600247894138">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1258" height="400" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600101902947" />
-    <state width="1258" height="400" key="GridCell.Tab.0.right" timestamp="1600101902947">
+    <state width="2517" height="400" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600247894138" />
+    <state width="2517" height="400" key="GridCell.Tab.0.right" timestamp="1600247894138">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1258" height="400" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600101902947" />
+    <state width="2517" height="400" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600247894138" />
     <state width="2517" height="476" key="GridCell.Tab.1.bottom" timestamp="1600062620358">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -408,10 +375,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="835" y="437" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.2560.1400@0.0.2560.1400" timestamp="1599983795980" />
-    <state x="945" y="433" width="671" height="534" key="find.popup" timestamp="1600096813774">
+    <state x="945" y="433" width="671" height="592" key="find.popup" timestamp="1600102319671">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="945" y="433" width="671" height="534" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1600096813774" />
+    <state x="945" y="433" width="671" height="592" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1600102319671" />
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1600003362553">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -471,6 +438,20 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.tt</url>
+          <line>196</line>
+          <properties documentPath="C:\Github\snoopwpf\Snoop.DataAccess.Generic\Interfaces.tt" initialLine="196" isMultiMethodBreakpoint="true">
+            <option name="multiMethodBreakpoint" value="true" />
+            <startOffsets>
+              <option value="-1" />
+            </startOffsets>
+            <endOffsets>
+              <option value="-1" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
