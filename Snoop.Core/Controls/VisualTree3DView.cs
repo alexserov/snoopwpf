@@ -10,8 +10,10 @@ namespace Snoop.Controls
     using System.Windows.Controls;
     using System.Windows.Media;
     using System.Windows.Media.Media3D;
+    using Snoop.DataAccess.Interfaces;
     using Snoop.Extensions;
     using Snoop.Infrastructure;
+    using Snoop.Infrastructure.Helpers;
 
     public class VisualTree3DView : Viewport3D
     {
@@ -72,10 +74,10 @@ namespace Snoop.Controls
             this.ZScale = 1;
         }
 
-        private Model3D ConvertVisualToModel3D(Visual visual, int dpi, ref double z)
+        private Model3D ConvertVisualToModel3D(ISO_Visual visual, int dpi, ref double z)
         {
             Model3D model = null;
-            var bounds = VisualTreeHelper.GetContentBounds(visual);
+            var bounds = VisualTreeHelper2.GetContentBounds(visual);
 
             if (visual is Viewport3D viewport3D)
             {
@@ -84,7 +86,7 @@ namespace Snoop.Controls
 
             if (this.includeEmptyVisuals)
             {
-                bounds.Union(VisualTreeHelper.GetDescendantBounds(visual));
+                bounds.Union(VisualTreeHelper2.GetDescendantBounds(visual));
             }
 
             if (!bounds.IsEmpty && bounds.Width > 0 && bounds.Height > 0)
@@ -115,7 +117,7 @@ namespace Snoop.Controls
                 z -= 1;
             }
 
-            var childrenCount = VisualTreeHelper.GetChildrenCount(visual);
+            var childrenCount = VisualTreeHelper2.GetChildrenCount(visual);
 
             if (childrenCount > 0)
             {
@@ -128,7 +130,7 @@ namespace Snoop.Controls
 
                 for (var i = 0; i < childrenCount; i++)
                 {
-                    if (VisualTreeHelper.GetChild(visual, i) is Visual childVisual)
+                    if (VisualTreeHelper2.GetChild(visual, i) is ISO_Visual childVisual)
                     {
                         var childModel = this.ConvertVisualToModel3D(childVisual, dpi, ref z);
                         if (childModel != null)
@@ -143,9 +145,9 @@ namespace Snoop.Controls
 
             if (model != null)
             {
-                var transform = VisualTreeHelper.GetTransform(visual);
+                var transform = VisualTreeHelper2.GetTransform(visual);
                 var matrix = transform?.Value ?? Matrix.Identity;
-                var offset = VisualTreeHelper.GetOffset(visual);
+                var offset = VisualTreeHelper2.GetOffset(visual);
                 matrix.Translate(offset.X, offset.Y);
 
                 if (!matrix.IsIdentity)
@@ -162,13 +164,13 @@ namespace Snoop.Controls
             return model;
         }
 
-        private Brush MakeBrushFromVisual(Visual visual, Rect bounds, int dpi)
+        private Brush MakeBrushFromVisual(ISO_Visual visual, Rect bounds, int dpi)
         {
             var viewport3D = visual as Viewport3D;
 
             if (viewport3D == null)
             {
-                Drawing drawing = VisualTreeHelper.GetDrawing(visual);
+                Drawing drawing = VisualTreeHelper2.GetDrawing(visual);
 
                 if (this.drawOutlines)
                 {

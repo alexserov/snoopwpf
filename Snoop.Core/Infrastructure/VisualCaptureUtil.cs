@@ -14,6 +14,8 @@ namespace Snoop.Infrastructure
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
     using JetBrains.Annotations;
+    using Snoop.DataAccess.Interfaces;
+    using Snoop.Infrastructure.Helpers;
 
     public class VisualCaptureUtil
     {
@@ -79,7 +81,7 @@ namespace Snoop.Infrastructure
         /// <remarks>
         /// This way we workaround a limitation in <see cref="VisualBrush"/> which causes poor quality for larger visuals.
         /// </remarks>
-        public static RenderTargetBitmap RenderVisualWithHighQuality(Visual visual, int dpi, PixelFormat? pixelFormat = null, Viewport3D viewport3D = null)
+        public static RenderTargetBitmap RenderVisualWithHighQuality(ISO_Visual visual, int dpi, PixelFormat? pixelFormat = null, Viewport3D viewport3D = null)
         {
             var size = GetSize(visual);
 
@@ -115,14 +117,13 @@ namespace Snoop.Infrastructure
             return renderTargetBitmap;
         }
 
-        private static Size GetSize(Visual visual)
+        private static Size GetSize(ISO_Visual visual)
         {
-            if (visual is UIElement uiElement)
-            {
-                return uiElement.RenderSize;
+            if (visual is ISO_UIElement uiElement) {
+                return new Size(uiElement.RenderSize.Width, uiElement.RenderSize.Height);
             }
 
-            var descendantBounds = VisualTreeHelper.GetDescendantBounds(visual);
+            var descendantBounds = VisualTreeHelper2.GetDescendantBounds(visual);
             return new Size(descendantBounds.Width, descendantBounds.Height);
         }
 
@@ -140,7 +141,7 @@ namespace Snoop.Infrastructure
         ///
         /// A tile size of 32x32 turned out deliver the best quality while not increasing computation time too much.
         /// </remarks>
-        private static void DrawVisualInTiles(Visual visual, DrawingContext drawingContext, Size visualSize, double tileWidth = 32, double tileHeight = 32)
+        private static void DrawVisualInTiles(ISO_Visual visual, DrawingContext drawingContext, Size visualSize, double tileWidth = 32, double tileHeight = 32)
         {
             var visualWidth = visualSize.Width;
             var visualHeight = visualSize.Height;

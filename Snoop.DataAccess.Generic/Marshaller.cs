@@ -29,9 +29,16 @@
         public TPackedArgs Args { get; set; }
     }
     
-    partial class Marshaller
-    {
-    
+    partial class Marshaller {
+        static List<(Type tInterface, Func<object, IExecutor> factoryServer, Func<ISession, string, IDataAccess> factoryClient)> registeredTypes = null;
+        public static IExecutor CreateServerExecutor(Type type, object instance) {
+            var info = registeredTypes.FirstOrDefault(x => x.tInterface == type);
+            return info.factoryServer(instance);
+        }
+        public static IDataAccess CreateClientExecutor(ISession session, Type type, string id) {
+            var info = registeredTypes.FirstOrDefault(x => x.tInterface == type);
+            return info.factoryClient(session, id);
+        }
       
 
         class CallInfoGenericJsonConverter : JsonConverter

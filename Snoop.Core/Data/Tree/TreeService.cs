@@ -9,6 +9,7 @@
     using System.Windows.Media;
     using System.Windows.Media.Media3D;
     using Snoop.DataAccess.Interfaces;
+    using Snoop.Infrastructure.Helpers;
 
     public enum TreeType
     {
@@ -19,16 +20,16 @@
         Automation
     }
 
-    public abstract class TreeService
+    public class TreeService
     {
-        public abstract TreeType TreeType { get; }
+        // public abstract TreeType TreeType { get; }
 
-        public IEnumerable GetChildren(TreeItem treeItem)
-        {
-            return this.GetChildren(treeItem.Target);
-        }
+        // public IEnumerable GetChildren(TreeItem treeItem)
+        // {
+        //     return this.GetChildren(treeItem.Target);
+        // }
 
-        public abstract IEnumerable GetChildren(object target);
+        // public abstract IEnumerable GetChildren(object target);
 
         public virtual TreeItem Construct(ISnoopObject target, TreeItem parent)
         {
@@ -47,59 +48,59 @@
             return treeItem;
         }
 
-        public static TreeService From(TreeType treeType)
-        {
-            switch (treeType)
-            {
-                case TreeType.Visual:
-                    return new VisualTreeService();
-
-                case TreeType.Logical:
-                    throw new NotImplementedException();
-                    // return new LogicalTreeService();
-
-                case TreeType.Automation:
-                    throw new NotImplementedException();
-                    // return new AutomationPeerTreeService();
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(treeType), treeType, null);
-            }
-        }
+        // public static TreeService From(TreeType treeType)
+        // {
+        //     switch (treeType)
+        //     {
+        //         case TreeType.Visual:
+        //             return new VisualTreeService();
+        //
+        //         case TreeType.Logical:
+        //             throw new NotImplementedException();
+        //             // return new LogicalTreeService();
+        //
+        //         case TreeType.Automation:
+        //             throw new NotImplementedException();
+        //             // return new AutomationPeerTreeService();
+        //         default:
+        //             throw new ArgumentOutOfRangeException(nameof(treeType), treeType, null);
+        //     }
+        // }
     }
 
-    public sealed class RawTreeServiceWithoutChildren : TreeService
-    {
-        public static readonly RawTreeServiceWithoutChildren DefaultInstance = new RawTreeServiceWithoutChildren();
-
-        public override TreeType TreeType { get; } = TreeType.Visual;
-
-        public override IEnumerable GetChildren(object target)
-        {
-            yield break;
-        }
-    }
-
-    public sealed class VisualTreeService : TreeService
-    {
-        public override TreeType TreeType { get; } = TreeType.Visual;
-
-        public override IEnumerable GetChildren(object target)
-        {
-            if (!(target is DependencyObject dependencyObject)
-                || (target is Visual == false && target is Visual3D == false))
-            {
-                yield break;
-            }
-
-            var childrenCount = VisualTreeHelper.GetChildrenCount(dependencyObject);
-
-            for (var i = 0; i < childrenCount; i++)
-            {
-                var child = VisualTreeHelper.GetChild(dependencyObject, i);
-                yield return child;
-            }
-        }
-    }
+    // public sealed class RawTreeServiceWithoutChildren : TreeService
+    // {
+    //     public static readonly RawTreeServiceWithoutChildren DefaultInstance = new RawTreeServiceWithoutChildren();
+    //
+    //     public override TreeType TreeType { get; } = TreeType.Visual;
+    //
+    //     public override IEnumerable GetChildren(object target)
+    //     {
+    //         yield break;
+    //     }
+    // }
+    //
+    // public sealed class VisualTreeService : TreeService
+    // {
+    //     public override TreeType TreeType { get; } = TreeType.Visual;
+    //
+    //     public override IEnumerable GetChildren(ISnoopObject target)
+    //     {
+    //         if (!(target is ISO_DependencyObject dependencyObject)
+    //             || (target is ISO_Visual == false && target is Visual3D == false))
+    //         {
+    //             yield break;
+    //         }
+    //
+    //         var childrenCount = VisualTreeHelper2.GetChildrenCount(dependencyObject);
+    //
+    //         for (var i = 0; i < childrenCount; i++)
+    //         {
+    //             var child = VisualTreeHelper2.GetChild(dependencyObject, i);
+    //             yield return child;
+    //         }
+    //     }
+    // }
 
     // public sealed class LogicalTreeService : TreeService
     // {

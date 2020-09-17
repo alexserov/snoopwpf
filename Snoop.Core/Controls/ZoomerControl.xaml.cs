@@ -132,8 +132,8 @@ namespace Snoop.Controls
 
         //private UIElement CreateIfPossible(object item)
         //{
-        //    if (item is Window && VisualTreeHelper.GetChildrenCount((Visual)item) == 1)
-        //        item = VisualTreeHelper.GetChild((Visual)item, 0);
+        //    if (item is Window && VisualTreeHelper2.GetChildrenCount((Visual)item) == 1)
+        //        item = VisualTreeHelper2.GetChild((Visual)item, 0);
 
         //    if (item is FrameworkElement)
         //    {

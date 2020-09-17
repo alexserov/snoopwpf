@@ -5,6 +5,9 @@
 <#@ import namespace="System.Reflection" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="Snoop.DataAccess.Sessions" #>
+/*
+ * THIS CODE IS AUTO-GENERATED
+ */
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -19,22 +22,15 @@ namespace Snoop.DataAccess.Impl {
     var interfaces = typeof(ISession).Assembly.GetTypes().Where(x => x.IsInterface).Where(x => x.Namespace.StartsWith("Snoop.DataAccess.Interfaces")).ToList();
 #>
     partial class Marshaller {
-        static List<(Type tInterface, Func<object, IExecutor> factoryServer, Func<ISession, string, IDataAccess> factoryClient)> registeredTypes = new List<(Type tInterface, Func<object, IExecutor> factoryServer, Func<ISession, string, IDataAccess> factoryClient)>
-        {<#
-    foreach (var type in interfaces) {
-#> 
-            (typeof(<#=type #>), x=>new <#=type.Name #>Server((<#=type #>)x), (s, x)=>new <#=type.Name #>Client(s, x) ),
+        static Marshaller() {
+            registeredTypes = new List<(Type tInterface, Func<object, IExecutor> factoryServer, Func<ISession, string, IDataAccess> factoryClient)> {
 <#
-    }
-#>
-        };
-        public static IExecutor CreateServerExecutor(Type type, object instance) {
-            var info = registeredTypes.FirstOrDefault(x => x.tInterface == type);
-            return info.factoryServer(instance);
+        foreach (var type in interfaces) {
+#>                 (typeof(<#=type #>), x=>new <#=type.Name #>Server((<#=type #>)x), (s, x)=>new <#=type.Name #>Client(s, x) ),
+<#
         }
-        public static IDataAccess CreateClientExecutor(ISession session, Type type, string id) {
-            var info = registeredTypes.FirstOrDefault(x => x.tInterface == type);
-            return info.factoryClient(session, id);
+#>
+            };        
         }
     }
 <#
@@ -61,7 +57,7 @@ namespace Snoop.DataAccess.Impl {
         var ehInvoke = eventInfo.EventHandlerType.GetMethod("Invoke");
 #>
         <#=TypeToString(ehInvoke.ReturnType)#> On<#=eventInfo.Name #>(<#=GetClientMethodParameters(ehInvoke.GetParameters()) #>){
-            <#=ehInvoke.ReturnType==typeof(void) ? "" : "return "#>Marshaller.Call<<#=type#>, <#=TypeToString(ehInvoke.ReturnType)#>, <#=type.Name#>Client.PackedArgs_<#=eventInfo.Name#>>(this, <#=ehInvoke.ReturnType!=typeof(void) ? "true" : "false"#>, "Raise<#=eventInfo.Name #>", <#=WriteClientMethodCallArgs(ehInvoke,eventInfo.Name, $"{type.Name}Client.")#>);
+            <#=ehInvoke.ReturnType==typeof(void) ? "" : "return "#>Marshaller.Call<<#=type#>, <#=ehInvoke.ReturnType == typeof(void) ? "object" : TypeToString(ehInvoke.ReturnType)#>, <#=type.Name#>Client.PackedArgs_<#=eventInfo.Name#>>(this, <#=ehInvoke.ReturnType!=typeof(void) ? "true" : "false"#>, "Raise<#=eventInfo.Name #>", <#=WriteClientMethodCallArgs(ehInvoke,eventInfo.Name, $"{type.Name}Client.")#>);
         }
 <#
     }
@@ -219,7 +215,7 @@ namespace Snoop.DataAccess.Impl {
 <#
     foreach (var pi in method.GetParameters()) {
 #>
-        public <#=pi.ParameterType #> <#=pi.Name #> { get; set; }
+        public <#=TypeToString(pi.ParameterType) #> <#=pi.Name #> { get; set; }
 <#
     }
 #>

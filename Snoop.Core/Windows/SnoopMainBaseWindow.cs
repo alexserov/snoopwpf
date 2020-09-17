@@ -50,8 +50,6 @@
 
             this.Load(rootToInspect);
 
-            this.Owner = SnoopWindowUtils.FindOwnerWindow(this);
-
             Trace.WriteLine("Showing snoop UI...");
 
             this.Show();

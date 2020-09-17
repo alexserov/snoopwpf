@@ -88,7 +88,7 @@
             }
         }
 
-        private List<(string typeName, string guid, IExecutor executor)> registered = new List<(string typeName, string guid, IExecutor executor)>();
+        private List<(Type type, string typeName, string guid, IExecutor executor, IDataAccessStatic instance)> registered = new List<(Type type, string typeName, string guid, IExecutor executor, IDataAccessStatic instance)>();
 
         private string EnumerateTypes()
         {
@@ -103,7 +103,11 @@
 
         public void Register<TInterface>(TInterface instance) where TInterface : IDataAccessStatic
         {
-            this.registered.Add((typeof(TInterface).ToString(), instance.Id, Impl.Marshaller.CreateServerExecutor(typeof(TInterface), instance)));
+            this.registered.Add((typeof(TInterface), typeof(TInterface).ToString(), instance.Id, Impl.Marshaller.CreateServerExecutor(typeof(TInterface), instance), instance));
+        }
+
+        public TInterface Instance<TInterface>(TInterface instance) where TInterface : IDataAccess {
+            return (TInterface)this.registered.First(x => x.type == typeof(TInterface)).instance;
         }
 
         public IExecutor GetExecutor(string infoCallerId)

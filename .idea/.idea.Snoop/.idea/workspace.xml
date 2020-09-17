@@ -31,9 +31,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1024641b-ea11-470b-aa2b-bdad9337612d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_DependencyObject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_FrameworkElement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_UIElement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_Visual.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_Visual3D.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_InputManagerStatic.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_MouseStatic.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_VisualTreeHelper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_WindowHelperStatic.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/Base.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_DependencyObject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_FrameworkElement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_Visual.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/InputManagerStatic.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/MouseStatic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Snoop/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snoop/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snoop/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snoop/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.Core/Controls/VisualTree3DView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Controls/VisualTree3DView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.Core/Controls/ZoomerControl.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Controls/ZoomerControl.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.Core/Data/Tree/TreeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Data/Tree/TreeService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.Core/Extensions/MouseDeviceExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Extensions/MouseDeviceExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.Core/Infrastructure/Helpers/ResourceDictionaryKeyHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Infrastructure/Helpers/ResourceDictionaryKeyHelpers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.Core/Infrastructure/Helpers/VisualTreeHelper2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Infrastructure/Helpers/VisualTreeHelper2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.Core/Infrastructure/Helpers/WindowHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Infrastructure/Helpers/WindowHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.Core/Infrastructure/SnoopManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Infrastructure/SnoopManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.Core/Infrastructure/SnoopWindowUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Infrastructure/SnoopWindowUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.Core/Infrastructure/VisualCaptureUtil.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Infrastructure/VisualCaptureUtil.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.Core/Infrastructure/ZoomerUtilities.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Infrastructure/ZoomerUtilities.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.Core/Windows/SnoopMainBaseWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Windows/SnoopMainBaseWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.Core/Windows/SnoopUI.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Windows/SnoopUI.xaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.tt" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.tt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/ISnoopObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISnoopObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/IWindowHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_WindowInfoStatic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/IWindowInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/IWindowInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_Window.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Marshaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Marshaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Server/Server.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Server/Server.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Main.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowHelperStatic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowInfoStatic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_Window.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop/WindowInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop/WindowInfo.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,62 +88,72 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F6747DE9-0205-433F-84EB-50C1DA278135/7c/fe6289b5/RuntimeModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FC4FDE92-EB6F-48C0-97C9-E23AC1E2176C/d0/c973d539/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F6747DE9-0205-433F-84EB-50C1DA278135/b9/42893df7/Encoding.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/18D/Encoding.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1095FC3A-4A79-4BE6-9D8B-4E1A2D77D8E5/63/10c4cbfc/WatsonTcpClient.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2676A2DA-6EDC-420E-890E-D28AA4572EE5/89/JValue.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F6747DE9-0205-433F-84EB-50C1DA278135/d5/121d8b01/Assembly.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73160556-96A7-432D-B417-A76288FC056B/02/a4b4f2bb/WatsonTcpClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73160556-96A7-432D-B417-A76288FC056B/dd/dd87377f/SyncResponse.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowHelperStatic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F3448F2A-D20E-4703-9AB4-05FA3E9FE348/c3/798deab7/ReSharperGeneratedTransformationExecutor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9160E4DE-3CCD-4354-BF9E-7238FF65D915/8/Size.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/18D/Encoding.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Snoop.Core/obj/Debug/net472/Controls/ValueEditors/MouseWheelValueEditor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/530F6F28-13B4-43AA-BB3E-270B051EA6DE/df/09c23ffb/VisualTreeHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1095FC3A-4A79-4BE6-9D8B-4E1A2D77D8E5/63/10c4cbfc/WatsonTcpClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2676A2DA-6EDC-420E-890E-D28AA4572EE5/89/JValue.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Class1.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Internal/IDataAccessStatic.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Message.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Internal/IDataAccess.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowInfo.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Session.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Client/Client.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Server/Server.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Main.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Converters/StringValueConverter.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Views/MethodsTab/TypeSelector.xaml.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Data/Tree/ResourceDictionaryTreeItem.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Data/Tree/ResourceContainerTreeItem.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Data/Tree/PopupTreeItem.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Data/Tree/DependencyObjectTreeItem.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Data/Tree/ChildWindowsTreeItem.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Data/Tree/AutomationPeerTreeItem.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Data/Tree/ApplicationTreeItem.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Data/Tree/TreeItem.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Data/Tree/TreeService.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Data/Tree/WindowTreeItem.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Tree.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Controls/Previewer.xaml.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Internal/IWindowInstance.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Client/DataAccessBase.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Snoop.DataAccess.Wpf.csproj" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/ISnoopObject.cs" />
-        <option value="$PROJECT_DIR$/Snoop/ProcessInfo.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Windows/SnoopMainBaseWindow.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Windows/SnoopUI.xaml.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Windows/Zoomer.xaml.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Extension.cs" />
         <option value="$PROJECT_DIR$/Snoop.Core/Infrastructure/Helpers/WindowHelper.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/IWindowHelper.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Infrastructure/SnoopManager.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Server/ServerLauncher.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowHelper.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/IWindowInstance.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowInstance.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Internal/IExecutor.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/IWindowInfo.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IWindowHelperStatic.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IWindowInfo.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IWindowInfoStatic.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/InputManager.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IInputManagerStatic.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Marshaller.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.tt" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/InputManagerStatic.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IMouseStatic.cs" />
+        <option value="$PROJECT_DIR$/Snoop.Core/Extensions/MouseDeviceExtensions.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Main.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Server/Server.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/ISnoopObject.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowInstance.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/WindowHelperStatic.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/ISO_Window.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_Window.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/MouseStatic.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/ISO_FrameworkElement.cs" />
+        <option value="$PROJECT_DIR$/Snoop.Core/Infrastructure/SnoopWindowUtils.cs" />
+        <option value="$PROJECT_DIR$/Snoop.Core/Windows/SnoopMainBaseWindow.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_Visual.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_DependencyObject.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_DependencyObject.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_Visual.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/Base.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_FrameworkElement.cs" />
+        <option value="$PROJECT_DIR$/Snoop.Core/Infrastructure/SnoopManager.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_InputManagerStatic.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_MouseStatic.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_WindowHelperStatic.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_WindowInfoStatic.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_VisualTreeHelper.cs" />
+        <option value="$PROJECT_DIR$/Snoop.Core/Controls/ProperTreeView.cs" />
+        <option value="$PROJECT_DIR$/Snoop.Core/Infrastructure/Helpers/VisualTreeHelper2.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_Visual3D.cs" />
+        <option value="$PROJECT_DIR$/Snoop.Core/Infrastructure/ZoomerUtilities.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_FrameworkElement.cs" />
+        <option value="$PROJECT_DIR$/Snoop.Core/Data/Tree/TreeService.cs" />
+        <option value="$PROJECT_DIR$/Snoop.Core/Controls/VisualTree3DView.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_UIElement.cs" />
+        <option value="$PROJECT_DIR$/Snoop.Core/Infrastructure/VisualCaptureUtil.cs" />
+        <option value="$PROJECT_DIR$/Snoop.Core/Windows/SnoopUI.xaml.cs" />
       </list>
     </option>
   </component>
@@ -246,7 +296,9 @@
       <updated>1599980829903</updated>
       <workItem from="1599980836816" duration="16950000" />
       <workItem from="1600072962250" duration="9777000" />
-      <workItem from="1600246263639" duration="2100000" />
+      <workItem from="1600246263639" duration="6451000" />
+      <workItem from="1600330490230" duration="1312000" />
+      <workItem from="1600339482279" duration="1038000" />
     </task>
     <servers />
   </component>
@@ -279,22 +331,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="423" height="464" key="DebuggerActiveHint/0.0.2560.1400@0.0.2560.1400" timestamp="1600001351556" />
-    <state width="2517" height="400" key="GridCell.Tab.0.bottom" timestamp="1600247894139">
+    <state width="2517" height="400" key="GridCell.Tab.0.bottom" timestamp="1600330535086">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600247894139" />
-    <state width="2517" height="400" key="GridCell.Tab.0.center" timestamp="1600247894138">
+    <state width="2517" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600330535086" />
+    <state width="2517" height="400" key="GridCell.Tab.0.center" timestamp="1600330535085">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="400" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600247894138" />
-    <state width="2517" height="400" key="GridCell.Tab.0.left" timestamp="1600247894138">
+    <state width="2517" height="400" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600330535085" />
+    <state width="2517" height="400" key="GridCell.Tab.0.left" timestamp="1600330535085">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="400" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600247894138" />
-    <state width="2517" height="400" key="GridCell.Tab.0.right" timestamp="1600247894138">
+    <state width="2517" height="400" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600330535085" />
+    <state width="2517" height="400" key="GridCell.Tab.0.right" timestamp="1600330535085">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="400" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600247894138" />
+    <state width="2517" height="400" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600330535085" />
     <state width="2517" height="476" key="GridCell.Tab.1.bottom" timestamp="1600062620358">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -359,10 +411,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="2517" height="476" key="GridCell.Tab.4.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600062620358" />
-    <state x="851" y="417" key="RiderGenerateDialog" timestamp="1600096142895">
+    <state x="851" y="417" key="RiderGenerateDialog" timestamp="1600330672056">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="851" y="417" key="RiderGenerateDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1600096142895" />
+    <state x="851" y="417" key="RiderGenerateDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1600330672056" />
     <state x="-7" y="3" width="1554" height="1160" key="VCS.FileHistoryDialog" timestamp="1600101254285">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -375,10 +427,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="835" y="437" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.2560.1400@0.0.2560.1400" timestamp="1599983795980" />
-    <state x="945" y="433" width="671" height="592" key="find.popup" timestamp="1600102319671">
+    <state x="945" y="433" width="671" height="624" key="find.popup" timestamp="1600340220724">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="945" y="433" width="671" height="592" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1600102319671" />
+    <state x="945" y="433" width="671" height="624" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1600340220724" />
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1600003362553">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -405,10 +457,10 @@
           <line>40</line>
           <properties documentPath="C:\Github\snoopwpf\Snoop\WindowInfo.cs" initialLine="40">
             <startOffsets>
-              <option value="1139" />
+              <option value="1149" />
             </startOffsets>
             <endOffsets>
-              <option value="1164" />
+              <option value="1174" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="11" />
@@ -441,7 +493,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.tt</url>
-          <line>196</line>
+          <line>192</line>
           <properties documentPath="C:\Github\snoopwpf\Snoop.DataAccess.Generic\Interfaces.tt" initialLine="196" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
             <startOffsets>

@@ -6,9 +6,13 @@
     using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Sessions;
 
-    public class WindowHelper : DataAccessBase, IWindowHelper {
-        public IWindowInstance GetVisibleWindow(long hwnd) {
-            var ptr = new IntPtr(hwnd);
+    public class WindowHelperStatic : DataAccessBase, IDAS_WindowHelperStatic {
+        public ISO_Window GetVisibleWindow(long hwnd) {
+            var result = GetVisibleWindow(new IntPtr(hwnd));
+            return result == null ? null : new SO_Window(result);
+        }
+
+        public static Window GetVisibleWindow(IntPtr ptr) {
             if (ptr == IntPtr.Zero
             ) {
                 return null;
@@ -20,7 +24,7 @@
                 && (hwndSource.Dispatcher is null || hwndSource.CheckAccess())
                 && hwndSource.RootVisual is Window window
                 && window.Visibility == Visibility.Visible) {
-                return new WindowInstance(window);
+                return window;
             }
 
             return null;

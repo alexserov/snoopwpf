@@ -1,7 +1,7 @@
 ﻿namespace Snoop.DataAccess.Interfaces
 {
 
-    public interface IWindowInstance : ISnoopObject
+    public interface ISO_Window : ISO_FrameworkElement
     {
         string Title { get; set; }
     }

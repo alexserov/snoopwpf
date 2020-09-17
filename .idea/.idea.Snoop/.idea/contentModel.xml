@@ -396,10 +396,22 @@
             <e p="IDataAccessStatic.cs" t="Include" />
             <e p="IExecutor.cs" t="Include" />
           </e>
-          <e p="ISnoopObject.cs" t="Include" />
-          <e p="IWindowHelper.cs" t="Include" />
-          <e p="IWindowInfo.cs" t="Include" />
-          <e p="IWindowInstance.cs" t="Include" />
+          <e p="Objects" t="Include">
+            <e p="ISnoopObject.cs" t="Include" />
+            <e p="ISO_DependencyObject.cs" t="Include" />
+            <e p="ISO_FrameworkElement.cs" t="Include" />
+            <e p="ISO_UIElement.cs" t="Include" />
+            <e p="ISO_Visual.cs" t="Include" />
+            <e p="ISO_Visual3D.cs" t="Include" />
+            <e p="ISO_Window.cs" t="Include" />
+          </e>
+          <e p="Static" t="Include">
+            <e p="IDAS_InputManagerStatic.cs" t="Include" />
+            <e p="IDAS_MouseStatic.cs" t="Include" />
+            <e p="IDAS_VisualTreeHelper.cs" t="Include" />
+            <e p="IDAS_WindowHelperStatic.cs" t="Include" />
+            <e p="IDAS_WindowInfoStatic.cs" t="Include" />
+          </e>
         </e>
         <e p="Interfaces.cs" t="Include" />
         <e p="Interfaces.tt" t="Include" />
@@ -432,7 +444,16 @@
         <e p="Snoop.DataAccess.WinUI3.csproj" t="IncludeRecursive" />
       </e>
       <e p="Snoop.DataAccess.Wpf" t="IncludeRecursive">
+        <e p="ElementWrappers" t="Include">
+          <e p="Base.cs" t="Include" />
+          <e p="SO_DependencyObject.cs" t="Include" />
+          <e p="SO_FrameworkElement.cs" t="Include" />
+          <e p="SO_Visual.cs" t="Include" />
+          <e p="SO_Window.cs" t="Include" />
+        </e>
+        <e p="InputManagerStatic.cs" t="Include" />
         <e p="Main.cs" t="Include" />
+        <e p="MouseStatic.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
@@ -442,9 +463,8 @@
         </e>
         <e p="Snoop.DataAccess.Wpf.csproj" t="IncludeRecursive" />
         <e p="Tree.cs" t="Include" />
-        <e p="WindowHelper.cs" t="Include" />
-        <e p="WindowInfo.cs" t="Include" />
-        <e p="WindowInstance.cs" t="Include" />
+        <e p="WindowHelperStatic.cs" t="Include" />
+        <e p="WindowInfoStatic.cs" t="Include" />
       </e>
       <e p="Snoop.GenericInjector" t="IncludeRecursive">
         <e p="dllmain.cpp" t="Include" />

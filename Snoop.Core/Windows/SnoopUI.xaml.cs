@@ -92,7 +92,7 @@ namespace Snoop.Windows
 
             this.CommandBindings.Add(new CommandBinding(CopyPropertyChangesCommand, this.CopyPropertyChangesHandler));
 
-            InputManager.Current.PreProcessInput += this.HandlePreProcessInput;
+            extension.Get<IDAS_InputManagerStatic>().PreProcessInput += this.HandlePreProcessInput;
             this.Tree.SelectedItemChanged += this.HandleTreeSelectedItemChanged;
 
             // we can't catch the mouse wheel at the ZoomerControl level,
@@ -394,7 +394,7 @@ namespace Snoop.Windows
 
             this.CurrentSelection = null;
 
-            InputManager.Current.PreProcessInput -= this.HandlePreProcessInput;
+            this.Extension.Get<IDAS_InputManagerStatic>().PreProcessInput -= this.HandlePreProcessInput;
             EventsListener.Stop();
 
             // persist the window placement details to the user settings.
@@ -464,7 +464,7 @@ namespace Snoop.Windows
 
         private void HandleInspect(object sender, ExecutedRoutedEventArgs e)
         {
-            var visual = e.Parameter as Visual;
+            var visual = e.Parameter as ISO_Visual;
             if (visual != null)
             {
                 var node = this.FindItem(visual);
@@ -523,7 +523,7 @@ namespace Snoop.Windows
 
         #region Private Event Handlers
 
-        private void HandlePreProcessInput(object sender, PreProcessInputEventArgs e)
+        void HandlePreProcessInput()
         {
             this.OnPropertyChanged(nameof(this.CurrentFocus));
 
@@ -544,19 +544,15 @@ namespace Snoop.Windows
                 return;
             }
 
-            var itemToFind = Mouse.PrimaryDevice.GetDirectlyOver() as Visual;
+            var itemToFind = Extension.Get<IDAS_MouseStatic>().DirectlyOver;
 
-            if (itemToFind is null
-                || itemToFind.IsDescendantOf(this)
-                || itemToFind.IsPartOfSnoopVisualTree())
-            {
+            if (itemToFind is null)
                 return;
-            }
 
             // If Shift is not pressed search up the tree of templated parents.
             if (this.IsHandlingCTRL
                 && isShiftPressed == false
-                && itemToFind is FrameworkElement frameworkElement)
+                && itemToFind is ISO_FrameworkElement frameworkElement)
             {
                 itemToFind = GetItemToFindAndSkipTemplateParts(frameworkElement);
             }
@@ -568,19 +564,19 @@ namespace Snoop.Windows
             }
         }
 
-        private static Visual GetItemToFindAndSkipTemplateParts(FrameworkElement frameworkElement)
+        private static ISO_Visual GetItemToFindAndSkipTemplateParts(ISO_FrameworkElement frameworkElement)
         {
-            Visual itemToFind = frameworkElement;
+            ISO_Visual itemToFind = frameworkElement;
 
             while (frameworkElement?.TemplatedParent is not null)
             {
-                frameworkElement = frameworkElement.TemplatedParent as FrameworkElement;
+                frameworkElement = frameworkElement.TemplatedParent as ISO_FrameworkElement;
                 itemToFind = frameworkElement;
             }
 
             if (!(itemToFind is null))
             {
-                var parent = VisualTreeHelper.GetParent(itemToFind) as FrameworkElement;
+                var parent = VisualTreeHelper2.GetParent(itemToFind) as ISO_FrameworkElement;
 
                 // If the current item is of a certain type and is part of a template try to look further up the tree
                 if (parent?.TemplatedParent is not null
@@ -608,7 +604,7 @@ namespace Snoop.Windows
         /// If the item is not found and is not part of the Snoop UI,
         /// the tree will be adjusted to include the root visual the item is in.
         /// </summary>
-        private TreeItem FindItem(object target)
+        private TreeItem FindItem(ISnoopObject target)
         {
             if (this.Root == null)
             {
@@ -626,9 +622,9 @@ namespace Snoop.Windows
 
             // Not every visual element is in the logical or the automation tree, so try the visual tree
             if ((this.TreeService.TreeType == TreeType.Logical || this.TreeService.TreeType == TreeType.Automation)
-                && target is DependencyObject dependencyObject)
+                && target is ISO_DependencyObject dependencyObject)
             {
-                var parent = VisualTreeHelper.GetParent(dependencyObject);
+                var parent = VisualTreeHelper2.GetParent(dependencyObject);
 
                 while (parent is not null)
                 {
@@ -639,7 +635,7 @@ namespace Snoop.Windows
                         return node;
                     }
 
-                    parent = VisualTreeHelper.GetParent(parent);
+                    parent = VisualTreeHelper2.GetParent(parent);
                 }
             }
 

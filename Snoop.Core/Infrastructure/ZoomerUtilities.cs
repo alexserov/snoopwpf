@@ -9,14 +9,15 @@ namespace Snoop.Infrastructure
     using System.Windows.Controls;
     using System.Windows.Media;
     using System.Windows.Shapes;
+    using Snoop.Infrastructure.Helpers;
 
     public static class ZoomerUtilities
     {
         public static UIElement CreateIfPossible(object item)
         {
-            if (item is Window && VisualTreeHelper.GetChildrenCount((Visual)item) == 1)
+            if (item is Window && VisualTreeHelper2.GetChildrenCount((Visual)item) == 1)
             {
-                item = VisualTreeHelper.GetChild((Visual)item, 0);
+                item = VisualTreeHelper2.GetChild((Visual)item, 0);
             }
 
             if (item is FrameworkElement)

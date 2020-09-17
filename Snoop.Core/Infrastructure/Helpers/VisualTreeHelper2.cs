@@ -8,6 +8,7 @@ namespace Snoop.Infrastructure.Helpers
     using System;
     using System.Windows;
     using System.Windows.Media;
+    using Snoop.DataAccess.Interfaces;
 
     public static class VisualTreeHelper2
     {
@@ -94,5 +95,17 @@ namespace Snoop.Infrastructure.Helpers
 
             return true;
         }
+
+        public static ISO_DependencyObject GetParent(ISO_DependencyObject itemToFind) {
+            throw new NotImplementedException(); }
+        
+
+        public static int GetChildrenCount(ISO_DependencyObject dependencyObject) { throw new NotImplementedException(); } 
+        public static ISO_DependencyObject GetChild(ISO_DependencyObject dependencyObject, int i) {  throw new NotImplementedException(); }
+        public static Rect GetContentBounds(ISO_Visual visual) { throw new NotImplementedException(); }
+        public static Rect GetDescendantBounds(ISO_Visual visual) { throw new NotImplementedException(); }
+        public static Transform GetTransform(ISO_Visual visual) { throw new NotImplementedException(); }
+        public static Point GetOffset(ISO_Visual visual) { throw new NotImplementedException(); }
+        public static Drawing GetDrawing(ISO_Visual visual) { throw new NotImplementedException(); }
     }
 }
