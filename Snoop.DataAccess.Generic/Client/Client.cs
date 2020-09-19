@@ -19,7 +19,7 @@
 
         public Client(string name)
         {
-            port = Session.IpPortFromName(name);
+            port = Session.IpPortFromName(name, false);
         }
 
         public string Send(string value, string type, bool wait)
@@ -58,7 +58,11 @@
             this.client = null;
         }
 
-        public Action<string> Logger { get; set; }
+        public Action<string> Logger {
+            get { return this.logger ?? (x=>Debug.WriteLine(x)); }
+            set { this.logger = value; }
+        }
+
         public int OwnerPId { get; set; }
 
         public TInterface Request<TInterface>() where TInterface : IDataAccessStatic
@@ -75,6 +79,8 @@
         }
 
         private Dictionary<string, string> knownTypes = null;
+        Action<string> logger;
+
         private void MessageReceived(object sender, MessageReceivedFromServerEventArgs e)
         {
             var message = Message.Restore(e.Data);

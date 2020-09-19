@@ -7,6 +7,7 @@
 
         public DataAccessBase() {
             Id = Guid.NewGuid().ToString();
+            Server.Current.RegisterInstance(this);
         }
     }
 }

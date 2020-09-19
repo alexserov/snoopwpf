@@ -19,22 +19,23 @@
     
     public class SnoopManager
     {
-        static Func<Extension, SnoopMainBaseWindow> GetInstanceCreator(SnoopStartTarget startTarget)
+        static Func<ClientExtension, SnoopMainBaseWindow> GetInstanceCreator(SnoopStartTarget startTarget)
         {
             switch (startTarget)
             {
                 case SnoopStartTarget.SnoopUI:
-                    return (Extension x) => new SnoopUI(x);
+                    return x => new SnoopUI(x);
 
                 case SnoopStartTarget.Zoomer:
-                    return (Extension x) => new Zoomer(x);
+                    return x => new Zoomer(x);
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(startTarget), startTarget, null);
             }
         }
+        
 
-        public static SnoopMainBaseWindow CreateSnoopWindow(Extension extension, TransientSettingsData settingsData, SnoopStartTarget target) {
+        public static SnoopMainBaseWindow CreateSnoopWindow(ClientExtension extension, TransientSettingsData settingsData, SnoopStartTarget target) {
             var snoopWindow = GetInstanceCreator(target)(extension);
 
             var targetWindowOnSameDispatcher = WindowHelper.GetVisibleWindow(extension, settingsData.TargetWindowHandle);
@@ -61,7 +62,7 @@
         }
 
         static string TryGetWindowOrMainWindowTitle(ISO_Window targetWindow) {
-            return targetWindow != null ? targetWindow.Title : string.Empty;
+            return targetWindow != null ? targetWindow.GetTitle() : string.Empty;
         }
     }
 }

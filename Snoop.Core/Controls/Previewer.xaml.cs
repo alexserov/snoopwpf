@@ -9,6 +9,7 @@ namespace Snoop.Controls
     using System.Windows.Input;
     using System.Windows.Media;
     using Snoop.DataAccess.Interfaces;
+    using Snoop.DataAccess.Sessions;
     using Snoop.Infrastructure.Extensions;
     using Snoop.Windows;
 
@@ -76,6 +77,8 @@ namespace Snoop.Controls
             set { this.SetValue(IsActiveProperty, value); }
         }
 
+        public ClientExtension Extension { get; set; }
+
         /// <summary>
         /// IsActive Dependency Property
         /// </summary>
@@ -108,40 +111,35 @@ namespace Snoop.Controls
 
         private void HandleTargetOrIsActiveChanged()
         {
-            if (this.IsActive && this.Target is Visual)
+            if (this.IsActive && this.Target is ISO_Visual)
             {
-                var visual = (Visual)this.Target;
+                var visual = (ISO_Visual)this.Target;
                 this.Zoomer.Target = visual;
-            }
-            else
-            {
-                var pooSniffer = (Brush)this.FindResource("previewerSnoopDogDrawingBrush");
-                this.Zoomer.Target = pooSniffer;
             }
         }
 
         private void HandleCanMagnify(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = this.Target as Visual != null;
+            e.CanExecute = this.Target as ISO_Visual != null;
             e.Handled = true;
         }
 
         private void HandleMagnify(object sender, ExecutedRoutedEventArgs e)
         {
-            var zoomer = new Zoomer();
+            var zoomer = new Zoomer(Extension);
             zoomer.Inspect(this.Target);
             e.Handled = true;
         }
 
         private void HandleCanScreenshot(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = this.Target as Visual != null;
+            e.CanExecute = this.Target as ISO_Visual != null;
             e.Handled = true;
         }
 
         private void HandleScreenshot(object sender, ExecutedRoutedEventArgs e)
         {
-            var visual = this.Target as Visual;
+            var visual = this.Target as ISO_Visual;
 
             var dialog = new ScreenshotDialog
             {

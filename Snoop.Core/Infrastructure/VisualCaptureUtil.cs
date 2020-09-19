@@ -21,7 +21,7 @@ namespace Snoop.Infrastructure
     {
         private const double BaseDpi = 96;
 
-        public static void SaveVisual(Visual visual, int dpi, string filename)
+        public static void SaveVisual(ISO_Visual visual, int dpi, string filename)
         {
             // sometimes RenderTargetBitmap doesn't render the Visual or doesn't render the Visual properly
             // below i am using the trick that jamie rodriguez posted on his blog
@@ -41,24 +41,22 @@ namespace Snoop.Infrastructure
         }
 
         [CanBeNull]
-        public static VisualBrush CreateVisualBrushSafe(Visual visual)
+        public static Brush CreateVisualBrushSafe(ISO_Visual visual)
         {
             return IsSafeToVisualize(visual)
-                ? new VisualBrush(visual)
+                ? ZoomerUtilities.FromISOVisual(visual)
                 : null;
         }
 
-        public static bool IsSafeToVisualize(Visual visual)
+        public static bool IsSafeToVisualize(ISO_Visual visual)
         {
             if (visual is null)
             {
                 return false;
             }
 
-            if (visual is Window)
-            {
-                var source = PresentationSource.FromVisual(visual) as HwndSource;
-                return source?.CompositionTarget != null;
+            if (visual is ISO_Window) {
+                return visual.GetSurface() != null;
             }
 
             return true;
@@ -120,7 +118,7 @@ namespace Snoop.Infrastructure
         private static Size GetSize(ISO_Visual visual)
         {
             if (visual is ISO_UIElement uiElement) {
-                return new Size(uiElement.RenderSize.Width, uiElement.RenderSize.Height);
+                return new Size(uiElement.GetRenderSize().Width, uiElement.GetRenderSize().Height);
             }
 
             var descendantBounds = VisualTreeHelper2.GetDescendantBounds(visual);
@@ -173,14 +171,8 @@ namespace Snoop.Infrastructure
 
                     var rectangle = new Rect(x, y, width, height);
 
-                    var contentBrush = new VisualBrush(visual)
-                    {
-                        Stretch = Stretch.None,
-                        AlignmentX = AlignmentX.Left,
-                        AlignmentY = AlignmentY.Top,
-                        Viewbox = rectangle,
-                        ViewboxUnits = BrushMappingMode.Absolute
-                    };
+                    
+                    var contentBrush = ZoomerUtilities.FromISOVisual(visual);
 
                     drawingContext.DrawRectangle(contentBrush, null, rectangle);
                 }

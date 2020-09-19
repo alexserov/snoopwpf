@@ -42,7 +42,7 @@
             return true;
         }
 
-        public SnoopMainBaseWindow(Extension extension) { this.Extension = extension; }
+        public SnoopMainBaseWindow(ClientExtension extension) { this.Extension = extension; }
 
         public void Inspect(ISnoopObject rootToInspect)
         {
@@ -60,45 +60,8 @@
 
         protected abstract void Load(ISnoopObject rootToInspect);
 
-        protected virtual ISnoopObject FindRoot()
-        {
-            object foundRoot = null;
-
-            if (SnoopModes.MultipleDispatcherMode)
-            {
-                foreach (PresentationSource presentationSource in PresentationSource.CurrentSources)
-                {
-                    if (presentationSource.RootVisual is UIElement element
-                        && element.Dispatcher.CheckAccess())
-                    {
-                        foundRoot = presentationSource.RootVisual;
-                        break;
-                    }
-                }
-            }
-            else if (Application.Current != null)
-            {
-                foundRoot = Application.Current;
-            }
-            else
-            {
-                // if we don't have a current application,
-                // then we must be in an interop scenario (win32 -> wpf or windows forms -> wpf).
-
-                // in this case, let's iterate over PresentationSource.CurrentSources,
-                // and use the first non-null, visible RootVisual we find as root to inspect.
-                foreach (PresentationSource presentationSource in PresentationSource.CurrentSources)
-                {
-                    if (presentationSource.RootVisual is UIElement element
-                        && element.Visibility == Visibility.Visible)
-                    {
-                        foundRoot = presentationSource.RootVisual;
-                        break;
-                    }
-                }
-            }
-
-            return foundRoot;
+        protected virtual ISnoopObject FindRoot() {
+            return Extension.Get<IDAS_RootProvider>().Root;
         }
     }
 }

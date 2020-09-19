@@ -10,7 +10,7 @@
     public static class WindowHelper
     {
         public static ISO_Window GetVisibleWindow(Extension extension, long hwnd) {
-            return extension.Get<IDAS_WindowHelperStatic>().GetVisibleWindow(hwnd);
+            return extension.Get<IDAS_WindowHelper>().GetVisibleWindow(hwnd);
         }
     }
 }

@@ -6,5 +6,5 @@
 
     public string MethodName { get; set; }
 
-    public string SettingsFile { get; set; }
+    public string LauncherParam { get; set; }
 }

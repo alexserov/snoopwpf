@@ -227,7 +227,7 @@ namespace Snoop.InjectorLauncher
                 injectorData.FullAssemblyPath,
                 injectorData.ClassName,
                 injectorData.MethodName,
-                injectorData.SettingsFile
+                injectorData.LauncherParam
             };
 
             var stringForRemoteProcess = string.Join("<|>", parameters);

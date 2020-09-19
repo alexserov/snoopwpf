@@ -20,7 +20,7 @@
         public string MethodName { get; set; }
 
         [Option('s', "settingsFile")]
-        public string SettingsFile { get; set; }
+        public string LauncherParam { get; set; }
 
         [Option('v', "verbose", HelpText = "Set output to verbose messages.")]
         public bool Verbose { get; set; }

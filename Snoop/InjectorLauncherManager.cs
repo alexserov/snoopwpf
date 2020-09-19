@@ -29,18 +29,9 @@ namespace Snoop
 
             return bitness;
         }
-
-        public static void Launch(ProcessInfo processInfo, IntPtr targetHwnd, MethodInfo methodInfo, TransientSettingsData transientSettingsData)
+        
+        public static void Launch(ProcessInfo processInfo, IntPtr targetHwnd, string assembly, string className, string methodName, string launcherParam)
         {
-            Launch(processInfo, targetHwnd, methodInfo.DeclaringType.Assembly.GetName().Name, methodInfo.DeclaringType.FullName, methodInfo.Name, transientSettingsData.WriteToFile());
-        }
-
-        public static void Launch(ProcessInfo processInfo, IntPtr targetHwnd, string assembly, string className, string methodName, string transientSettingsFile)
-        {
-            if (File.Exists(transientSettingsFile) == false)
-            {
-                throw new FileNotFoundException("The generated temporary settings file could not be found.", transientSettingsFile);
-            }
 
             try
             {
@@ -64,7 +55,7 @@ Snoop requires this component, which is part of the Snoop project, to do it's jo
                     Assembly = assembly,
                     ClassName = className,
                     MethodName = methodName,
-                    SettingsFile = transientSettingsFile,
+                    LauncherParam = launcherParam,
                     Debug = Program.Debug
                 };
 
@@ -84,7 +75,7 @@ Snoop requires this component, which is part of the Snoop project, to do it's jo
             }
             finally
             {
-                File.Delete(transientSettingsFile);
+                File.Delete(launcherParam);
             }
         }
     }

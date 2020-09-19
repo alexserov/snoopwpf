@@ -12,6 +12,7 @@ namespace Snoop.Windows
     using System.Windows.Input;
     using System.Windows.Media;
     using Microsoft.Win32;
+    using Snoop.DataAccess.Interfaces;
     using Snoop.Infrastructure;
 
     /// <summary>
@@ -34,7 +35,7 @@ namespace Snoop.Windows
 
         private void HandleCanSave(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = this.DataContext is Visual;
+            e.CanExecute = this.DataContext is ISO_Visual;
         }
 
         private void HandleSave(object sender, ExecutedRoutedEventArgs e)
@@ -70,7 +71,7 @@ namespace Snoop.Windows
             {
                 lastSaveDirectory = Path.GetDirectoryName(fileDialog.FileName);
 
-                VisualCaptureUtil.SaveVisual(this.DataContext as Visual,
+                VisualCaptureUtil.SaveVisual(this.DataContext as ISO_Visual,
                     int.Parse(dpiText),
                     filePath);
 

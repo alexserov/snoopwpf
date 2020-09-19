@@ -22,6 +22,7 @@ namespace Snoop.Infrastructure
     using System.Windows.Threading;
     using JetBrains.Annotations;
     using Snoop.Converters;
+    using Snoop.DataAccess.Interfaces;
     using Snoop.Infrastructure.Helpers;
 
     public class PropertyInformation : DependencyObject, IComparable, INotifyPropertyChanged
@@ -251,7 +252,7 @@ namespace Snoop.Infrastructure
 
                 string resourceKey = null;
 
-                if (this.Target is DependencyObject dependencyObject)
+                if (this.Target is ISO_DependencyObject dependencyObject)
                 {
                     // Cache the resource key for this item if not cached already. This could be done for more types, but would need to optimize perf.
                     if (this.TypeMightHaveResourceKey(this.property.PropertyType))

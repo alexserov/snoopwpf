@@ -19,12 +19,12 @@ namespace Snoop.Controls
     {
         private static readonly Pen outlinePen = new Pen(new SolidColorBrush(Color.FromArgb(128, 255, 0, 0)), 2);
 
-        private readonly bool drawOutlines = false;
+        // private readonly bool drawOutlines = false;
         private readonly bool includeEmptyVisuals = false;
         private readonly TrackballBehavior trackballBehavior;
         private readonly ScaleTransform3D zScaleTransform;
 
-        public VisualTree3DView(Visual visual, int dpi)
+        public VisualTree3DView(ISO_Visual visual, int dpi)
         {
             var directionalLight1 = new DirectionalLight(Colors.White, new Vector3D(0, 0, 1));
             var directionalLight2 = new DirectionalLight(Colors.White, new Vector3D(0, 0, -1));
@@ -166,45 +166,46 @@ namespace Snoop.Controls
 
         private Brush MakeBrushFromVisual(ISO_Visual visual, Rect bounds, int dpi)
         {
-            var viewport3D = visual as Viewport3D;
-
-            if (viewport3D == null)
-            {
-                Drawing drawing = VisualTreeHelper2.GetDrawing(visual);
-
-                if (this.drawOutlines)
-                {
-                    bounds.Inflate(outlinePen.Thickness / 2, outlinePen.Thickness / 2);
-                }
-
-                var offsetMatrix = new Matrix(1, 0, 0, 1, -bounds.Left, -bounds.Top);
-                var offsetMatrixTransform = new MatrixTransform(offsetMatrix);
-                offsetMatrixTransform.FreezeIfPossible();
-
-                var drawingVisual = new DrawingVisual();
-
-                using (var drawingContext = drawingVisual.RenderOpen())
-                {
-                    drawingContext.PushTransform(offsetMatrixTransform);
-
-                    if (this.drawOutlines)
-                    {
-                        drawingContext.DrawRectangle(null, outlinePen, bounds);
-                    }
-
-                    drawingContext.DrawDrawing(drawing);
-                    drawingContext.Pop();
-                }
-
-                visual = drawingVisual;
-            }
-
-            var renderTargetBitmap = VisualCaptureUtil.RenderVisual(visual, bounds.Size, dpi, viewport3D: viewport3D);
-            renderTargetBitmap.FreezeIfPossible();
-            var imageBrush = new ImageBrush(renderTargetBitmap);
-            imageBrush.FreezeIfPossible();
-
-            return imageBrush;
+            throw new NotImplementedException();
+            // var viewport3D = visual as Viewport3D;
+            //
+            // if (viewport3D == null)
+            // {
+            //     Drawing drawing = VisualTreeHelper2.GetDrawing(visual);
+            //
+            //     if (this.drawOutlines)
+            //     {
+            //         bounds.Inflate(outlinePen.Thickness / 2, outlinePen.Thickness / 2);
+            //     }
+            //
+            //     var offsetMatrix = new Matrix(1, 0, 0, 1, -bounds.Left, -bounds.Top);
+            //     var offsetMatrixTransform = new MatrixTransform(offsetMatrix);
+            //     offsetMatrixTransform.FreezeIfPossible();
+            //
+            //     var drawingVisual = new DrawingVisual();
+            //
+            //     using (var drawingContext = drawingVisual.RenderOpen())
+            //     {
+            //         drawingContext.PushTransform(offsetMatrixTransform);
+            //
+            //         if (this.drawOutlines)
+            //         {
+            //             drawingContext.DrawRectangle(null, outlinePen, bounds);
+            //         }
+            //
+            //         drawingContext.DrawDrawing(drawing);
+            //         drawingContext.Pop();
+            //     }
+            //
+            //     visual = drawingVisual;
+            // }
+            //
+            // var renderTargetBitmap = VisualCaptureUtil.RenderVisual(visual, bounds.Size, dpi, viewport3D: viewport3D);
+            // renderTargetBitmap.FreezeIfPossible();
+            // var imageBrush = new ImageBrush(renderTargetBitmap);
+            // imageBrush.FreezeIfPossible();
+            //
+            // return imageBrush;
         }
     }
 }

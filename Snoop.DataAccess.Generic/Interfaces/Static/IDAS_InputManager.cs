@@ -2,7 +2,7 @@
     using System;
     using Snoop.DataAccess.Internal.Interfaces;
 
-    public interface IDAS_InputManagerStatic : IDataAccessStatic{
+    public interface IDAS_InputManager : IDataAccessStatic{
         event Action PreProcessInput;
     }
 }

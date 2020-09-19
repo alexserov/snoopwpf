@@ -65,21 +65,13 @@ namespace Snoop.InjectorLauncher
                         }
                     }
                 }
-
-                var settingsFile = string.IsNullOrEmpty(commandLineOptions.SettingsFile) == false
-                    ? commandLineOptions.SettingsFile
-                    : new TransientSettingsData
-                    {
-                        StartTarget = SnoopStartTarget.SnoopUI,
-                        TargetWindowHandle = processWrapper.WindowHandle.ToInt64()
-                    }.WriteToFile();
-
+                
                 var injectorData = new InjectorData
                 {
                     FullAssemblyPath = GetAssemblyPath(processWrapper, commandLineOptions.Assembly),
                     ClassName = commandLineOptions.ClassName,
                     MethodName = commandLineOptions.MethodName,
-                    SettingsFile = settingsFile
+                    LauncherParam = commandLineOptions.LauncherParam
                 };
 
                 if (File.Exists(injectorData.FullAssemblyPath) == false)

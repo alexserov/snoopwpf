@@ -49,7 +49,8 @@
                 var vi = (CallInfoGeneric)value;
                 var obj = new JObject();
                 obj.AddFirst(new JProperty("TypeName", vi.TypeName));
-                obj.Add("Info", JToken.FromObject(vi.Info));
+                serializer.NullValueHandling = NullValueHandling.Ignore;
+                obj.Add("Info", JToken.FromObject(vi.Info, serializer));
                 obj.WriteTo(writer);
             }
 
@@ -81,12 +82,17 @@
             // JsonConvert.SerializeObject()
             var ci = new CallInfoGeneric() { TypeName = typeof(TPackedArgs).FullName, Info = new CallInfo<TPackedArgs>(caller, method, args) };
             string data = JsonConvert.SerializeObject(ci);
+            // ReSharper disable once SuspiciousTypeConversion.Global
             var result = ((IDataAccessClient)caller).Session.Send(data, "process", wait);
-            return Unwrap<TResult>(result);
+            return Unwrap<TResult>(caller, result);
         }
 
-        public static TResult Unwrap<TResult>(string source)
-        {
+        public static TResult Unwrap<TResult>(IDataAccess caller, string source) {
+            if (source == null)
+                return default;
+            if (typeof(IDataAccess).IsAssignableFrom(typeof(TResult))) {
+                return (TResult)CreateClientExecutor(((IDataAccessClient)caller).Session, typeof(TResult), source);
+            }
             return JsonConvert.DeserializeObject<TResult>(source);
         }
 

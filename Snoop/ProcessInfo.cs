@@ -2,8 +2,10 @@
 {
     using System;
     using System.Diagnostics;
+    using System.IO.MemoryMappedFiles;
     using System.Windows.Input;
     using Snoop.Data;
+    using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Sessions;
     using Snoop.Infrastructure;
     using Snoop.Properties;
@@ -32,14 +34,13 @@
 
         public bool IsProcessElevated => this.isOwningProcessElevated ??= NativeMethods.IsProcessElevated(this.Process);
 
+       
         public AttachResult Snoop(IntPtr targetHwnd)
         {
             Mouse.OverrideCursor = Cursors.Wait;
 
-            try
-            {
-                InjectorLauncherManager.Launch(this, targetHwnd, typeof(SnoopManager).GetMethod(nameof(ServerLauncher.StartSnoop)), CreateTransientSettingsData(SnoopStartTarget.SnoopUI, targetHwnd));
-                SnoopManager.StartSnoop();
+            try {
+                Start(targetHwnd, SnoopStartTarget.SnoopUI);
             }
             catch (Exception e)
             {
@@ -53,13 +54,23 @@
             return new AttachResult();
         }
 
+        void Start(IntPtr targetHwnd, SnoopStartTarget target) {
+            var ext = Extension.Select<IDAS_WindowInfo>(func => func()?.GetIsValidProcess(targetHwnd)==true);
+            var hwndStr = targetHwnd.ToInt64().ToString();
+                
+            InjectorLauncherManager.Launch(this, targetHwnd, ext.Path, "Snoop.DataAccess.Program", "Start", hwndStr);
+            var clientExt = new ClientExtension(ext, hwndStr);
+            clientExt.Start();
+            SnoopManager.CreateSnoopWindow(clientExt, CreateTransientSettingsData(target, targetHwnd), SnoopStartTarget.SnoopUI);
+        }
+
         public AttachResult Magnify(IntPtr targetHwnd)
         {
             Mouse.OverrideCursor = Cursors.Wait;
 
             try
             {
-                InjectorLauncherManager.Launch(this, targetHwnd, typeof(SnoopManager).GetMethod(nameof(SnoopManager.StartSnoop)), CreateTransientSettingsData(SnoopStartTarget.Zoomer, targetHwnd));
+                Start(targetHwnd, SnoopStartTarget.Zoomer);
             }
             catch (Exception e)
             {

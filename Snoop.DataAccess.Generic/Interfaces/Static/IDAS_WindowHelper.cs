@@ -3,8 +3,8 @@
     using System;
     using Snoop.DataAccess.Internal.Interfaces;
 
-    public interface IDAS_WindowInfoStatic : IDataAccessStatic
+    public interface IDAS_WindowHelper : IDataAccessStatic
     {
-        bool GetIsValidProcess(IntPtr hwnd);
+        ISO_Window GetVisibleWindow(long hwnd);
     }
 }

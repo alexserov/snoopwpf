@@ -8,12 +8,12 @@
     using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Sessions;
 
-    public class WindowInfoStatic : IDAS_WindowInfoStatic
+    public class DAS_WindowInfo : IDAS_WindowInfo
     {
         // we have to match "HwndWrapper[{0};{1};{2}]" which is used at https://referencesource.microsoft.com/#WindowsBase/Shared/MS/Win32/HwndWrapper.cs,2a8e13c293bb3f8c
         private static readonly Regex windowClassNameRegex = new Regex(@"^HwndWrapper\[.*;.*;.*\]$", RegexOptions.Compiled);
 
-        public WindowInfoStatic()
+        public DAS_WindowInfo()
         {
             this.Id = Guid.NewGuid().ToString();
         }

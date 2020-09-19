@@ -4,11 +4,16 @@
     using System.Reflection;
 
     public class ServerLauncher {
-        public static int StartSnoop(string settingsFile) {
+        public static int StartSnoop(string param, Action<Server> init) {
+            if (Server.Current != null)
+                return 1;
             AttachAssemblyResolveHandler(AppDomain.CurrentDomain);
-            new Server(Process.GetCurrentProcess().Id.ToString()).Start();
-            return 1;
+            var result = new Server(param, false);
+            result.Start();
+            init(result);
+            return 0;
         }
+
         static void AttachAssemblyResolveHandler(AppDomain domain)
         {
             domain.AssemblyResolve += (sender, args) =>

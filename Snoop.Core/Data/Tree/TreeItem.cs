@@ -130,7 +130,7 @@ namespace Snoop.Data.Tree
             }
         }
 
-        public virtual Visual MainVisual => null;
+        public virtual ISO_Visual MainVisual => null;
 
         public virtual Brush TreeBackgroundBrush => new SolidColorBrush(Color.FromArgb(255, 240, 240, 240));
 

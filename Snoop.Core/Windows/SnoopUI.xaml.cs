@@ -54,13 +54,14 @@ namespace Snoop.Windows
 
         #region Public Constructor
 
-        public SnoopUI(Extension extension) : base(extension)
+        public SnoopUI(ClientExtension extension) : base(extension)
         {
-            this.TreeService = TreeService.From(this.CurrentTreeType);
+            this.TreeService = new TreeService();
 
             this.filterCall = new DelayedCall(this.ProcessFilter, DispatcherPriority.Background);
 
             this.InitializeComponent();
+            this.PreviewArea.Extension = extension;
 
             // wrap the following PresentationTraceSources.Refresh() call in a try/catch
             // sometimes a NullReferenceException occurs
@@ -92,7 +93,7 @@ namespace Snoop.Windows
 
             this.CommandBindings.Add(new CommandBinding(CopyPropertyChangesCommand, this.CopyPropertyChangesHandler));
 
-            extension.Get<IDAS_InputManagerStatic>().PreProcessInput += this.HandlePreProcessInput;
+            extension.Get<IDAS_InputManager>().PreProcessInput += this.HandlePreProcessInput;
             this.Tree.SelectedItemChanged += this.HandleTreeSelectedItemChanged;
 
             // we can't catch the mouse wheel at the ZoomerControl level,
@@ -319,7 +320,7 @@ namespace Snoop.Windows
         {
             var control = (SnoopUI)d;
 
-            control.TreeService = TreeService.From((TreeType)e.NewValue);
+            control.TreeService = new TreeService();
             control.Refresh();
         }
 
@@ -394,7 +395,7 @@ namespace Snoop.Windows
 
             this.CurrentSelection = null;
 
-            this.Extension.Get<IDAS_InputManagerStatic>().PreProcessInput -= this.HandlePreProcessInput;
+            this.Extension.Get<IDAS_InputManager>().PreProcessInput -= this.HandlePreProcessInput;
             EventsListener.Stop();
 
             // persist the window placement details to the user settings.
@@ -483,14 +484,15 @@ namespace Snoop.Windows
         {
             // We know we've stolen focus here. Let's use previously focused element.
             this.returnPreviousFocus = true;
-            this.SelectItem(this.CurrentFocus as DependencyObject);
+            // ReSharper disable once SuspiciousTypeConversion.Global
+            this.SelectItem(this.CurrentFocus as ISO_DependencyObject);
             this.returnPreviousFocus = false;
             this.OnPropertyChanged(nameof(this.CurrentFocus));
         }
 
         private void HandleSelectFocusScope(object sender, ExecutedRoutedEventArgs e)
         {
-            this.SelectItem(e.Parameter as DependencyObject);
+            this.SelectItem(e.Parameter as ISO_DependencyObject);
         }
 
         private void ClearSearchFilterHandler(object sender, ExecutedRoutedEventArgs e)
@@ -508,7 +510,7 @@ namespace Snoop.Windows
             EditedPropertiesHelper.DumpObjectsWithEditedProperties();
         }
 
-        private void SelectItem(DependencyObject item)
+        private void SelectItem(ISO_DependencyObject item)
         {
             if (item != null)
             {
@@ -544,7 +546,7 @@ namespace Snoop.Windows
                 return;
             }
 
-            var itemToFind = Extension.Get<IDAS_MouseStatic>().DirectlyOver;
+            var itemToFind = Extension.Get<IDAS_Mouse>().DirectlyOver;
 
             if (itemToFind is null)
                 return;
@@ -568,9 +570,9 @@ namespace Snoop.Windows
         {
             ISO_Visual itemToFind = frameworkElement;
 
-            while (frameworkElement?.TemplatedParent is not null)
+            while (frameworkElement?.GetTemplatedParent() is not null)
             {
-                frameworkElement = frameworkElement.TemplatedParent as ISO_FrameworkElement;
+                frameworkElement = frameworkElement.GetTemplatedParent() as ISO_FrameworkElement;
                 itemToFind = frameworkElement;
             }
 
@@ -579,7 +581,7 @@ namespace Snoop.Windows
                 var parent = VisualTreeHelper2.GetParent(itemToFind) as ISO_FrameworkElement;
 
                 // If the current item is of a certain type and is part of a template try to look further up the tree
-                if (parent?.TemplatedParent is not null
+                if (parent?.GetTemplatedParent() is not null
                     && (parent is ContentPresenter
                         || parent is AccessText))
                 {
@@ -619,47 +621,14 @@ namespace Snoop.Windows
                     return node;
                 }
             }
-
-            // Not every visual element is in the logical or the automation tree, so try the visual tree
-            if ((this.TreeService.TreeType == TreeType.Logical || this.TreeService.TreeType == TreeType.Automation)
-                && target is ISO_DependencyObject dependencyObject)
-            {
-                var parent = VisualTreeHelper2.GetParent(dependencyObject);
-
-                while (parent is not null)
-                {
-                    var node = this.Root.FindNode(parent);
-
-                    if (node is not null)
-                    {
-                        return node;
-                    }
-
-                    parent = VisualTreeHelper2.GetParent(parent);
-                }
-            }
-
             var rootVisual = this.Root.MainVisual;
 
-            if (target is Visual visual
+            if (target is ISO_Visual visual
                 && rootVisual is not null)
             {
-                // If target is a part of the SnoopUI, let's get out of here.
-                if (visual.IsDescendantOf(this))
-                {
-                    return null;
-                }
-
                 // If not in the root tree, make the root be the tree the visual is in.
-                if (visual.IsDescendantOf(rootVisual) == false)
-                {
-                    var presentationSource = PresentationSource.FromVisual(visual);
-                    if (presentationSource is null)
-                    {
-                        return null; // Something went wrong. At least we will not crash with null ref here.
-                    }
-
-                    this.Root = this.TreeService.Construct(presentationSource.RootVisual, null);
+                if (!visual.IsDescendantOf(rootVisual)) {
+                    this.Root = this.TreeService.Construct(Extension.Get<IDAS_RootProvider>().RootFrom(visual), null);
                 }
             }
 

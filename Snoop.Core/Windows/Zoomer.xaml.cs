@@ -26,7 +26,7 @@ namespace Snoop.Windows
         private readonly TransformGroup transform = new TransformGroup();
         private Point downPoint;
         private ISnoopObject target;
-        private Visual targetVisual;
+        private ISO_Visual targetVisual;
         private VisualTree3DView visualTree3DView;
 
         private const double ZoomFactor = 1.1;
@@ -57,7 +57,7 @@ namespace Snoop.Windows
             SwitchTo3DCommand.InputGestures.Add(new KeyGesture(Key.F3));
         }
 
-        public Zoomer(Extension x) : base(x)
+        public Zoomer(ClientExtension x) : base(x)
         {
             this.CommandBindings.Add(new CommandBinding(ResetCommand, this.HandleReset, this.CanReset));
             this.CommandBindings.Add(new CommandBinding(ZoomInCommand, this.HandleZoomIn));
@@ -89,7 +89,7 @@ namespace Snoop.Windows
             set
             {
                 this.target = value;
-                this.targetVisual = value as Visual;
+                this.targetVisual = value as ISO_Visual;
                 var element = this.CreateIfPossible(value);
                 this.Viewbox.Child = element;
             }
@@ -232,7 +232,7 @@ namespace Snoop.Windows
             }
         }
 
-        private void CreateAndSetVisualTree3DView(Visual visual)
+        private void CreateAndSetVisualTree3DView(ISO_Visual visual)
         {
             try
             {
@@ -291,7 +291,7 @@ namespace Snoop.Windows
             }
         }
 
-        private UIElement CreateIfPossible(object item)
+        private UIElement CreateIfPossible(ISnoopObject item)
         {
             return ZoomerUtilities.CreateIfPossible(item);
         }

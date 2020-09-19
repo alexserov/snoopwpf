@@ -7,27 +7,28 @@
     using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Sessions;
 
-    public class MouseStatic : DataAccessBase, IDAS_MouseStatic{
+    public class DAS_Mouse : DataAccessBase, IDAS_Mouse{
         private static readonly PropertyInfo rawDirectlyOverPropertyInfo = typeof(MouseDevice).GetProperty("RawDirectlyOver", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
 
-        public static IInputElement GetDirectlyOver(MouseDevice mouseDevice)
-        {
-            return GetElementAtMousePos(mouseDevice.Dispatcher)
-                   ?? rawDirectlyOverPropertyInfo?.GetValue(mouseDevice, null) as IInputElement
-                   ?? mouseDevice.DirectlyOver;
+        static IInputElement GetDirectlyOver(MouseDevice mouseDevice) {
+            return mouseDevice.OnUI(x => {
+                return GetElementAtMousePos(x.Dispatcher)
+                       ?? rawDirectlyOverPropertyInfo?.GetValue(mouseDevice, null) as IInputElement
+                       ?? mouseDevice.DirectlyOver;
+            });
         }
         
 
         private static FrameworkElement GetElementAtMousePos(Dispatcher dispatcher)
         {
             var windowHandleUnderMouse = NativeMethods.GetWindowUnderMouse();
-            var windowUnderMouse = WindowHelperStatic.GetVisibleWindow(windowHandleUnderMouse);
+            var windowUnderMouse = DAS_WindowHelper.GetVisibleWindow(windowHandleUnderMouse);
 
             FrameworkElement directlyOverElement = null;
 
             if (windowUnderMouse != null)
             {
-                VisualTreeHelper2.HitTest(windowUnderMouse, FilterCallback, r => ResultCallback(r, ref directlyOverElement), new PointHitTestParameters(Mouse.GetPosition(windowUnderMouse)));
+                VisualTreeHelper.HitTest(windowUnderMouse, FilterCallback, r => ResultCallback(r, ref directlyOverElement), new PointHitTestParameters(Mouse.GetPosition(windowUnderMouse)));
             }
 
             return directlyOverElement;

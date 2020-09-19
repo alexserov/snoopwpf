@@ -5,6 +5,7 @@
 <#@ import namespace="System.Reflection" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="Snoop.DataAccess.Sessions" #>
+<#@ import namespace="System.Collections.Generic" #>
 /*
  * THIS CODE IS AUTO-GENERATED
  */
@@ -36,7 +37,7 @@ namespace Snoop.DataAccess.Impl {
 <#
     foreach (var type in interfaces) {
 #>     
-    public sealed class <#=type.Name #>Server : IExecutor {
+    internal sealed class <#=type.Name #>Server : IExecutor {
         readonly <#=type.Name #> source;
         public string Id { get; }
         readonly Dictionary<string, int> eventCounter; 
@@ -45,7 +46,7 @@ namespace Snoop.DataAccess.Impl {
             this.Id = source.Id;
             this.eventCounter = new Dictionary<string, int>();
 <#
-    foreach (var eventInfo in type.GetInterfaces().Concat(new [] { type }).Where(x=>!x.FullName.StartsWith("Snoop.DataAccess.Internal")).SelectMany(x=>x.GetEvents())) {
+    foreach (var eventInfo in FlaternInterfaces(type).SelectMany(x=>x.GetEvents())) {
 #>
             this.eventCounter["<#=eventInfo.Name #>"] = 0;
 <#
@@ -53,7 +54,7 @@ namespace Snoop.DataAccess.Impl {
 #>
         }
 <#
-    foreach (var eventInfo in type.GetInterfaces().Concat(new [] { type }).Where(x=>!x.FullName.StartsWith("Snoop.DataAccess.Internal")).SelectMany(x=>x.GetEvents())) {
+    foreach (var eventInfo in FlaternInterfaces(type).SelectMany(x=>x.GetEvents())) {
         var ehInvoke = eventInfo.EventHandlerType.GetMethod("Invoke");
 #>
         <#=TypeToString(ehInvoke.ReturnType)#> On<#=eventInfo.Name #>(<#=GetClientMethodParameters(ehInvoke.GetParameters()) #>){
@@ -66,7 +67,7 @@ namespace Snoop.DataAccess.Impl {
         public object Execute(string methodName, ICallInfo parameters) {
 <#
     //events
-    foreach (var eventInfo in type.GetInterfaces().Concat(new [] { type }).Where(x=>!x.FullName.StartsWith("Snoop.DataAccess.Internal")).SelectMany(x=>x.GetEvents())) {
+    foreach (var eventInfo in FlaternInterfaces(type).SelectMany(x=>x.GetEvents())) {
         if (eventInfo.AddMethod != null) {
 #>
             if(methodName=="<#=eventInfo.AddMethod.Name #>") {
@@ -91,7 +92,7 @@ namespace Snoop.DataAccess.Impl {
         }
     }
     //properties
-    foreach (var property in type.GetInterfaces().Concat(new [] { type }).Where(x=>!x.FullName.StartsWith("Snoop.DataAccess.Internal")).SelectMany(x=>x.GetProperties())) {
+    foreach (var property in FlaternInterfaces(type).SelectMany(x=>x.GetProperties())) {
         if (property.GetMethod != null) {
 #>
             if(methodName=="<#=property.GetMethod.Name #>") {
@@ -109,7 +110,7 @@ namespace Snoop.DataAccess.Impl {
         }
     }
     //methods
-    foreach (var method in type.GetInterfaces().Concat(new [] { type }).Where(x=>!x.FullName.StartsWith("Snoop.DataAccess.Internal")).SelectMany(x=>x.GetMethods())) {
+    foreach (var method in FlaternInterfaces(type).SelectMany(x=>x.GetMethods())) {
         if (method.IsSpecialName)
             continue;
 #>
@@ -120,7 +121,7 @@ namespace Snoop.DataAccess.Impl {
         else
             Write("                ");
 #>source.<#=method.Name #>(<#
-        WriteServerMethodCallParameters(method); #>);<#
+        WriteServerMethodCallParameters(method, type); #>);<#
         if (method.ReturnType == typeof(void))
             Write("\r\n                return null;");
 #>                 
@@ -131,7 +132,7 @@ namespace Snoop.DataAccess.Impl {
             return null;
         }
     }
-    public sealed class <#=type.Name #>Client : <#=type #>, IDataAccessClient {
+    internal sealed class <#=type.Name #>Client : <#=type #>, IDataAccessClient {
         readonly string id;
         public ISession Session {get; set;}
         public <#=type.Name #>Client(ISession session, string id) {
@@ -139,17 +140,19 @@ namespace Snoop.DataAccess.Impl {
             Session = session;
         }
         public string Id { get { return id; } }
+    internal class PackedArgs_UnusedArgs {
+    }
 <#
-    foreach (var method in type.GetInterfaces().Concat(new [] { type }).Where(x=>!x.FullName.StartsWith("Snoop.DataAccess.Internal")).SelectMany(x=>x.GetMethods())) {
+    foreach (var method in FlaternInterfaces(type).SelectMany(x=>x.GetMethods())) {
         if (method.IsSpecialName && method.Name.StartsWith("add_") || method.Name.StartsWith("remove_"))
             continue;
         DefinePackedArgs(method, method.Name);
     }
-    foreach (var eventInfo in type.GetInterfaces().Concat(new [] { type }).Where(x=>!x.FullName.StartsWith("Snoop.DataAccess.Internal")).SelectMany(x=>x.GetEvents())) {
+    foreach (var eventInfo in FlaternInterfaces(type).SelectMany(x=>x.GetEvents())) {
         DefinePackedArgs(eventInfo.EventHandlerType.GetMethod("Invoke"), eventInfo.Name);
     }
     //PROPERTY
-    foreach (var property in type.GetInterfaces().Concat(new [] { type }).Where(x=>!x.FullName.StartsWith("Snoop.DataAccess.Internal")).SelectMany(x=>x.GetProperties())) {
+    foreach (var property in FlaternInterfaces(type).SelectMany(x=>x.GetProperties())) {
 #>
         public <#=TypeToString(property.PropertyType) #> <#=property.Name #> {
 <#
@@ -157,7 +160,7 @@ namespace Snoop.DataAccess.Impl {
     if (property.GetMethod == null)
         goto setter;
 #>
-            get { return Marshaller.Call<<#=type #>, <#=TypeToString(property.PropertyType) #>, object>(this, true, "<#=property.GetMethod.Name #>", null); }
+            get { return Marshaller.Call<<#=type #>, <#=TypeToString(property.PropertyType) #>, PackedArgs_<#=property.GetMethod.Name #>>(this, true, "<#=property.GetMethod.Name #>", new PackedArgs_<#=property.GetMethod.Name #>()); }
 <#
     //PROPERTY SETTER
     setter:
@@ -172,7 +175,7 @@ namespace Snoop.DataAccess.Impl {
 <#
     }
     //METHOD
-    foreach (var method in type.GetInterfaces().Concat(new [] { type }).Where(x=>!x.FullName.StartsWith("Snoop.DataAccess.Internal")).SelectMany(x=>x.GetMethods())) {
+    foreach (var method in FlaternInterfaces(type).SelectMany(x=>x.GetMethods())) {
         if (method.IsSpecialName)
             continue;
 #>
@@ -189,11 +192,11 @@ namespace Snoop.DataAccess.Impl {
         public event <#=TypeToString(eventInfo.EventHandlerType)#> <#=eventInfo.Name#> {
             add {  
                  _<#=eventInfo.Name#> += value;
-                 Marshaller.Call<<#=type #>, object, object>(this, <#=wait#>, "add_<#=eventInfo.Name #>", null); 
+                 Marshaller.Call<<#=type #>, object, PackedArgs_UnusedArgs>(this, <#=wait#>, "add_<#=eventInfo.Name #>", new PackedArgs_UnusedArgs()); 
             }
             remove {
                  _<#=eventInfo.Name#> -= value;
-                 Marshaller.Call<<#=type #>, object, object>(this, <#=wait#>, "remove_<#=eventInfo.Name #>", null);
+                 Marshaller.Call<<#=type #>, object, PackedArgs_UnusedArgs>(this, <#=wait#>, "remove_<#=eventInfo.Name #>", new PackedArgs_UnusedArgs());
             }
         }
         public <#=TypeToString(invoke.ReturnType)#> Raise<#=eventInfo.Name#>(<#=GetClientMethodParameters(invoke.GetParameters())#>) {
@@ -211,7 +214,7 @@ namespace Snoop.DataAccess.Impl {
 
     void DefinePackedArgs(MethodInfo method, string name) {
 #>
-        public class PackedArgs_<#=name #> {
+        internal class PackedArgs_<#=name #> {
 <#
     foreach (var pi in method.GetParameters()) {
 #>
@@ -224,6 +227,13 @@ namespace Snoop.DataAccess.Impl {
     }
 
 #><#+
+    IEnumerable<Type> FlaternInterfaces(Type source) {
+        return source
+               .GetInterfaces()
+               .Concat(new[] { source })
+               .Where(x => !x.FullName.StartsWith("Snoop.DataAccess.Internal"))
+            ;
+    }
     string TypeToString(Type type) {
         if (type == typeof(void))
             return "void";
@@ -255,14 +265,14 @@ namespace Snoop.DataAccess.Impl {
         }
         var wait = method.ReturnType != typeof(void) ? "true" : "false";
 
-        Write($@"Marshaller.Call<{source}, {mType}, PackedArgs_{method.Name}>(this, {wait}, ""{method.Name}"", {WriteClientMethodCallArgs(method, method.Name)});");
+        Write($@"Marshaller.Call<{source}, {TypeToString(mType)}, PackedArgs_{method.Name}>(this, {wait}, ""{method.Name}"", {WriteClientMethodCallArgs(method, method.Name)});");
     }
 
-    void WriteServerMethodCallParameters(MethodInfo method) {
+    void WriteServerMethodCallParameters(MethodInfo method, Type declType) {
         var parameters = method.GetParameters();
         for (var i = 0; i < parameters.Length; i++) {
             var pi = parameters[i];
-            Write($@"((CallInfo<{method.DeclaringType.Name}Client.PackedArgs_{method.Name}>)parameters).Args.{pi.Name}");
+            Write($@"((CallInfo<{declType.Name}Client.PackedArgs_{method.Name}>)parameters).Args.{pi.Name}");
             if (i == parameters.Length - 1)
                 break;
             Write(", ");

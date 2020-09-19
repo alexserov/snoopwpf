@@ -10,6 +10,7 @@ namespace Snoop.Controls
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
+    using Snoop.DataAccess.Interfaces;
     using Snoop.Infrastructure;
 
     /// <summary>
@@ -32,9 +33,9 @@ namespace Snoop.Controls
         /// <summary>
         /// Gets or sets the Target property.
         /// </summary>
-        public object Target
+        public ISnoopObject Target
         {
-            get { return (object)this.GetValue(TargetProperty); }
+            get { return (ISnoopObject)this.GetValue(TargetProperty); }
             set { this.SetValue(TargetProperty, value); }
         }
 
@@ -44,7 +45,7 @@ namespace Snoop.Controls
         public static readonly DependencyProperty TargetProperty =
             DependencyProperty.Register(
                 nameof(Target),
-                typeof(object),
+                typeof(ISnoopObject),
                 typeof(ZoomerControl),
                 new FrameworkPropertyMetadata(
                     (object)null,
@@ -70,7 +71,7 @@ namespace Snoop.Controls
                 this.pooSniffer = this.TryFindResource("poo_sniffer_xpr") as Brush;
             }
 
-            this.Cursor = this.Target == this.pooSniffer ? null : Cursors.SizeAll;
+            this.Cursor = Cursors.SizeAll;
 
             var element = this.CreateIfPossible(this.Target);
             if (element != null)
@@ -125,7 +126,7 @@ namespace Snoop.Controls
             this.translation.Y = 0.0;
         }
 
-        private UIElement CreateIfPossible(object item)
+        private UIElement CreateIfPossible(ISnoopObject item)
         {
             return ZoomerUtilities.CreateIfPossible(item);
         }
