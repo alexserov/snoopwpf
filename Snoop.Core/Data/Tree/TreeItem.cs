@@ -14,6 +14,7 @@ namespace Snoop.Data.Tree
     using System.Windows.Media;
     using JetBrains.Annotations;
     using Snoop.DataAccess.Interfaces;
+    using Snoop.Infrastructure.Helpers;
 
     public class TreeItem : INotifyPropertyChanged
     {
@@ -64,7 +65,7 @@ namespace Snoop.Data.Tree
         {
             get => this.name;
 
-            private set
+            set
             {
                 if (this.name == value)
                 {
@@ -127,6 +128,8 @@ namespace Snoop.Data.Tree
 
                 this.isExpanded = value;
                 this.OnPropertyChanged(nameof(this.IsExpanded));
+                if(this.isExpanded)
+                    this.Reload();
             }
         }
 
@@ -179,10 +182,8 @@ namespace Snoop.Data.Tree
         /// </summary>
         public void Reload()
         {
-            this.Name = this.GetName();
-
             this.Children.Clear();
-
+            this.Name = this.GetName();
             this.ReloadCore();
 
             // Reset children count prior to re-calculation
@@ -197,25 +198,28 @@ namespace Snoop.Data.Tree
             }
         }
 
-        protected virtual string GetName()
+        public virtual string GetName()
         {
             var result = string.Empty;
 
-            if (this.Target is FrameworkElement targetFrameworkElement)
+            if (this.Target is ISO_FrameworkElement targetFrameworkElement)
             {
-                result = targetFrameworkElement.Name;
-
-                if (string.IsNullOrEmpty(result))
-                {
-                    result = AutomationProperties.GetAutomationId(targetFrameworkElement);
-                }
+                result = targetFrameworkElement.GetName();
+                
             }
 
             return result;
         }
 
-        protected virtual void ReloadCore()
-        {
+        protected virtual void ReloadCore() {
+            if(Parent!=null && !Parent.IsExpanded)
+                return;
+            var childrenCount = VisualTreeHelper2.GetChildrenCount(Target);
+            for (int i = 0; i < childrenCount; i++) {
+                var child = VisualTreeHelper2.GetChild(Target, i);
+                var result = TreeService.Construct(child, this);
+                Children.Add(result);
+            }
         }
 
         public virtual TreeItem FindNode(object target)

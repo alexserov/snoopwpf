@@ -17,7 +17,7 @@
         public double GetActualHeight() { return this.source.OnUI(x => x.ActualHeight); }
 
         public double GetActualWidth() { return this.source.OnUI(x => x.ActualWidth); }
-
+        public string GetName() { return this.source.OnUI(x => x.Name); }
     }
 
 }

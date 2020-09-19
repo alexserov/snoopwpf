@@ -37,14 +37,6 @@
 
             treeItem.Reload();
 
-            if (parent is null)
-            {
-                foreach (var child in treeItem.Children)
-                {
-                    child.ExpandTo();
-                }
-            }
-
             return treeItem;
         }
 

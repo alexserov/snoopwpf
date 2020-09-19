@@ -91,7 +91,8 @@
             if (source == null)
                 return default;
             if (typeof(IDataAccess).IsAssignableFrom(typeof(TResult))) {
-                return (TResult)CreateClientExecutor(((IDataAccessClient)caller).Session, typeof(TResult), source);
+                // ReSharper disable once SuspiciousTypeConversion.Global
+                return (TResult)CreateClientExecutor(((IDataAccessClient)caller).Session, typeof(TResult), JObject.Parse(source).Property("Id").Value.ToString());
             }
             return JsonConvert.DeserializeObject<TResult>(source);
         }

@@ -35,7 +35,7 @@ namespace Snoop
 
             try
             {
-                var location = Assembly.GetExecutingAssembly().Location;
+                var location = typeof(InjectorLauncherManager).Assembly.Location;
                 var directory = Path.GetDirectoryName(location) ?? string.Empty;
                 var injectorLauncherExe = Path.Combine(directory, $"Snoop.InjectorLauncher.{GetArchitectureSuffix(processInfo)}.exe");
 

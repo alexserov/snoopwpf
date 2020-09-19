@@ -4,5 +4,6 @@
         ISO_ResourceDictionary GetResources();
         double GetActualHeight();
         double GetActualWidth();
+        string GetName();
     }
 }

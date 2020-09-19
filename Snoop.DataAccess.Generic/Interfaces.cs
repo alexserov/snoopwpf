@@ -10,6 +10,7 @@ using Snoop.DataAccess.Internal.Interfaces;
 // ReSharper disable HeapView.BoxingAllocation
 
 namespace Snoop.DataAccess.Impl {
+    using Newtonsoft.Json;
 
     partial class Marshaller {
         static Marshaller() {
@@ -29,7 +30,7 @@ namespace Snoop.DataAccess.Impl {
                  (typeof(Snoop.DataAccess.Interfaces.IDAS_InputManager), x=>new IDAS_InputManagerServer((Snoop.DataAccess.Interfaces.IDAS_InputManager)x), (s, x)=>new IDAS_InputManagerClient(s, x) ),
                  (typeof(Snoop.DataAccess.Interfaces.IDAS_Mouse), x=>new IDAS_MouseServer((Snoop.DataAccess.Interfaces.IDAS_Mouse)x), (s, x)=>new IDAS_MouseClient(s, x) ),
                  (typeof(Snoop.DataAccess.Interfaces.IDAS_RootProvider), x=>new IDAS_RootProviderServer((Snoop.DataAccess.Interfaces.IDAS_RootProvider)x), (s, x)=>new IDAS_RootProviderClient(s, x) ),
-                 (typeof(Snoop.DataAccess.Interfaces.IDAS_VisualTreeHelper), x=>new IDAS_VisualTreeHelperServer((Snoop.DataAccess.Interfaces.IDAS_VisualTreeHelper)x), (s, x)=>new IDAS_VisualTreeHelperClient(s, x) ),
+                 (typeof(Snoop.DataAccess.Interfaces.IDAS_TreeHelper), x=>new IDAS_TreeHelperServer((Snoop.DataAccess.Interfaces.IDAS_TreeHelper)x), (s, x)=>new IDAS_TreeHelperClient(s, x) ),
                  (typeof(Snoop.DataAccess.Interfaces.IDAS_WindowHelper), x=>new IDAS_WindowHelperServer((Snoop.DataAccess.Interfaces.IDAS_WindowHelper)x), (s, x)=>new IDAS_WindowHelperClient(s, x) ),
                  (typeof(Snoop.DataAccess.Interfaces.IDAS_WindowInfo), x=>new IDAS_WindowInfoServer((Snoop.DataAccess.Interfaces.IDAS_WindowInfo)x), (s, x)=>new IDAS_WindowInfoClient(s, x) ),
             };        
@@ -38,7 +39,7 @@ namespace Snoop.DataAccess.Impl {
      
     internal sealed class ISnoopObjectServer : IExecutor {
         readonly ISnoopObject source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public ISnoopObjectServer(ISnoopObject source){
             this.source = source;
@@ -50,37 +51,31 @@ namespace Snoop.DataAccess.Impl {
             if(methodName=="get_TypeName") {
                 return source.TypeName;
             }
-            if(methodName=="get_Source") {
-                return source.Source;
-            }
             return null;
         }
     }
     internal sealed class ISnoopObjectClient : Snoop.DataAccess.Interfaces.ISnoopObject, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public ISnoopObjectClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_get_TypeName {
         }
-        internal class PackedArgs_get_Source {
-        }
         public System.String TypeName {
             get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISnoopObject, System.String, PackedArgs_get_TypeName>(this, true, "get_TypeName", new PackedArgs_get_TypeName()); }
-        }
-        public System.Object Source {
-            get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISnoopObject, System.Object, PackedArgs_get_Source>(this, true, "get_Source", new PackedArgs_get_Source()); }
         }
     }
      
     internal sealed class ISO_BrushServer : IExecutor {
         readonly ISO_Brush source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public ISO_BrushServer(ISO_Brush source){
             this.source = source;
@@ -92,37 +87,31 @@ namespace Snoop.DataAccess.Impl {
             if(methodName=="get_TypeName") {
                 return source.TypeName;
             }
-            if(methodName=="get_Source") {
-                return source.Source;
-            }
             return null;
         }
     }
     internal sealed class ISO_BrushClient : Snoop.DataAccess.Interfaces.ISO_Brush, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public ISO_BrushClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_get_TypeName {
         }
-        internal class PackedArgs_get_Source {
-        }
         public System.String TypeName {
             get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Brush, System.String, PackedArgs_get_TypeName>(this, true, "get_TypeName", new PackedArgs_get_TypeName()); }
-        }
-        public System.Object Source {
-            get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Brush, System.Object, PackedArgs_get_Source>(this, true, "get_Source", new PackedArgs_get_Source()); }
         }
     }
      
     internal sealed class ISO_DependencyObjectServer : IExecutor {
         readonly ISO_DependencyObject source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public ISO_DependencyObjectServer(ISO_DependencyObject source){
             this.source = source;
@@ -134,37 +123,31 @@ namespace Snoop.DataAccess.Impl {
             if(methodName=="get_TypeName") {
                 return source.TypeName;
             }
-            if(methodName=="get_Source") {
-                return source.Source;
-            }
             return null;
         }
     }
     internal sealed class ISO_DependencyObjectClient : Snoop.DataAccess.Interfaces.ISO_DependencyObject, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public ISO_DependencyObjectClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_get_TypeName {
         }
-        internal class PackedArgs_get_Source {
-        }
         public System.String TypeName {
             get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_DependencyObject, System.String, PackedArgs_get_TypeName>(this, true, "get_TypeName", new PackedArgs_get_TypeName()); }
-        }
-        public System.Object Source {
-            get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_DependencyObject, System.Object, PackedArgs_get_Source>(this, true, "get_Source", new PackedArgs_get_Source()); }
         }
     }
      
     internal sealed class ISO_FrameworkElementServer : IExecutor {
         readonly ISO_FrameworkElement source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public ISO_FrameworkElementServer(ISO_FrameworkElement source){
             this.source = source;
@@ -175,9 +158,6 @@ namespace Snoop.DataAccess.Impl {
         public object Execute(string methodName, ICallInfo parameters) {
             if(methodName=="get_TypeName") {
                 return source.TypeName;
-            }
-            if(methodName=="get_Source") {
-                return source.Source;
             }
             if(methodName=="GetRenderSize") {
                 return source.GetRenderSize();                 
@@ -200,17 +180,22 @@ namespace Snoop.DataAccess.Impl {
             if(methodName=="GetActualWidth") {
                 return source.GetActualWidth();                 
             }
+            if(methodName=="GetName") {
+                return source.GetName();                 
+            }
             return null;
         }
     }
     internal sealed class ISO_FrameworkElementClient : Snoop.DataAccess.Interfaces.ISO_FrameworkElement, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public ISO_FrameworkElementClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_GetRenderSize {
@@ -222,8 +207,6 @@ namespace Snoop.DataAccess.Impl {
         }
         internal class PackedArgs_get_TypeName {
         }
-        internal class PackedArgs_get_Source {
-        }
         internal class PackedArgs_GetTemplatedParent {
         }
         internal class PackedArgs_GetResources {
@@ -232,11 +215,10 @@ namespace Snoop.DataAccess.Impl {
         }
         internal class PackedArgs_GetActualWidth {
         }
+        internal class PackedArgs_GetName {
+        }
         public System.String TypeName {
             get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_FrameworkElement, System.String, PackedArgs_get_TypeName>(this, true, "get_TypeName", new PackedArgs_get_TypeName()); }
-        }
-        public System.Object Source {
-            get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_FrameworkElement, System.Object, PackedArgs_get_Source>(this, true, "get_Source", new PackedArgs_get_Source()); }
         }
         public System.ValueTuple<System.Double, System.Double> GetRenderSize() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_FrameworkElement, System.ValueTuple<System.Double, System.Double>, PackedArgs_GetRenderSize>(this, true, "GetRenderSize", new PackedArgs_GetRenderSize(){}); }
         public System.Boolean IsDescendantOf(Snoop.DataAccess.Interfaces.ISO_Visual rootVisual) { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_FrameworkElement, System.Boolean, PackedArgs_IsDescendantOf>(this, true, "IsDescendantOf", new PackedArgs_IsDescendantOf(){rootVisual = rootVisual}); }
@@ -245,11 +227,12 @@ namespace Snoop.DataAccess.Impl {
         public Snoop.DataAccess.Interfaces.ISO_ResourceDictionary GetResources() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_FrameworkElement, Snoop.DataAccess.Interfaces.ISO_ResourceDictionary, PackedArgs_GetResources>(this, true, "GetResources", new PackedArgs_GetResources(){}); }
         public System.Double GetActualHeight() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_FrameworkElement, System.Double, PackedArgs_GetActualHeight>(this, true, "GetActualHeight", new PackedArgs_GetActualHeight(){}); }
         public System.Double GetActualWidth() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_FrameworkElement, System.Double, PackedArgs_GetActualWidth>(this, true, "GetActualWidth", new PackedArgs_GetActualWidth(){}); }
+        public System.String GetName() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_FrameworkElement, System.String, PackedArgs_GetName>(this, true, "GetName", new PackedArgs_GetName(){}); }
     }
      
     internal sealed class ISO_ImageSourceServer : IExecutor {
         readonly ISO_ImageSource source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public ISO_ImageSourceServer(ISO_ImageSource source){
             this.source = source;
@@ -261,9 +244,6 @@ namespace Snoop.DataAccess.Impl {
             if(methodName=="get_TypeName") {
                 return source.TypeName;
             }
-            if(methodName=="get_Source") {
-                return source.Source;
-            }
             if(methodName=="GetData") {
                 return source.GetData();                 
             }
@@ -272,32 +252,29 @@ namespace Snoop.DataAccess.Impl {
     }
     internal sealed class ISO_ImageSourceClient : Snoop.DataAccess.Interfaces.ISO_ImageSource, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public ISO_ImageSourceClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_get_TypeName {
-        }
-        internal class PackedArgs_get_Source {
         }
         internal class PackedArgs_GetData {
         }
         public System.String TypeName {
             get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_ImageSource, System.String, PackedArgs_get_TypeName>(this, true, "get_TypeName", new PackedArgs_get_TypeName()); }
         }
-        public System.Object Source {
-            get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_ImageSource, System.Object, PackedArgs_get_Source>(this, true, "get_Source", new PackedArgs_get_Source()); }
-        }
         public System.Byte[] GetData() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_ImageSource, System.Byte[], PackedArgs_GetData>(this, true, "GetData", new PackedArgs_GetData(){}); }
     }
      
     internal sealed class ISO_ResourceDictionaryServer : IExecutor {
         readonly ISO_ResourceDictionary source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public ISO_ResourceDictionaryServer(ISO_ResourceDictionary source){
             this.source = source;
@@ -308,9 +285,6 @@ namespace Snoop.DataAccess.Impl {
         public object Execute(string methodName, ICallInfo parameters) {
             if(methodName=="get_TypeName") {
                 return source.TypeName;
-            }
-            if(methodName=="get_Source") {
-                return source.Source;
             }
             if(methodName=="GetKeys") {
                 return source.GetKeys();                 
@@ -329,17 +303,17 @@ namespace Snoop.DataAccess.Impl {
     }
     internal sealed class ISO_ResourceDictionaryClient : Snoop.DataAccess.Interfaces.ISO_ResourceDictionary, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public ISO_ResourceDictionaryClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_get_TypeName {
-        }
-        internal class PackedArgs_get_Source {
         }
         internal class PackedArgs_GetKeys {
         }
@@ -353,9 +327,6 @@ namespace Snoop.DataAccess.Impl {
         public System.String TypeName {
             get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_ResourceDictionary, System.String, PackedArgs_get_TypeName>(this, true, "get_TypeName", new PackedArgs_get_TypeName()); }
         }
-        public System.Object Source {
-            get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_ResourceDictionary, System.Object, PackedArgs_get_Source>(this, true, "get_Source", new PackedArgs_get_Source()); }
-        }
         public System.Collections.ICollection GetKeys() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_ResourceDictionary, System.Collections.ICollection, PackedArgs_GetKeys>(this, true, "GetKeys", new PackedArgs_GetKeys(){}); }
         public System.Collections.ICollection GetValues() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_ResourceDictionary, System.Collections.ICollection, PackedArgs_GetValues>(this, true, "GetValues", new PackedArgs_GetValues(){}); }
         public System.Object GetValue(System.Object key) { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_ResourceDictionary, System.Object, PackedArgs_GetValue>(this, true, "GetValue", new PackedArgs_GetValue(){key = key}); }
@@ -364,7 +335,7 @@ namespace Snoop.DataAccess.Impl {
      
     internal sealed class ISO_UIElementServer : IExecutor {
         readonly ISO_UIElement source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public ISO_UIElementServer(ISO_UIElement source){
             this.source = source;
@@ -375,9 +346,6 @@ namespace Snoop.DataAccess.Impl {
         public object Execute(string methodName, ICallInfo parameters) {
             if(methodName=="get_TypeName") {
                 return source.TypeName;
-            }
-            if(methodName=="get_Source") {
-                return source.Source;
             }
             if(methodName=="IsDescendantOf") {
                 return source.IsDescendantOf(((CallInfo<ISO_UIElementClient.PackedArgs_IsDescendantOf>)parameters).Args.rootVisual);                 
@@ -393,12 +361,14 @@ namespace Snoop.DataAccess.Impl {
     }
     internal sealed class ISO_UIElementClient : Snoop.DataAccess.Interfaces.ISO_UIElement, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public ISO_UIElementClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_IsDescendantOf {
@@ -408,15 +378,10 @@ namespace Snoop.DataAccess.Impl {
         }
         internal class PackedArgs_get_TypeName {
         }
-        internal class PackedArgs_get_Source {
-        }
         internal class PackedArgs_GetRenderSize {
         }
         public System.String TypeName {
             get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_UIElement, System.String, PackedArgs_get_TypeName>(this, true, "get_TypeName", new PackedArgs_get_TypeName()); }
-        }
-        public System.Object Source {
-            get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_UIElement, System.Object, PackedArgs_get_Source>(this, true, "get_Source", new PackedArgs_get_Source()); }
         }
         public System.Boolean IsDescendantOf(Snoop.DataAccess.Interfaces.ISO_Visual rootVisual) { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_UIElement, System.Boolean, PackedArgs_IsDescendantOf>(this, true, "IsDescendantOf", new PackedArgs_IsDescendantOf(){rootVisual = rootVisual}); }
         public Snoop.DataAccess.Interfaces.ISO_UISurface GetSurface() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_UIElement, Snoop.DataAccess.Interfaces.ISO_UISurface, PackedArgs_GetSurface>(this, true, "GetSurface", new PackedArgs_GetSurface(){}); }
@@ -425,7 +390,7 @@ namespace Snoop.DataAccess.Impl {
      
     internal sealed class ISO_UISurfaceServer : IExecutor {
         readonly ISO_UISurface source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public ISO_UISurfaceServer(ISO_UISurface source){
             this.source = source;
@@ -455,9 +420,6 @@ namespace Snoop.DataAccess.Impl {
             if(methodName=="get_TypeName") {
                 return source.TypeName;
             }
-            if(methodName=="get_Source") {
-                return source.Source;
-            }
             if(methodName=="GetData") {
                 return source.GetData();                 
             }
@@ -466,17 +428,17 @@ namespace Snoop.DataAccess.Impl {
     }
     internal sealed class ISO_UISurfaceClient : Snoop.DataAccess.Interfaces.ISO_UISurface, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public ISO_UISurfaceClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_get_TypeName {
-        }
-        internal class PackedArgs_get_Source {
         }
         internal class PackedArgs_GetData {
         }
@@ -484,9 +446,6 @@ namespace Snoop.DataAccess.Impl {
         }
         public System.String TypeName {
             get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_UISurface, System.String, PackedArgs_get_TypeName>(this, true, "get_TypeName", new PackedArgs_get_TypeName()); }
-        }
-        public System.Object Source {
-            get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_UISurface, System.Object, PackedArgs_get_Source>(this, true, "get_Source", new PackedArgs_get_Source()); }
         }
         public System.Byte[] GetData() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_UISurface, System.Byte[], PackedArgs_GetData>(this, true, "GetData", new PackedArgs_GetData(){}); }
     System.Action _Changed;
@@ -507,7 +466,7 @@ namespace Snoop.DataAccess.Impl {
      
     internal sealed class ISO_VisualServer : IExecutor {
         readonly ISO_Visual source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public ISO_VisualServer(ISO_Visual source){
             this.source = source;
@@ -518,9 +477,6 @@ namespace Snoop.DataAccess.Impl {
         public object Execute(string methodName, ICallInfo parameters) {
             if(methodName=="get_TypeName") {
                 return source.TypeName;
-            }
-            if(methodName=="get_Source") {
-                return source.Source;
             }
             if(methodName=="IsDescendantOf") {
                 return source.IsDescendantOf(((CallInfo<ISO_VisualClient.PackedArgs_IsDescendantOf>)parameters).Args.rootVisual);                 
@@ -533,17 +489,17 @@ namespace Snoop.DataAccess.Impl {
     }
     internal sealed class ISO_VisualClient : Snoop.DataAccess.Interfaces.ISO_Visual, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public ISO_VisualClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_get_TypeName {
-        }
-        internal class PackedArgs_get_Source {
         }
         internal class PackedArgs_IsDescendantOf {
         public Snoop.DataAccess.Interfaces.ISO_Visual rootVisual { get; set; }
@@ -553,16 +509,13 @@ namespace Snoop.DataAccess.Impl {
         public System.String TypeName {
             get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Visual, System.String, PackedArgs_get_TypeName>(this, true, "get_TypeName", new PackedArgs_get_TypeName()); }
         }
-        public System.Object Source {
-            get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Visual, System.Object, PackedArgs_get_Source>(this, true, "get_Source", new PackedArgs_get_Source()); }
-        }
         public System.Boolean IsDescendantOf(Snoop.DataAccess.Interfaces.ISO_Visual rootVisual) { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Visual, System.Boolean, PackedArgs_IsDescendantOf>(this, true, "IsDescendantOf", new PackedArgs_IsDescendantOf(){rootVisual = rootVisual}); }
         public Snoop.DataAccess.Interfaces.ISO_UISurface GetSurface() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Visual, Snoop.DataAccess.Interfaces.ISO_UISurface, PackedArgs_GetSurface>(this, true, "GetSurface", new PackedArgs_GetSurface(){}); }
     }
      
     internal sealed class ISO_Visual3DServer : IExecutor {
         readonly ISO_Visual3D source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public ISO_Visual3DServer(ISO_Visual3D source){
             this.source = source;
@@ -574,37 +527,31 @@ namespace Snoop.DataAccess.Impl {
             if(methodName=="get_TypeName") {
                 return source.TypeName;
             }
-            if(methodName=="get_Source") {
-                return source.Source;
-            }
             return null;
         }
     }
     internal sealed class ISO_Visual3DClient : Snoop.DataAccess.Interfaces.ISO_Visual3D, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public ISO_Visual3DClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_get_TypeName {
         }
-        internal class PackedArgs_get_Source {
-        }
         public System.String TypeName {
             get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Visual3D, System.String, PackedArgs_get_TypeName>(this, true, "get_TypeName", new PackedArgs_get_TypeName()); }
-        }
-        public System.Object Source {
-            get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Visual3D, System.Object, PackedArgs_get_Source>(this, true, "get_Source", new PackedArgs_get_Source()); }
         }
     }
      
     internal sealed class ISO_WindowServer : IExecutor {
         readonly ISO_Window source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public ISO_WindowServer(ISO_Window source){
             this.source = source;
@@ -615,9 +562,6 @@ namespace Snoop.DataAccess.Impl {
         public object Execute(string methodName, ICallInfo parameters) {
             if(methodName=="get_TypeName") {
                 return source.TypeName;
-            }
-            if(methodName=="get_Source") {
-                return source.Source;
             }
             if(methodName=="GetTemplatedParent") {
                 return source.GetTemplatedParent();                 
@@ -630,6 +574,9 @@ namespace Snoop.DataAccess.Impl {
             }
             if(methodName=="GetActualWidth") {
                 return source.GetActualWidth();                 
+            }
+            if(methodName=="GetName") {
+                return source.GetName();                 
             }
             if(methodName=="GetRenderSize") {
                 return source.GetRenderSize();                 
@@ -648,12 +595,14 @@ namespace Snoop.DataAccess.Impl {
     }
     internal sealed class ISO_WindowClient : Snoop.DataAccess.Interfaces.ISO_Window, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public ISO_WindowClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_GetTemplatedParent {
@@ -664,6 +613,8 @@ namespace Snoop.DataAccess.Impl {
         }
         internal class PackedArgs_GetActualWidth {
         }
+        internal class PackedArgs_GetName {
+        }
         internal class PackedArgs_GetRenderSize {
         }
         internal class PackedArgs_IsDescendantOf {
@@ -673,20 +624,16 @@ namespace Snoop.DataAccess.Impl {
         }
         internal class PackedArgs_get_TypeName {
         }
-        internal class PackedArgs_get_Source {
-        }
         internal class PackedArgs_GetTitle {
         }
         public System.String TypeName {
             get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Window, System.String, PackedArgs_get_TypeName>(this, true, "get_TypeName", new PackedArgs_get_TypeName()); }
         }
-        public System.Object Source {
-            get { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Window, System.Object, PackedArgs_get_Source>(this, true, "get_Source", new PackedArgs_get_Source()); }
-        }
         public Snoop.DataAccess.Interfaces.ISO_DependencyObject GetTemplatedParent() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Window, Snoop.DataAccess.Interfaces.ISO_DependencyObject, PackedArgs_GetTemplatedParent>(this, true, "GetTemplatedParent", new PackedArgs_GetTemplatedParent(){}); }
         public Snoop.DataAccess.Interfaces.ISO_ResourceDictionary GetResources() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Window, Snoop.DataAccess.Interfaces.ISO_ResourceDictionary, PackedArgs_GetResources>(this, true, "GetResources", new PackedArgs_GetResources(){}); }
         public System.Double GetActualHeight() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Window, System.Double, PackedArgs_GetActualHeight>(this, true, "GetActualHeight", new PackedArgs_GetActualHeight(){}); }
         public System.Double GetActualWidth() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Window, System.Double, PackedArgs_GetActualWidth>(this, true, "GetActualWidth", new PackedArgs_GetActualWidth(){}); }
+        public System.String GetName() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Window, System.String, PackedArgs_GetName>(this, true, "GetName", new PackedArgs_GetName(){}); }
         public System.ValueTuple<System.Double, System.Double> GetRenderSize() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Window, System.ValueTuple<System.Double, System.Double>, PackedArgs_GetRenderSize>(this, true, "GetRenderSize", new PackedArgs_GetRenderSize(){}); }
         public System.Boolean IsDescendantOf(Snoop.DataAccess.Interfaces.ISO_Visual rootVisual) { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Window, System.Boolean, PackedArgs_IsDescendantOf>(this, true, "IsDescendantOf", new PackedArgs_IsDescendantOf(){rootVisual = rootVisual}); }
         public Snoop.DataAccess.Interfaces.ISO_UISurface GetSurface() { return Marshaller.Call<Snoop.DataAccess.Interfaces.ISO_Window, Snoop.DataAccess.Interfaces.ISO_UISurface, PackedArgs_GetSurface>(this, true, "GetSurface", new PackedArgs_GetSurface(){}); }
@@ -695,7 +642,7 @@ namespace Snoop.DataAccess.Impl {
      
     internal sealed class IDAS_CurrentApplicationServer : IExecutor {
         readonly IDAS_CurrentApplication source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public IDAS_CurrentApplicationServer(IDAS_CurrentApplication source){
             this.source = source;
@@ -712,12 +659,14 @@ namespace Snoop.DataAccess.Impl {
     }
     internal sealed class IDAS_CurrentApplicationClient : Snoop.DataAccess.Interfaces.IDAS_CurrentApplication, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public IDAS_CurrentApplicationClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_get_Resources {
@@ -729,7 +678,7 @@ namespace Snoop.DataAccess.Impl {
      
     internal sealed class IDAS_InputManagerServer : IExecutor {
         readonly IDAS_InputManager source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public IDAS_InputManagerServer(IDAS_InputManager source){
             this.source = source;
@@ -761,12 +710,14 @@ namespace Snoop.DataAccess.Impl {
     }
     internal sealed class IDAS_InputManagerClient : Snoop.DataAccess.Interfaces.IDAS_InputManager, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public IDAS_InputManagerClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_PreProcessInput {
@@ -789,7 +740,7 @@ namespace Snoop.DataAccess.Impl {
      
     internal sealed class IDAS_MouseServer : IExecutor {
         readonly IDAS_Mouse source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public IDAS_MouseServer(IDAS_Mouse source){
             this.source = source;
@@ -806,12 +757,14 @@ namespace Snoop.DataAccess.Impl {
     }
     internal sealed class IDAS_MouseClient : Snoop.DataAccess.Interfaces.IDAS_Mouse, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public IDAS_MouseClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_get_DirectlyOver {
@@ -823,7 +776,7 @@ namespace Snoop.DataAccess.Impl {
      
     internal sealed class IDAS_RootProviderServer : IExecutor {
         readonly IDAS_RootProvider source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public IDAS_RootProviderServer(IDAS_RootProvider source){
             this.source = source;
@@ -843,12 +796,14 @@ namespace Snoop.DataAccess.Impl {
     }
     internal sealed class IDAS_RootProviderClient : Snoop.DataAccess.Interfaces.IDAS_RootProvider, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public IDAS_RootProviderClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_get_Root {
@@ -862,35 +817,52 @@ namespace Snoop.DataAccess.Impl {
         public Snoop.DataAccess.Interfaces.ISnoopObject RootFrom(Snoop.DataAccess.Interfaces.ISO_Visual source) { return Marshaller.Call<Snoop.DataAccess.Interfaces.IDAS_RootProvider, Snoop.DataAccess.Interfaces.ISnoopObject, PackedArgs_RootFrom>(this, true, "RootFrom", new PackedArgs_RootFrom(){source = source}); }
     }
      
-    internal sealed class IDAS_VisualTreeHelperServer : IExecutor {
-        readonly IDAS_VisualTreeHelper source;
-        public string Id { get; }
+    internal sealed class IDAS_TreeHelperServer : IExecutor {
+        readonly IDAS_TreeHelper source;
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
-        public IDAS_VisualTreeHelperServer(IDAS_VisualTreeHelper source){
+        public IDAS_TreeHelperServer(IDAS_TreeHelper source){
             this.source = source;
             this.Id = source.Id;
             this.eventCounter = new Dictionary<string, int>();
         }
 
         public object Execute(string methodName, ICallInfo parameters) {
+            if(methodName=="GetChildrenCount") {
+                return source.GetChildrenCount(((CallInfo<IDAS_TreeHelperClient.PackedArgs_GetChildrenCount>)parameters).Args.dependencyObject);                 
+            }
+            if(methodName=="GetChild") {
+                return source.GetChild(((CallInfo<IDAS_TreeHelperClient.PackedArgs_GetChild>)parameters).Args.dependencyObject, ((CallInfo<IDAS_TreeHelperClient.PackedArgs_GetChild>)parameters).Args.i);                 
+            }
             return null;
         }
     }
-    internal sealed class IDAS_VisualTreeHelperClient : Snoop.DataAccess.Interfaces.IDAS_VisualTreeHelper, IDataAccessClient {
+    internal sealed class IDAS_TreeHelperClient : Snoop.DataAccess.Interfaces.IDAS_TreeHelper, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
-        public IDAS_VisualTreeHelperClient(ISession session, string id) {
+        public IDAS_TreeHelperClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
+        internal class PackedArgs_GetChildrenCount {
+        public Snoop.DataAccess.Interfaces.ISnoopObject dependencyObject { get; set; }
+        }
+        internal class PackedArgs_GetChild {
+        public Snoop.DataAccess.Interfaces.ISnoopObject dependencyObject { get; set; }
+        public System.Int32 i { get; set; }
+        }
+        public System.Int32 GetChildrenCount(Snoop.DataAccess.Interfaces.ISnoopObject dependencyObject) { return Marshaller.Call<Snoop.DataAccess.Interfaces.IDAS_TreeHelper, System.Int32, PackedArgs_GetChildrenCount>(this, true, "GetChildrenCount", new PackedArgs_GetChildrenCount(){dependencyObject = dependencyObject}); }
+        public Snoop.DataAccess.Interfaces.ISnoopObject GetChild(Snoop.DataAccess.Interfaces.ISnoopObject dependencyObject, System.Int32 i) { return Marshaller.Call<Snoop.DataAccess.Interfaces.IDAS_TreeHelper, Snoop.DataAccess.Interfaces.ISnoopObject, PackedArgs_GetChild>(this, true, "GetChild", new PackedArgs_GetChild(){dependencyObject = dependencyObject, i = i}); }
     }
      
     internal sealed class IDAS_WindowHelperServer : IExecutor {
         readonly IDAS_WindowHelper source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public IDAS_WindowHelperServer(IDAS_WindowHelper source){
             this.source = source;
@@ -907,12 +879,14 @@ namespace Snoop.DataAccess.Impl {
     }
     internal sealed class IDAS_WindowHelperClient : Snoop.DataAccess.Interfaces.IDAS_WindowHelper, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public IDAS_WindowHelperClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_GetVisibleWindow {
@@ -923,7 +897,7 @@ namespace Snoop.DataAccess.Impl {
      
     internal sealed class IDAS_WindowInfoServer : IExecutor {
         readonly IDAS_WindowInfo source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public IDAS_WindowInfoServer(IDAS_WindowInfo source){
             this.source = source;
@@ -940,12 +914,14 @@ namespace Snoop.DataAccess.Impl {
     }
     internal sealed class IDAS_WindowInfoClient : Snoop.DataAccess.Interfaces.IDAS_WindowInfo, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public IDAS_WindowInfoClient(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
         internal class PackedArgs_GetIsValidProcess {

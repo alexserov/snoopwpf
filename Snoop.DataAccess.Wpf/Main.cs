@@ -40,7 +40,7 @@ namespace Snoop.DataAccess {
             server.Register<IDAS_InputManager>(new DAS_InputManager());
             server.Register<IDAS_Mouse>(new DAS_Mouse());
             server.Register<IDAS_RootProvider>(new DAS_RootProvider());
-            server.Register<IDAS_VisualTreeHelper>(new DAS_VisualTreeHelper());            
+            server.Register<IDAS_TreeHelper>(new DAS_TreeHelper());            
             server.Register<IDAS_WindowHelper>(new DAS_WindowHelper());
             server.Register<IDAS_WindowInfo>(new DAS_WindowInfo());
         }

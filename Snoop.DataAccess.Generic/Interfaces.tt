@@ -11,6 +11,7 @@
  */
 using System;
 using System.Linq;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using Snoop.DataAccess.Interfaces;
 using Snoop.DataAccess.Sessions;
@@ -39,7 +40,7 @@ namespace Snoop.DataAccess.Impl {
 #>     
     internal sealed class <#=type.Name #>Server : IExecutor {
         readonly <#=type.Name #> source;
-        public string Id { get; }
+        public string Id { get; }        
         readonly Dictionary<string, int> eventCounter; 
         public <#=type.Name #>Server(<#=type.Name #> source){
             this.source = source;
@@ -134,12 +135,14 @@ namespace Snoop.DataAccess.Impl {
     }
     internal sealed class <#=type.Name #>Client : <#=type #>, IDataAccessClient {
         readonly string id;
+        [JsonIgnore]
         public ISession Session {get; set;}
         public <#=type.Name #>Client(ISession session, string id) {
             this.id = id;
             Session = session;
         }
         public string Id { get { return id; } }
+        public object Source { get { return null; } }
     internal class PackedArgs_UnusedArgs {
     }
 <#

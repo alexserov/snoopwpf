@@ -395,6 +395,7 @@
             <e p="IDataAccess.cs" t="Include" />
             <e p="IDataAccessStatic.cs" t="Include" />
             <e p="IExecutor.cs" t="Include" />
+            <e p="ISnoopObjectInternal.cs" t="Include" />
           </e>
           <e p="Objects" t="Include">
             <e p="ISnoopObject.cs" t="Include" />
@@ -414,7 +415,7 @@
             <e p="IDAS_InputManager.cs" t="Include" />
             <e p="IDAS_Mouse.cs" t="Include" />
             <e p="IDAS_RootProvider.cs" t="Include" />
-            <e p="IDAS_VisualTreeHelper.cs" t="Include" />
+            <e p="IDAS_TreeHelper.cs" t="Include" />
             <e p="IDAS_WindowHelper.cs" t="Include" />
             <e p="IDAS_WindowInfo.cs" t="Include" />
           </e>
@@ -478,7 +479,7 @@
           <e p="DAS_InputManager.cs" t="Include" />
           <e p="DAS_Mouse.cs" t="Include" />
           <e p="DAS_RootProvider.cs" t="Include" />
-          <e p="DAS_VisualTreeHelper.cs" t="Include" />
+          <e p="DAS_TreeHelper.cs" t="Include" />
           <e p="DAS_WindowHelper.cs" t="Include" />
           <e p="DAS_WindowInfo.cs" t="Include" />
         </e>

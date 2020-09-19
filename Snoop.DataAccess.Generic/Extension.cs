@@ -37,12 +37,12 @@
 
         public static void Start(string name) {
             var ext = new Extension(name);
-            extensions.Add(ext);
             ext.Start();
         }
 
         public void Start() {
             this.StartProcess();
+            Register(this);
             this.client = new Client(this.GetClientName());
             this.client.Start();
         }
@@ -63,14 +63,20 @@
         }
 
         public static Extension Select<T>(Func<Func<T>, bool> requestPredicate) where T : IDataAccessStatic {
-            return extensions.FirstOrDefault(x => requestPredicate(x.client.Request<T>));
+            return extensions.FirstOrDefault(x => !(x is ClientExtension) && x.ProcessRequestPredicate(requestPredicate));
         }
-        public static IEnumerable<T> Request<T>() where T : IDataAccessStatic
-        {
-            return extensions.Select(x => x.client.Request<T>()).Where(x => x != null);
+        public static IEnumerable<T> Request<T>() where T : IDataAccessStatic {
+            return extensions.Where(x => !(x is ClientExtension)).Select(x => x.client.Request<T>()).Where(x => x != null);
         }
+
+        protected virtual bool ProcessRequestPredicate<T>(Func<Func<T>, bool> requestPredicate) where T : IDataAccessStatic { return requestPredicate(this.client.Request<T>); }
+
         public T Get<T>() where T: IDataAccessStatic {
             return this.client.Request<T>();
+        }
+
+        public static void Register(Extension ext) {
+            extensions.Add(ext);
         }
 
         public static Extension From(IDataAccess element) { return extensions.FirstOrDefault(x => x.client == ((IDataAccessClient)element).Session); }

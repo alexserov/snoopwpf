@@ -10,6 +10,7 @@
     using Newtonsoft.Json;
     using Snoop.DataAccess.Generic;
     using Snoop.DataAccess.Impl;
+    using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Internal.Interfaces;
     using WatsonTcp;
 
@@ -127,6 +128,10 @@
 
         public void RegisterInstance(DataAccessBase dataAccessBase) {
             this.registeredInstances.Add(dataAccessBase.Id, dataAccessBase);
+        }
+
+        public DataAccessBase FindRegistered(string guid) {
+            return this.registeredInstances[guid] as DataAccessBase;
         }
     }
 }

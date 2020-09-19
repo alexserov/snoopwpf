@@ -15,15 +15,19 @@
     {
         private bool? isOwningProcess64Bit;
         private bool? isOwningProcessElevated;
+        bool attachLocal;
 
         public ProcessInfo(int processId)
             : this(Process.GetProcessById(processId))
         {
         }
 
-        public ProcessInfo(Process process)
+        public ProcessInfo(Process process) : this(process, false) { }
+
+        public ProcessInfo(Process process, bool attachLocal)
         {
             this.Process = process;
+            this.attachLocal = attachLocal;
         }
 
         public Process Process { get; set; }
@@ -54,10 +58,10 @@
             return new AttachResult();
         }
 
-        void Start(IntPtr targetHwnd, SnoopStartTarget target) {
+        public void Start(IntPtr targetHwnd, SnoopStartTarget target) {
             var ext = Extension.Select<IDAS_WindowInfo>(func => func()?.GetIsValidProcess(targetHwnd)==true);
             var hwndStr = targetHwnd.ToInt64().ToString();
-                
+            
             InjectorLauncherManager.Launch(this, targetHwnd, ext.Path, "Snoop.DataAccess.Program", "Start", hwndStr);
             var clientExt = new ClientExtension(ext, hwndStr);
             clientExt.Start();
