@@ -3,6 +3,7 @@
  */
 using System;
 using System.Linq;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using Snoop.DataAccess.Interfaces;
 using Snoop.DataAccess.Sessions;
@@ -10,7 +11,6 @@ using Snoop.DataAccess.Internal.Interfaces;
 // ReSharper disable HeapView.BoxingAllocation
 
 namespace Snoop.DataAccess.Impl {
-    using Newtonsoft.Json;
 
     partial class Marshaller {
         static Marshaller() {
@@ -27,6 +27,7 @@ namespace Snoop.DataAccess.Impl {
                  (typeof(Snoop.DataAccess.Interfaces.ISO_Visual3D), x=>new ISO_Visual3DServer((Snoop.DataAccess.Interfaces.ISO_Visual3D)x), (s, x)=>new ISO_Visual3DClient(s, x) ),
                  (typeof(Snoop.DataAccess.Interfaces.ISO_Window), x=>new ISO_WindowServer((Snoop.DataAccess.Interfaces.ISO_Window)x), (s, x)=>new ISO_WindowClient(s, x) ),
                  (typeof(Snoop.DataAccess.Interfaces.IDAS_CurrentApplication), x=>new IDAS_CurrentApplicationServer((Snoop.DataAccess.Interfaces.IDAS_CurrentApplication)x), (s, x)=>new IDAS_CurrentApplicationClient(s, x) ),
+                 (typeof(Snoop.DataAccess.Interfaces.IDAS_InjectorLibraryPath), x=>new IDAS_InjectorLibraryPathServer((Snoop.DataAccess.Interfaces.IDAS_InjectorLibraryPath)x), (s, x)=>new IDAS_InjectorLibraryPathClient(s, x) ),
                  (typeof(Snoop.DataAccess.Interfaces.IDAS_InputManager), x=>new IDAS_InputManagerServer((Snoop.DataAccess.Interfaces.IDAS_InputManager)x), (s, x)=>new IDAS_InputManagerClient(s, x) ),
                  (typeof(Snoop.DataAccess.Interfaces.IDAS_Mouse), x=>new IDAS_MouseServer((Snoop.DataAccess.Interfaces.IDAS_Mouse)x), (s, x)=>new IDAS_MouseClient(s, x) ),
                  (typeof(Snoop.DataAccess.Interfaces.IDAS_RootProvider), x=>new IDAS_RootProviderServer((Snoop.DataAccess.Interfaces.IDAS_RootProvider)x), (s, x)=>new IDAS_RootProviderClient(s, x) ),
@@ -674,6 +675,40 @@ namespace Snoop.DataAccess.Impl {
         public Snoop.DataAccess.Interfaces.ISO_ResourceDictionary Resources {
             get { return Marshaller.Call<Snoop.DataAccess.Interfaces.IDAS_CurrentApplication, Snoop.DataAccess.Interfaces.ISO_ResourceDictionary, PackedArgs_get_Resources>(this, true, "get_Resources", new PackedArgs_get_Resources()); }
         }
+    }
+     
+    internal sealed class IDAS_InjectorLibraryPathServer : IExecutor {
+        readonly IDAS_InjectorLibraryPath source;
+        public string Id { get; }        
+        readonly Dictionary<string, int> eventCounter; 
+        public IDAS_InjectorLibraryPathServer(IDAS_InjectorLibraryPath source){
+            this.source = source;
+            this.Id = source.Id;
+            this.eventCounter = new Dictionary<string, int>();
+        }
+
+        public object Execute(string methodName, ICallInfo parameters) {
+            if(methodName=="GetPath") {
+                return source.GetPath();                 
+            }
+            return null;
+        }
+    }
+    internal sealed class IDAS_InjectorLibraryPathClient : Snoop.DataAccess.Interfaces.IDAS_InjectorLibraryPath, IDataAccessClient {
+        readonly string id;
+        [JsonIgnore]
+        public ISession Session {get; set;}
+        public IDAS_InjectorLibraryPathClient(ISession session, string id) {
+            this.id = id;
+            Session = session;
+        }
+        public string Id { get { return id; } }
+        public object Source { get { return null; } }
+    internal class PackedArgs_UnusedArgs {
+    }
+        internal class PackedArgs_GetPath {
+        }
+        public System.String GetPath() { return Marshaller.Call<Snoop.DataAccess.Interfaces.IDAS_InjectorLibraryPath, System.String, PackedArgs_GetPath>(this, true, "GetPath", new PackedArgs_GetPath(){}); }
     }
      
     internal sealed class IDAS_InputManagerServer : IExecutor {

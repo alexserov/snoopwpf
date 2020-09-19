@@ -14,7 +14,7 @@
 
     }
 
-    public class SnoopObjectJsonConverter : JsonConverter<ISnoopObject> {
+    public class SnoopObjectJsonConverter : JsonConverter {
         /*
          *       public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
             {
@@ -37,12 +37,13 @@
             }
          */
         public override bool CanWrite { get { return false; } }
-        public override void WriteJson(JsonWriter writer, ISnoopObject value, JsonSerializer serializer) { throw new NotImplementedException(); }
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) { throw new NotImplementedException(); }
 
-        public override ISnoopObject ReadJson(JsonReader reader, Type objectType, ISnoopObject existingValue, bool hasExistingValue, JsonSerializer serializer) {
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
             var jo = JObject.Load(reader);
-            return (ISnoopObject)Server.Current.FindRegistered(jo.Property("Id").Value.ToString());
+            return Server.Current.FindRegistered(jo.Property("Id").Value.ToString());
         }
+        public override bool CanConvert(Type objectType) { return typeof(ISnoopObject).IsAssignableFrom(objectType);}
     }
     
 }

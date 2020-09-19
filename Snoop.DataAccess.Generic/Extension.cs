@@ -5,6 +5,7 @@
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
+    using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Internal.Interfaces;
 
     public class ClientExtension : Extension {
@@ -22,7 +23,7 @@
         private Process extProc;
         private Client client;
         public string Path {
-            get { return this.name; }
+            get { return this.client.Request<IDAS_InjectorLibraryPath>().GetPath(); }
         }
 
         static Extension()

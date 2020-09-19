@@ -1,7 +1,6 @@
-﻿namespace Snoop.DataAccess.Wpf {
+﻿namespace Snoop.DataAccess.WinUI3 {
     using System;
-    using System.Windows;
-    using System.Windows.Media;
+    using Microsoft.UI.Xaml.Media;
     using Snoop.DataAccess.Interfaces;
 
     public class SO_ImageSource : SO_DependencyObject, ISO_ImageSource {

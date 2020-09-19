@@ -2,15 +2,29 @@
 
 namespace Snoop.DataAccess {
     using System;
+    using System.IO;
+    using System.Reflection;
     using Snoop.DataAccess.Impl;
     using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Sessions;
-    using Snoop.DataAccess.Wpf;
+    using Snoop.DataAccess.WinUI3;
     
     public class Program {
+        static Program() {
+            AppDomain.CurrentDomain.AssemblyResolve+=CurrentDomainOnAssemblyResolve;
+        }
+
+        static Assembly CurrentDomainOnAssemblyResolve(object sender, ResolveEventArgs args) {
+            var fileName = args.Name;
+            var asmn = new AssemblyName(fileName);
+            var shortName = asmn.Name;
+            var asmp = Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), $"{shortName}.dll");
+            return Assembly.LoadFrom(asmp);
+        }
+
         public static void Main() {
             try {
-                Server wpfSrv = new Server("Wpf", true);
+                Server wpfSrv = new Server("WinUI3", true);
                 RegisterStatics(wpfSrv);
                 wpfSrv.Logger = Console.WriteLine;
                 wpfSrv.Start().Wait();

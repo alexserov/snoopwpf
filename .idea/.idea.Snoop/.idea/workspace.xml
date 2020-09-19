@@ -34,25 +34,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1024641b-ea11-470b-aa2b-bdad9337612d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Internal/ISnoopObjectInternal.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_InjectorLibraryPath.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/DispatcherHelper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/Base.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_Brush.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_DependencyObject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_FrameworkElement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_ImageSource.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_ResourceDictionary.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_UIElement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_UISurface.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_Window.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Main.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_CurrentApplication.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_InjectorLibraryPath.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_InputManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_Mouse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_RootProvider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_TreeHelper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_WindowHelper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_WindowInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Tree.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Static/DAS_InjectorLibraryPath.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snoop/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snoop/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snoop/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snoop/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Data/Tree/TreeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Data/Tree/TreeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.Core/Infrastructure/Helpers/VisualTreeHelper2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.Core/Infrastructure/Helpers/VisualTreeHelper2.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Extension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Extension.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.tt" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.tt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_FrameworkElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_FrameworkElement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISnoopObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISnoopObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_VisualTreeHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_TreeHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Marshaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Marshaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Server/Server.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Generic/Server/Server.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/Base.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/Base.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_FrameworkElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_FrameworkElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Class1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Snoop.DataAccess.WinUI3.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Snoop.DataAccess.WinUI3.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_ImageSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_ImageSource.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Main.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Static/DAS_VisualTreeHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Static/DAS_TreeHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snoop.InjectorLauncher/ProcessWrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop.InjectorLauncher/ProcessWrapper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Snoop/InjectorLauncherManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop/InjectorLauncherManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snoop/ProcessInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snoop/ProcessInfo.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,38 +81,57 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/16B/Task.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2676A2DA-6EDC-420E-890E-D28AA4572EE5/57/JsonSerializerInternalReader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C036042C-69EB-403E-ABE0-5C6C32BA34F3/7d/b3bbd5ed/IMouseDeviceStatics.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snoop.DataAccess.Wpf/Static/DAS_WindowHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C036042C-69EB-403E-ABE0-5C6C32BA34F3/30/67d997a5/MouseDevice.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C036042C-69EB-403E-ABE0-5C6C32BA34F3/22/f4817dd0/InputInjector.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/18D/Encoding.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snoop.Core/obj/Debug/net472/Controls/ValueEditors/MouseWheelValueEditor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2676A2DA-6EDC-420E-890E-D28AA4572EE5/89/JValue.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1B250763-CD4C-431A-8898-DFD0D48F1317/fb/caaab294/ResourceDictionary.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8788DF23-D12C-4548-A89D-2A54A21132B9/21/79d37da5/__Error.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1B250763-CD4C-431A-8898-DFD0D48F1317/a7/b5a72136/Application.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/50FE65A4-93A0-4952-84F1-E3562EFBE38D/bf/0f665ccd/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F6747DE9-0205-433F-84EB-50C1DA278135/7c/fe6289b5/RuntimeModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1B250763-CD4C-431A-8898-DFD0D48F1317/30/6e5e4c71/RenderTargetBitmap.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F34C80B4-3747-4BE8-98AA-890D63971E47/1c/8777f099/ICustomQueryInterface.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F6747DE9-0205-433F-84EB-50C1DA278135/d5/121d8b01/Assembly.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1B250763-CD4C-431A-8898-DFD0D48F1317/14/2d7c7ced/UIElement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F3448F2A-D20E-4703-9AB4-05FA3E9FE348/c3/798deab7/ReSharperGeneratedTransformationExecutor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/357943D0-9F4F-4E99-9736-6ED00D4CC9A2/50/c5e0d3dc/DispatcherSynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/50FE65A4-93A0-4952-84F1-E3562EFBE38D/7b/24d960e2/RuntimeModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2676A2DA-6EDC-420E-890E-D28AA4572EE5/58/JsonSerializerInternalWriter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9160E4DE-3CCD-4354-BF9E-7238FF65D915/8/Size.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1B250763-CD4C-431A-8898-DFD0D48F1317/a9/74d501fc/FrameworkElement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2676A2DA-6EDC-420E-890E-D28AA4572EE5/3D/ValidationUtils.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C036042C-69EB-403E-ABE0-5C6C32BA34F3/40/fe5a5bc6/ICoreWindowStatic.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C036042C-69EB-403E-ABE0-5C6C32BA34F3/18/a7e6a518/CoreWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1B250763-CD4C-431A-8898-DFD0D48F1317/25/e5be6fcd/Window.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1B250763-CD4C-431A-8898-DFD0D48F1317/8f/06cff3c3/IWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1B250763-CD4C-431A-8898-DFD0D48F1317/b1/0c8a167a/IWindowStatics.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/530F6F28-13B4-43AA-BB3E-270B051EA6DE/df/09c23ffb/VisualTreeHelper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2676A2DA-6EDC-420E-890E-D28AA4572EE5/89/JValue.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8788DF23-D12C-4548-A89D-2A54A21132B9/21/79d37da5/__Error.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4441AEF2-AFD7-4F7D-B71F-7DF6A875A17C/10/ParserResultExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F6747DE9-0205-433F-84EB-50C1DA278135/7c/fe6289b5/RuntimeModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FC4FDE92-EB6F-48C0-97C9-E23AC1E2176C/d0/c973d539/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F6747DE9-0205-433F-84EB-50C1DA278135/b9/42893df7/Encoding.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F6747DE9-0205-433F-84EB-50C1DA278135/d5/121d8b01/Assembly.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73160556-96A7-432D-B417-A76288FC056B/02/a4b4f2bb/WatsonTcpClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8E604C77-2D15-4B90-A34A-BDA2EFE2B56D/4e/eff9eede/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73160556-96A7-432D-B417-A76288FC056B/dd/dd87377f/SyncResponse.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F3448F2A-D20E-4703-9AB4-05FA3E9FE348/c3/798deab7/ReSharperGeneratedTransformationExecutor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/357943D0-9F4F-4E99-9736-6ED00D4CC9A2/50/c5e0d3dc/DispatcherSynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2676A2DA-6EDC-420E-890E-D28AA4572EE5/58/JsonSerializerInternalWriter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9160E4DE-3CCD-4354-BF9E-7238FF65D915/8/Size.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3BCDABCE-AB43-41BA-8F8D-B5A06E9A7C18/81/19cc2e86/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2676A2DA-6EDC-420E-890E-D28AA4572EE5/3D/ValidationUtils.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F32505C5-59F6-4436-9659-51ACD16EAF13/f3/18558b40/ResourceDictionary.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1095FC3A-4A79-4BE6-9D8B-4E1A2D77D8E5/63/10c4cbfc/WatsonTcpClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
@@ -106,42 +139,13 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/12/117b95f3/IDictionary.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3BCDABCE-AB43-41BA-8F8D-B5A06E9A7C18/cc/431e04dc/Visual.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3F5C4036-DF64-49FD-AA35-BCB93CA4C31F/d1/b1cd0fc9/UnParserExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Client/Client.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/DAS_InputManager.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/DAS_Mouse.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/DAS_WindowHelper.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/DAS_WindowInfo.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Static/DAS_VisualTreeHelper.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Static/DAS_RootProvider.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Static/DAS_CurrentApplication.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Static/DAS_Mouse.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Static/DAS_WindowHelper.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/DispatcherHelper.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_Visual.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Windows/SnoopUI.xaml.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_ImageSource.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_ResourceDictionary.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_UIElement.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_UISurface.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISO_Window.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Infrastructure/ZoomerUtilities.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Infrastructure/VisualCaptureUtil.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Infrastructure/SnoopManager.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Infrastructure/Helpers/ResourceDictionaryKeyHelpers.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Internal/IDataAccess.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_Window.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_Visual3D.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_Visual.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_UISurface.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_UIElement.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_ResourceDictionary.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_ImageSource.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_DependencyObject.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_Brush.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Client/DataAccessBase.cs" />
@@ -152,17 +156,44 @@
         <option value="$PROJECT_DIR$/Snoop.Core/Infrastructure/Helpers/VisualTreeHelper2.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_TreeHelper.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Static/DAS_TreeHelper.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Main.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Marshaller.cs" />
         <option value="$PROJECT_DIR$/Snoop/ProcessInfo.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Extension.cs" />
-        <option value="$PROJECT_DIR$/Snoop/InjectorLauncherManager.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.cs" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.tt" />
         <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Server/Server.cs" />
-        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISnoopObject.cs" />
-        <option value="$PROJECT_DIR$/Snoop.Core/Data/Tree/TreeService.cs" />
         <option value="$PROJECT_DIR$/Snoop.Core/Data/Tree/TreeItem.cs" />
+        <option value="$PROJECT_DIR$/Snoop.Core/Data/Tree/TreeService.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_WindowInfo.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/Base.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_Visual.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_DependencyObject.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_Brush.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/DispatcherHelper.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_Visual3D.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_ResourceDictionary.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_ImageSource.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/ElementWrappers/SO_ImageSource.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_FrameworkElement.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_UISurface.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_CurrentApplication.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_InputManager.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_Mouse.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_Window.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_WindowHelper.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_TreeHelper.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_RootProvider.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/ElementWrappers/SO_UIElement.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Snoop.DataAccess.WinUI3.csproj" />
+        <option value="$PROJECT_DIR$/Snoop/InjectorLauncherManager.cs" />
+        <option value="$PROJECT_DIR$/Snoop.InjectorLauncher/ProcessWrapper.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Static/IDAS_InjectorLibraryPath.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISnoopObject.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Static/IDAS_InjectorLibraryPath.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Main.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Generic/Extension.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_InjectorLibraryPath.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.Wpf/Static/DAS_InjectorLibraryPath.cs" />
+        <option value="$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Main.cs" />
       </list>
     </option>
   </component>
@@ -183,6 +214,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Project.Snoop">
@@ -317,7 +349,7 @@
       <workItem from="1600330490230" duration="1312000" />
       <workItem from="1600339482279" duration="7769000" />
       <workItem from="1600409471615" duration="18589000" />
-      <workItem from="1600494613293" duration="7610000" />
+      <workItem from="1600494613293" duration="14754000" />
     </task>
     <servers />
   </component>
@@ -350,98 +382,102 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1028" y="545" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.2560.1400@0.0.2560.1400" timestamp="1600100288169" />
-    <state width="874" height="464" key="DebuggerActiveHint" timestamp="1600497576021">
+    <state width="874" height="464" key="DebuggerActiveHint" timestamp="1600508442509">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="874" height="464" key="DebuggerActiveHint/0.0.2560.1400@0.0.2560.1400" timestamp="1600497576021" />
-    <state width="2517" height="387" key="GridCell.Tab.0.bottom" timestamp="1600502193484">
+    <state width="874" height="464" key="DebuggerActiveHint/0.0.2560.1400@0.0.2560.1400" timestamp="1600508442509" />
+    <state width="2517" height="360" key="GridCell.Tab.0.bottom" timestamp="1600509489997">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193484" />
-    <state width="2517" height="387" key="GridCell.Tab.0.center" timestamp="1600502193483">
+    <state width="2517" height="360" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489997" />
+    <state width="2517" height="360" key="GridCell.Tab.0.center" timestamp="1600509489997">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193483" />
-    <state width="2517" height="387" key="GridCell.Tab.0.left" timestamp="1600502193483">
+    <state width="2517" height="360" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489997" />
+    <state width="2517" height="360" key="GridCell.Tab.0.left" timestamp="1600509489996">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193483" />
-    <state width="2517" height="387" key="GridCell.Tab.0.right" timestamp="1600502193483">
+    <state width="2517" height="360" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489996" />
+    <state width="2517" height="360" key="GridCell.Tab.0.right" timestamp="1600509489997">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193483" />
-    <state width="2517" height="387" key="GridCell.Tab.1.bottom" timestamp="1600502193485">
+    <state width="2517" height="360" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489997" />
+    <state width="2517" height="360" key="GridCell.Tab.1.bottom" timestamp="1600509494891">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193485" />
-    <state width="2517" height="387" key="GridCell.Tab.1.center" timestamp="1600502193485">
+    <state width="2517" height="360" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600509494891" />
+    <state width="2517" height="360" key="GridCell.Tab.1.center" timestamp="1600509494891">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193485" />
-    <state width="2517" height="387" key="GridCell.Tab.1.left" timestamp="1600502193485">
+    <state width="2517" height="360" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600509494891" />
+    <state width="2517" height="360" key="GridCell.Tab.1.left" timestamp="1600509494891">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193485" />
-    <state width="2517" height="387" key="GridCell.Tab.1.right" timestamp="1600502193485">
+    <state width="2517" height="360" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600509494891" />
+    <state width="2517" height="360" key="GridCell.Tab.1.right" timestamp="1600509494891">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193485" />
-    <state width="2517" height="387" key="GridCell.Tab.2.bottom" timestamp="1600502193484">
+    <state width="2517" height="360" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600509494891" />
+    <state width="2517" height="360" key="GridCell.Tab.2.bottom" timestamp="1600509489885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.2.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193484" />
-    <state width="2517" height="387" key="GridCell.Tab.2.center" timestamp="1600502193484">
+    <state width="2517" height="360" key="GridCell.Tab.2.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489885" />
+    <state width="2517" height="360" key="GridCell.Tab.2.center" timestamp="1600509489885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.2.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193484" />
-    <state width="2517" height="387" key="GridCell.Tab.2.left" timestamp="1600502193484">
+    <state width="2517" height="360" key="GridCell.Tab.2.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489885" />
+    <state width="2517" height="360" key="GridCell.Tab.2.left" timestamp="1600509489884">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.2.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193484" />
-    <state width="2517" height="387" key="GridCell.Tab.2.right" timestamp="1600502193484">
+    <state width="2517" height="360" key="GridCell.Tab.2.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489884" />
+    <state width="2517" height="360" key="GridCell.Tab.2.right" timestamp="1600509489885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.2.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193484" />
-    <state width="2517" height="387" key="GridCell.Tab.3.bottom" timestamp="1600502193484">
+    <state width="2517" height="360" key="GridCell.Tab.2.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489885" />
+    <state width="2517" height="360" key="GridCell.Tab.3.bottom" timestamp="1600509489885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.3.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193484" />
-    <state width="2517" height="387" key="GridCell.Tab.3.center" timestamp="1600502193484">
+    <state width="2517" height="360" key="GridCell.Tab.3.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489885" />
+    <state width="2517" height="360" key="GridCell.Tab.3.center" timestamp="1600509489885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.3.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193484" />
-    <state width="2517" height="387" key="GridCell.Tab.3.left" timestamp="1600502193484">
+    <state width="2517" height="360" key="GridCell.Tab.3.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489885" />
+    <state width="2517" height="360" key="GridCell.Tab.3.left" timestamp="1600509489885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.3.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193484" />
-    <state width="2517" height="387" key="GridCell.Tab.3.right" timestamp="1600502193484">
+    <state width="2517" height="360" key="GridCell.Tab.3.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489885" />
+    <state width="2517" height="360" key="GridCell.Tab.3.right" timestamp="1600509489885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.3.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193484" />
-    <state width="2517" height="387" key="GridCell.Tab.4.bottom" timestamp="1600502193484">
+    <state width="2517" height="360" key="GridCell.Tab.3.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489885" />
+    <state width="2517" height="360" key="GridCell.Tab.4.bottom" timestamp="1600509489885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.4.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193484" />
-    <state width="2517" height="387" key="GridCell.Tab.4.center" timestamp="1600502193484">
+    <state width="2517" height="360" key="GridCell.Tab.4.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489885" />
+    <state width="2517" height="360" key="GridCell.Tab.4.center" timestamp="1600509489885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.4.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193484" />
-    <state width="2517" height="387" key="GridCell.Tab.4.left" timestamp="1600502193484">
+    <state width="2517" height="360" key="GridCell.Tab.4.center/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489885" />
+    <state width="2517" height="360" key="GridCell.Tab.4.left" timestamp="1600509489885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.4.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193484" />
-    <state width="2517" height="387" key="GridCell.Tab.4.right" timestamp="1600502193484">
+    <state width="2517" height="360" key="GridCell.Tab.4.left/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489885" />
+    <state width="2517" height="360" key="GridCell.Tab.4.right" timestamp="1600509489885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="387" key="GridCell.Tab.4.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600502193484" />
+    <state width="2517" height="360" key="GridCell.Tab.4.right/0.0.2560.1400@0.0.2560.1400" timestamp="1600509489885" />
     <state x="873" y="432" key="Rider.ProjectTemplateDialog.Size" timestamp="1600411123470">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="873" y="432" key="Rider.ProjectTemplateDialog.Size/0.0.2560.1400@0.0.2560.1400" timestamp="1600411123470" />
-    <state x="1713" y="339" key="RiderGenerateDialog" timestamp="1600501105766">
+    <state x="1713" y="339" key="RiderGenerateDialog" timestamp="1600509104206">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1713" y="339" key="RiderGenerateDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1600501105766" />
+    <state x="1713" y="339" key="RiderGenerateDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1600509104206" />
+    <state x="782" y="345" key="SettingsEditor" timestamp="1600507778958">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="782" y="345" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1600507778958" />
     <state x="-7" y="3" width="1554" height="1160" key="VCS.FileHistoryDialog" timestamp="1600497362744">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -454,31 +490,18 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="835" y="437" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.2560.1400@0.0.2560.1400" timestamp="1600426492018" />
-    <state x="945" y="433" width="671" height="624" key="find.popup" timestamp="1600501117890">
+    <state x="945" y="433" width="671" height="624" key="find.popup" timestamp="1600508874805">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="945" y="433" width="671" height="624" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1600501117890" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1600502245128">
+    <state x="945" y="433" width="671" height="624" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1600508874805" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1600509287901">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1600502245128" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1600509287901" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Snoop/ProcessInfo.cs</url>
-          <line>46</line>
-          <properties documentPath="C:\Github\snoopwpf\Snoop\ProcessInfo.cs" initialLine="40">
-            <startOffsets>
-              <option value="1503" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1606" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Snoop.Core/Windows/SnoopUI.xaml.cs</url>
           <line>95</line>
@@ -494,13 +517,13 @@
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Snoop.DataAccess.Generic/Extension.cs</url>
-          <line>45</line>
+          <line>46</line>
           <properties documentPath="C:\Github\snoopwpf\Snoop.DataAccess.Generic\Extension.cs" initialLine="45">
             <startOffsets>
-              <option value="1239" />
+              <option value="1326" />
             </startOffsets>
             <endOffsets>
-              <option value="1286" />
+              <option value="1373" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="33" />
@@ -519,17 +542,56 @@
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Snoop.DataAccess.Generic/Interfaces/Objects/ISnoopObject.cs</url>
-          <line>43</line>
-          <properties documentPath="C:\Github\snoopwpf\Snoop.DataAccess.Generic\Interfaces\Objects\ISnoopObject.cs" initialLine="43">
+          <url>file://$PROJECT_DIR$/Snoop.DataAccess.WinUI3/Static/DAS_WindowInfo.cs</url>
+          <line>71</line>
+          <properties documentPath="C:\Github\snoopwpf\Snoop.DataAccess.WinUI3\Static\DAS_WindowInfo.cs" initialLine="71">
             <startOffsets>
-              <option value="1942" />
+              <option value="3599" />
             </startOffsets>
             <endOffsets>
-              <option value="2029" />
+              <option value="3917" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="45" />
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Snoop/ProcessInfo.cs</url>
+          <line>46</line>
+          <properties documentPath="C:\Github\snoopwpf\Snoop\ProcessInfo.cs" initialLine="46">
+            <startOffsets>
+              <option value="1503" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1547" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Snoop.InjectorLauncher/ProcessWrapper.cs</url>
+          <line>75</line>
+          <properties documentPath="C:\Github\snoopwpf\Snoop.InjectorLauncher\ProcessWrapper.cs" initialLine="75">
+            <startOffsets>
+              <option value="2275" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2323" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Snoop.InjectorLauncher/ProcessWrapper.cs</url>
+          <line>106</line>
+          <properties documentPath="C:\Github\snoopwpf\Snoop.InjectorLauncher\ProcessWrapper.cs" initialLine="106">
+            <startOffsets>
+              <option value="3460" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3481" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -548,6 +610,7 @@
         <watch expression="Extension.From(dependencyObject)" language="C#" />
         <watch expression="reader" language="C#" />
         <watch expression="JPobj" language="C#" />
+        <watch expression="Program.Debug = true" language="C#" />
       </configuration>
       <configuration name="10032:&quot;C:\Github\snoopwpf\bin\Debug\netcoreapp3.1\Snoop.DataAccess.Wpf.exe&quot; 22144">
         <watch expression="arg.Data" language="C#" />
