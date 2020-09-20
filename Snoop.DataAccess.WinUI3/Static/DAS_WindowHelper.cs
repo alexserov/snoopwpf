@@ -13,7 +13,7 @@
         }
 
         public static Window GetVisibleWindow(IntPtr ptr) {
-            return Window.Current; 
+            return WindowLocator.GetWindow(); 
             
         }
     }

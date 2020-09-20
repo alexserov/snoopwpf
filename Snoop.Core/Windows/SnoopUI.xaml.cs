@@ -12,6 +12,7 @@ namespace Snoop.Windows
     using System.Diagnostics;
     using System.Linq;
     using System.Text;
+    using System.Threading;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Documents;
@@ -93,6 +94,11 @@ namespace Snoop.Windows
 
             this.CommandBindings.Add(new CommandBinding(CopyPropertyChangesCommand, this.CopyPropertyChangesHandler));
 
+            for (int i = 0; i < 10; i++) {
+                var ext = extension.Get<IDAS_InputManager>();
+                if(ext==null)
+                    Thread.Sleep(1000);
+            }
             extension.Get<IDAS_InputManager>().PreProcessInput += this.HandlePreProcessInput;
             this.Tree.SelectedItemChanged += this.HandleTreeSelectedItemChanged;
 

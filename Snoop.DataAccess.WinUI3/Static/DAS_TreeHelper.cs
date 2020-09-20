@@ -12,6 +12,10 @@
                 return visual.OnUI(VisualTreeHelper.GetChildrenCount);
             }
 
+            if (uw is Window window) {
+                return 1;
+            }
+
             return 0;
         }
 
@@ -19,6 +23,9 @@
             var uw = dependencyObject.UW<object>();
             if (uw is DependencyObject visual) {
                 return SnoopObjectBase.Create(visual.OnUI(x => VisualTreeHelper.GetChild(x, i)));
+            }
+            if (uw is Window window) {
+                return SnoopObjectBase.Create(window.OnUI(x => x.Content));
             }
 
             return null;

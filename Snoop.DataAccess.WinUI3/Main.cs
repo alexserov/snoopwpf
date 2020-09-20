@@ -19,7 +19,13 @@ namespace Snoop.DataAccess {
             var asmn = new AssemblyName(fileName);
             var shortName = asmn.Name;
             var asmp = Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), $"{shortName}.dll");
-            return Assembly.LoadFrom(asmp);
+            if (!File.Exists(asmp))
+                return null;
+            try {
+                return Assembly.LoadFrom(asmp);
+            } catch {
+                return null;
+            }
         }
 
         public static void Main() {

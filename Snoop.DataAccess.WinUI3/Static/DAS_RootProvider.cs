@@ -8,7 +8,7 @@
 
     public class DAS_RootProvider : DataAccessBase, IDAS_RootProvider{
         public ISnoopObject Root {
-            get { return SnoopObjectBase.Create(Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow); }
+            get { return SnoopObjectBase.Create(WindowLocator.GetWindow()); }
         }
 
         public ISnoopObject RootFrom(ISO_Visual source) {
