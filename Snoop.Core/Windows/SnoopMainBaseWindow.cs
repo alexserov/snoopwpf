@@ -9,7 +9,7 @@
 
     public abstract class SnoopMainBaseWindow : SnoopBaseWindow
     {
-        public Extension Extension { get; }
+        public IExtension Extension { get; }
         public abstract ISnoopObject Target { get; set; }
 
         public bool Inspect()
@@ -42,7 +42,7 @@
             return true;
         }
 
-        public SnoopMainBaseWindow(ClientExtension extension) { this.Extension = extension; }
+        public SnoopMainBaseWindow(IExtension extension) { this.Extension = extension; }
 
         public void Inspect(ISnoopObject rootToInspect)
         {

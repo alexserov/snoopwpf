@@ -59,13 +59,10 @@
         }
 
         public void Start(IntPtr targetHwnd, SnoopStartTarget target) {
-            var ext = Extension.Select<IDAS_WindowInfo>(func => func()?.GetIsValidProcess(targetHwnd)==true);
+            var ext = ExtensionLocator.Select(targetHwnd);
             var hwndStr = targetHwnd.ToInt64().ToString();
-            
-            InjectorLauncherManager.Launch(this, targetHwnd, ext.Path, "Snoop.DataAccess.Program", "Start", hwndStr);
-            var clientExt = new ClientExtension(ext, hwndStr);
-            clientExt.Start();
-            SnoopManager.CreateSnoopWindow(clientExt, CreateTransientSettingsData(target, targetHwnd), SnoopStartTarget.SnoopUI);
+            var set = new TransientSettingsData() { StartTarget = target, PathToSnoop = typeof(SnoopManager).Assembly.Location, TargetWindowHandle = targetHwnd.ToInt64() };
+            InjectorLauncherManager.Launch(this, targetHwnd, ext.ExtensionPath, "Snoop.DataAccess.Extension", "Start", set.WriteToFile());
         }
 
         public AttachResult Magnify(IntPtr targetHwnd)
@@ -96,7 +93,7 @@
             {
                 StartTarget = startTarget,
                 TargetWindowHandle = targetWindowHandle.ToInt64(),
-
+                PathToSnoop =  typeof(SnoopManager).Assembly.Location,
                 MultipleAppDomainMode = settings.MultipleAppDomainMode,
                 MultipleDispatcherMode = settings.MultipleDispatcherMode,
                 SetWindowOwner = settings.SetOwnerWindow

@@ -33,6 +33,10 @@
       <e p="build.ps1" t="Include" />
       <e p="build.sh" t="Include" />
       <e p="Changelog.md" t="Include" />
+      <e p="DataAccess" t="Include">
+        <e p="WinUI3" t="Include" />
+        <e p="Wpf" t="Include" />
+      </e>
       <e p="Directory.build.props" t="Include" />
       <e p="Directory.build.targets" t="Include" />
       <e p="GitVersion.yml" t="Include" />
@@ -158,7 +162,6 @@
           <e p="StringValueConverter.cs" t="Include" />
         </e>
         <e p="Data" t="Include">
-          <e p="TransientSettingsData.cs" t="Include" />
           <e p="Tree" t="Include">
             <e p="ApplicationTreeItem.cs" t="Include" />
             <e p="AutomationPeerTreeItem.cs" t="Include" />
@@ -385,11 +388,11 @@
         </e>
       </e>
       <e p="Snoop.DataAccess.Generic" t="IncludeRecursive">
-        <e p="Client" t="Include">
-          <e p="Client.cs" t="Include" />
-          <e p="DataAccessBase.cs" t="Include" />
+        <e p="Data" t="Include" />
+        <e p="Extension" t="Include">
+          <e p="Extension.cs" t="Include" />
+          <e p="Locator.cs" t="Include" />
         </e>
-        <e p="Extension.cs" t="Include" />
         <e p="Interfaces" t="Include">
           <e p="Internal" t="Include">
             <e p="IDataAccess.cs" t="Include" />
@@ -418,12 +421,8 @@
             <e p="IDAS_RootProvider.cs" t="Include" />
             <e p="IDAS_TreeHelper.cs" t="Include" />
             <e p="IDAS_WindowHelper.cs" t="Include" />
-            <e p="IDAS_WindowInfo.cs" t="Include" />
           </e>
         </e>
-        <e p="Interfaces.cs" t="Include" />
-        <e p="Interfaces.tt" t="Include" />
-        <e p="Marshaller.cs" t="Include" />
         <e p="Message.cs" t="Include" />
         <e p="NativeMethods.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
@@ -433,12 +432,8 @@
             </e>
           </e>
         </e>
-        <e p="Server" t="Include">
-          <e p="Server.cs" t="Include" />
-          <e p="ServerLauncher.cs" t="Include" />
-        </e>
-        <e p="Session.cs" t="Include" />
         <e p="Snoop.DataAccess.Generic.csproj" t="IncludeRecursive" />
+        <e p="TransientSettingsData.cs" t="Include" />
       </e>
       <e p="Snoop.DataAccess.WinUI3" t="IncludeRecursive">
         <e p="DispatcherHelper.cs" t="Include" />
@@ -464,15 +459,24 @@
         <e p="Snoop.DataAccess.WinUI3.csproj" t="IncludeRecursive" />
         <e p="Static" t="Include">
           <e p="DAS_CurrentApplication.cs" t="Include" />
-          <e p="DAS_InjectorLibraryPath.cs" t="Include" />
           <e p="DAS_InputManager.cs" t="Include" />
           <e p="DAS_Mouse.cs" t="Include" />
           <e p="DAS_RootProvider.cs" t="Include" />
           <e p="DAS_TreeHelper.cs" t="Include" />
           <e p="DAS_WindowHelper.cs" t="Include" />
-          <e p="DAS_WindowInfo.cs" t="Include" />
         </e>
         <e p="Tree.cs" t="Include" />
+      </e>
+      <e p="Snoop.DataAccess.WinUI3.Locator" t="IncludeRecursive">
+        <e p="Locator.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Snoop.DataAccess.WinUI3.Locator.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Snoop.DataAccess.WinUI3.Locator.csproj" t="IncludeRecursive" />
       </e>
       <e p="Snoop.DataAccess.Wpf" t="IncludeRecursive">
         <e p="DispatcherHelper.cs" t="Include" />
@@ -500,15 +504,24 @@
         <e p="Snoop.DataAccess.Wpf.csproj" t="IncludeRecursive" />
         <e p="Static" t="Include">
           <e p="DAS_CurrentApplication.cs" t="Include" />
-          <e p="DAS_InjectorLibraryPath.cs" t="Include" />
           <e p="DAS_InputManager.cs" t="Include" />
           <e p="DAS_Mouse.cs" t="Include" />
           <e p="DAS_RootProvider.cs" t="Include" />
           <e p="DAS_TreeHelper.cs" t="Include" />
           <e p="DAS_WindowHelper.cs" t="Include" />
-          <e p="DAS_WindowInfo.cs" t="Include" />
         </e>
         <e p="Tree.cs" t="Include" />
+      </e>
+      <e p="Snoop.DataAccess.Wpf.Locator" t="IncludeRecursive">
+        <e p="Locator.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Snoop.DataAccess.Wpf.Locator.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Snoop.DataAccess.Wpf.Locator.csproj" t="IncludeRecursive" />
       </e>
       <e p="Snoop.GenericInjector" t="IncludeRecursive">
         <e p="dllmain.cpp" t="Include" />

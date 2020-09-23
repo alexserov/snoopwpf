@@ -7,7 +7,7 @@
     using Snoop.DataAccess.Internal.Interfaces;
     using Snoop.DataAccess.Sessions;
 
-    public abstract class SnoopObjectBase : DataAccessBase, ISnoopObject, IDataAccessServer {
+    public abstract class SnoopObjectBase : DataAccess, ISnoopObject {
 
         protected SnoopObjectBase(object source) {
             this.TypeName = source.GetType().FullName;
@@ -22,6 +22,13 @@
         public object Source { get; }
 
         public static ISnoopObject Create(object source) {
+            if (source == null)
+                return null;
+            var result = CreateImpl(source);
+            Extension.Patch(result);
+            return result;
+        }
+        static ISnoopObject CreateImpl(object source) {
             if (source == null)
                 return null;
             switch (source) {

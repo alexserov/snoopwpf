@@ -103,11 +103,11 @@ namespace Snoop.Infrastructure.Helpers
 
 
         public static int GetChildrenCount(ISnoopObject dependencyObject) {
-            return Extension.From(dependencyObject).Get<IDAS_TreeHelper>().GetChildrenCount(dependencyObject);
+            return ExtensionLocator.From(dependencyObject).Get<IDAS_TreeHelper>().GetChildrenCount(dependencyObject);
         }
 
         public static ISnoopObject GetChild(ISnoopObject dependencyObject, int i) {
-            return Extension.From(dependencyObject).Get<IDAS_TreeHelper>().GetChild(dependencyObject, i);
+            return ExtensionLocator.From(dependencyObject).Get<IDAS_TreeHelper>().GetChild(dependencyObject, i);
         }
         public static Rect GetContentBounds(ISO_Visual visual) { throw new NotImplementedException(); }
         public static Rect GetDescendantBounds(ISO_Visual visual) { throw new NotImplementedException(); }

@@ -4,9 +4,10 @@
     using System.Windows;
     using System.Windows.Interop;
     using Snoop.DataAccess.Interfaces;
+    using Snoop.DataAccess.Internal.Interfaces;
     using Snoop.DataAccess.Sessions;
 
-    public class DAS_WindowHelper : DataAccessBase, IDAS_WindowHelper {
+    public class DAS_WindowHelper : DataAccess, IDAS_WindowHelper {
         public ISO_Window GetVisibleWindow(long hwnd) {
             var result = GetVisibleWindow(new IntPtr(hwnd));
             return result == null ? null : new SO_Window(result);

@@ -1,49 +1,26 @@
 ﻿using System.Threading;
 
 namespace Snoop.DataAccess {
-    using System;
-    using Snoop.DataAccess.Impl;
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
     using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Sessions;
     using Snoop.DataAccess.Wpf;
     
-    public class Program {
-        public static void Main() {
-            try {
-                Server wpfSrv = new Server("Wpf", true);
-                RegisterStatics(wpfSrv);
-                wpfSrv.Logger = Console.WriteLine;
-                wpfSrv.Start().Wait();
-            } catch {
-                Console.ReadLine();
-            }
+    public class Extension : ExtensionBase<Extension> {
+        public Extension() : base("Wpf") { }
+
+        public override void RegisterInterfaces() {
+            this.Set<IDAS_CurrentApplication>(new DAS_CurrentApplication());
+            this.Set<IDAS_InputManager>(new DAS_InputManager());
+            this.Set<IDAS_Mouse>(new DAS_Mouse());
+            this.Set<IDAS_RootProvider>(new DAS_RootProvider());
+            this.Set<IDAS_TreeHelper>(new DAS_TreeHelper());            
+            this.Set<IDAS_WindowHelper>(new DAS_WindowHelper());
         }
 
         public static int Start(string param) {
-            var wh = new EventWaitHandle(false, EventResetMode.ManualReset);
-            int result = 0;
-            var t = new Thread(() => {
-                result = ServerLauncher.StartSnoop(param, RegisterStatics);
-                wh.Set();
-            });
-            t.SetApartmentState(ApartmentState.STA);
-            t.Start();
-            wh.WaitOne();
-            return result;
-        }
-
-        private static void RegisterStatics(Server server) {
-            server.Register<IDAS_WindowInfo>(new DAS_WindowInfo());
-            server.Register<IDAS_InjectorLibraryPath>(new DAS_InjectorLibraryPath());
-            if (server.IsGeneric)
-                return;
-            server.Register<IDAS_CurrentApplication>(new DAS_CurrentApplication());
-            server.Register<IDAS_InputManager>(new DAS_InputManager());
-            server.Register<IDAS_Mouse>(new DAS_Mouse());
-            server.Register<IDAS_RootProvider>(new DAS_RootProvider());
-            server.Register<IDAS_TreeHelper>(new DAS_TreeHelper());            
-            server.Register<IDAS_WindowHelper>(new DAS_WindowHelper());
-            server.Register<IDAS_WindowInfo>(new DAS_WindowInfo());
+            return StartCore(param);
         }
     }
 }

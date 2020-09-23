@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net472</TargetFramework>
-        <UseWPF>true</UseWPF>
+        <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\Snoop.DataAccess.Generic\Snoop.DataAccess.Generic.csproj" />
     </ItemGroup>

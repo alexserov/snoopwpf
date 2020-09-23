@@ -10,7 +10,6 @@ namespace Snoop.InjectorLauncher
     using System.IO;
     using System.Reflection;
     using CommandLine;
-    using Snoop.Data;
 
     public static class Program
     {

@@ -12,6 +12,8 @@
             get { return typeof(ISO_UISurface); }
         }
         public SO_UISurface(object source) : base(source) { }
+        public int Width { get; set; }
+        public int Height { get; set; }
         public virtual byte[] GetData() { return new byte[] { }; }
         public event Action Changed = () => { };
 

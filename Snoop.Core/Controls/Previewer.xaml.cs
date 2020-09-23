@@ -77,7 +77,7 @@ namespace Snoop.Controls
             set { this.SetValue(IsActiveProperty, value); }
         }
 
-        public ClientExtension Extension { get; set; }
+        public IExtension Extension { get; set; }
 
         /// <summary>
         /// IsActive Dependency Property

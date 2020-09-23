@@ -2,9 +2,10 @@
     using System.Windows;
     using System.Windows.Media;
     using Snoop.DataAccess.Interfaces;
+    using Snoop.DataAccess.Internal.Interfaces;
     using Snoop.DataAccess.Sessions;
 
-    public class DAS_RootProvider : DataAccessBase, IDAS_RootProvider{
+    public class DAS_RootProvider : DataAccess, IDAS_RootProvider{
         public ISnoopObject Root {
             get { return SnoopObjectBase.Create(Application.Current.OnUI(x=>x.MainWindow)); }
         }

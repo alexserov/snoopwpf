@@ -19,7 +19,7 @@
     
     public class SnoopManager
     {
-        static Func<ClientExtension, SnoopMainBaseWindow> GetInstanceCreator(SnoopStartTarget startTarget)
+        static Func<IExtension, SnoopMainBaseWindow> GetInstanceCreator(SnoopStartTarget startTarget)
         {
             switch (startTarget)
             {
@@ -35,7 +35,7 @@
         }
         
 
-        public static SnoopMainBaseWindow CreateSnoopWindow(ClientExtension extension, TransientSettingsData settingsData, SnoopStartTarget target) {
+        public static void CreateSnoopWindow(IExtension extension, TransientSettingsData settingsData, SnoopStartTarget target) {
             var snoopWindow = GetInstanceCreator(target)(extension);
 
             var targetWindowOnSameDispatcher = WindowHelper.GetVisibleWindow(extension, settingsData.TargetWindowHandle);
@@ -58,7 +58,7 @@
                 snoopWindow.Target = targetWindowOnSameDispatcher;
             }
 
-            return snoopWindow;
+            Dispatcher.Run();
         }
 
         static string TryGetWindowOrMainWindowTitle(ISO_Window targetWindow) {

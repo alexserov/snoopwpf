@@ -55,7 +55,7 @@ namespace Snoop.Windows
 
         #region Public Constructor
 
-        public SnoopUI(ClientExtension extension) : base(extension)
+        public SnoopUI(IExtension extension) : base(extension)
         {
             this.TreeService = new TreeService();
 

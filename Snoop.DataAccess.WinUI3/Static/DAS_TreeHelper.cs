@@ -3,9 +3,10 @@
     using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Media;
     using Snoop.DataAccess.Interfaces;
+    using Snoop.DataAccess.Internal.Interfaces;
     using Snoop.DataAccess.Sessions;
 
-    public class DAS_TreeHelper : DataAccessBase, IDAS_TreeHelper {
+    public class DAS_TreeHelper : DataAccess, IDAS_TreeHelper {
         public int GetChildrenCount(ISnoopObject dependencyObject) {
             var uw = dependencyObject.UW<object>();
             if (uw is DependencyObject visual) {

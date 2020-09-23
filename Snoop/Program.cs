@@ -39,10 +39,10 @@
         private static void InitDataAccessExtensions()
         {
             var snoopDir = Path.GetDirectoryName(typeof(App).Assembly.Location);
-            var extensions = Directory.GetFiles(snoopDir, "Snoop.DataAccess.*.exe", SearchOption.AllDirectories);
+            var extensions = Directory.GetFiles(snoopDir, "Snoop.DataAccess.*.Locator.dll", SearchOption.AllDirectories);
             foreach (var element in extensions)
             {
-                Extension.Start(element);
+                ExtensionLocator.StartFrom(element);
             }
         }
 

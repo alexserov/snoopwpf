@@ -2,9 +2,10 @@
     using System;
     using System.Windows.Input;
     using Snoop.DataAccess.Interfaces;
+    using Snoop.DataAccess.Internal.Interfaces;
     using Snoop.DataAccess.Sessions;
 
-    public class DAS_InputManager : DataAccessBase, IDAS_InputManager {
+    public class DAS_InputManager : DataAccess, IDAS_InputManager {
         Action preProcessInput = new Action(() => { });
         public event Action PreProcessInput {
             add { this.preProcessInput += value; }

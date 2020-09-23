@@ -123,7 +123,7 @@ namespace Snoop.InjectorLauncher
                 }
             }
 
-            if (hostPolicyVersionInfo.FileVersion.StartsWith("5"))
+            if (hostPolicyVersionInfo!=null && hostPolicyVersionInfo.FileVersion.StartsWith("5"))
                 return "netcoreapp3.1"; //return "net5.0";
 
             return "net40";

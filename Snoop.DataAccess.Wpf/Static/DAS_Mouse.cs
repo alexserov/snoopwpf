@@ -5,9 +5,10 @@
     using System.Windows.Media;
     using System.Windows.Threading;
     using Snoop.DataAccess.Interfaces;
+    using Snoop.DataAccess.Internal.Interfaces;
     using Snoop.DataAccess.Sessions;
 
-    public class DAS_Mouse : DataAccessBase, IDAS_Mouse{
+    public class DAS_Mouse : DataAccess, IDAS_Mouse{
         private static readonly PropertyInfo rawDirectlyOverPropertyInfo = typeof(MouseDevice).GetProperty("RawDirectlyOver", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
 
         static IInputElement GetDirectlyOver(MouseDevice mouseDevice) {

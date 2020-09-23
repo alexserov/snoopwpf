@@ -13,9 +13,10 @@ namespace Snoop.DataAccess.WinUI3 {
     using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Input;
     using Snoop.DataAccess.Interfaces;
+    using Snoop.DataAccess.Internal.Interfaces;
     using Snoop.DataAccess.Sessions;
 
-    public class DAS_InputManager : DataAccessBase, IDAS_InputManager {
+    public class DAS_InputManager : DataAccess, IDAS_InputManager {
         Action preProcessInput = new Action(() => { });
         // InputInjector injector;
         public event Action PreProcessInput {

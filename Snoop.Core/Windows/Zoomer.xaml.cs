@@ -57,7 +57,7 @@ namespace Snoop.Windows
             SwitchTo3DCommand.InputGestures.Add(new KeyGesture(Key.F3));
         }
 
-        public Zoomer(ClientExtension x) : base(x)
+        public Zoomer(IExtension x) : base(x)
         {
             this.CommandBindings.Add(new CommandBinding(ResetCommand, this.HandleReset, this.CanReset));
             this.CommandBindings.Add(new CommandBinding(ZoomInCommand, this.HandleZoomIn));

@@ -20,7 +20,7 @@ namespace Snoop.Infrastructure.Helpers
                 return string.Empty;
             }
 
-            var ext = Extension.From(dependencyObject);
+            var ext = ExtensionLocator.From(dependencyObject);
             // Walk up the visual tree, looking for the resourceItem in each frameworkElement's resource dictionary.
             while (dependencyObject != null)
             {

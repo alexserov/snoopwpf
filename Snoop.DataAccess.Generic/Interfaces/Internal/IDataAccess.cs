@@ -1,19 +1,17 @@
 ﻿namespace Snoop.DataAccess.Internal.Interfaces
 {
-    using System;
     using Snoop.DataAccess.Sessions;
 
     public interface IDataAccess
     {
-        public string Id { get; }
+        
     }
 
-    public interface IDataAccessServer {
-        public Type DataAccessType { get; }
+    interface IDataAccessInternal {
+        IExtension Extension { get; set; }
     }
 
-    public interface IDataAccessClient
-    {
-        ISession Session { get; set; }
+    public class DataAccess : IDataAccessInternal {
+        IExtension IDataAccessInternal.Extension { get; set; }
     }
 }

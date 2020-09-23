@@ -6,9 +6,11 @@
 namespace Snoop.Infrastructure
 {
     using System;
+    using System.IO;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
+    using System.Windows.Media.Imaging;
     using System.Windows.Shapes;
     using Snoop.DataAccess.Interfaces;
     using Snoop.Infrastructure.Helpers;
@@ -86,8 +88,25 @@ namespace Snoop.Infrastructure
         }
 
         public static Brush FromISOVisual(ISO_Visual source) {
-            throw new NotImplementedException();
-            // brush.Stretch = Stretch.Uniform;
+            var surface = source.GetSurface();
+            return new ImageBrush(LoadImage(surface.GetData()));
+        }
+
+        private static BitmapImage LoadImage(byte[] imageData) {
+            if (imageData == null || imageData.Length == 0) return null;
+            var image = new BitmapImage();
+            using (var mem = new MemoryStream(imageData)) {
+                mem.Position = 0;
+                image.BeginInit();
+                image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.UriSource = null;
+                image.StreamSource = mem;
+                image.EndInit();
+            }
+
+            image.Freeze();
+            return image;
         }
 
         private static UIElement CreateRectangleForFrameworkElement(ISO_FrameworkElement uiElement)

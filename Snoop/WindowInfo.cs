@@ -38,7 +38,7 @@ namespace Snoop
         {
             get
             {
-                return Extension.Request<IDAS_WindowInfo>().Any(x => x.GetIsValidProcess(HWnd));
+                return ExtensionLocator.Select(HWnd)!=null!;
             }
         }
 
