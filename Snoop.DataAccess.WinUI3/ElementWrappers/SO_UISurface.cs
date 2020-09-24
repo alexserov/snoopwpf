@@ -37,15 +37,16 @@
         }
 
         void UpdateBytes() {
-            bytes = this.source.OnUI(x => {
-                var fe = x as FrameworkElement;
-                var rtb = new RenderTargetBitmap();
-                rtb.RenderAsync(fe).GetResults();
-                var buff = rtb.GetPixelsAsync().GetResults();
-                var result = new byte[buff.Length];
-                buff.CopyTo(result);
-                return result;
-            });
+            bytes = new byte[0];
+            //bytes = this.source.OnUI(x => {
+            //    var fe = x as FrameworkElement;
+            //    var rtb = new RenderTargetBitmap();
+            //    rtb.RenderAsync(fe).GetResults();
+            //    var buff = rtb.GetPixelsAsync().GetResults();
+            //    var result = new byte[buff.Length];
+            //    buff.CopyTo(result);
+            //    return result;
+            //});
         }
     }
 }

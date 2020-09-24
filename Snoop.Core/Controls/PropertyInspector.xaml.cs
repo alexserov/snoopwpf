@@ -612,7 +612,9 @@ namespace Snoop.Controls
                 }
 
                 var ret = new List<PropertyFilterSet>(this.defaultFilterSets);
+#if net40
                 ret.AddRange(this.UserFilterSets);
+#endif
 
                 // now add the "(Default)" and "Edit Filters..." filters for the ComboBox
                 ret.Insert(
@@ -716,7 +718,7 @@ namespace Snoop.Controls
             }
         };
 
-        #region INotifyPropertyChanged Members
+#region INotifyPropertyChanged Members
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
@@ -724,6 +726,6 @@ namespace Snoop.Controls
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
+#endregion
     }
 }

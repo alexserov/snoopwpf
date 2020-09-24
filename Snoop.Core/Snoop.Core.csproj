@@ -17,7 +17,7 @@
     <IntermediateOutputPath>..\temp\snoop.core\obj.net</IntermediateOutputPath>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <IncludeAssets>runtime</IncludeAssets>
-  </PropertyGroup>
+  </PropertyGroup>  
   <ItemGroup>
     <Resource Include="..\Artwork\*.ico" />
 
