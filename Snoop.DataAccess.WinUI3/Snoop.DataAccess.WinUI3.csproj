@@ -3,10 +3,14 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
+        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
         <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>      
     </PropertyGroup>
-    
+    <PropertyGroup>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    </PropertyGroup>
     <ItemGroup>
+        <PackageReference Include="CommandLineParser" Version="2.9.0-preview1" />
         <PackageReference Include="Microsoft.VCRTForwarders.140" Version="1.0.6" />
         <PackageReference Include="Microsoft.WinUI" Version="3.0.0-preview2.200713.0" />
     </ItemGroup>

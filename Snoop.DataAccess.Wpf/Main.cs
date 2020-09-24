@@ -18,9 +18,11 @@ namespace Snoop.DataAccess {
             this.Set<IDAS_TreeHelper>(new DAS_TreeHelper());            
             this.Set<IDAS_WindowHelper>(new DAS_WindowHelper());
         }
-
+        
+    }
+    public class ExtensionExecutor {
         public static int Start(string param) {
-            return StartCore(param);
+            return Extension.StartCore(param);
         }
     }
 }

@@ -3,12 +3,12 @@ namespace Snoop.Data
 {
     using System.Diagnostics;
     using System.IO;
+    using System.Text;
     using System.Xml.Serialization;
+    using Newtonsoft.Json;
 
     public sealed class TransientSettingsData
     {
-        private static readonly XmlSerializer serializer = new XmlSerializer(typeof(TransientSettingsData));
-
         public TransientSettingsData()
         {
             this.MultipleAppDomainMode = MultipleAppDomainMode.Ask;
@@ -35,9 +35,9 @@ namespace Snoop.Data
 
             Trace.WriteLine($"Writing transient settings file to \"{settingsFile}\"");
 
-            using (var stream = new FileStream(settingsFile, FileMode.Create))
-            {
-                serializer.Serialize(stream, this);
+            using (var stream = new FileStream(settingsFile, FileMode.Create)) {
+                var buff = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(this));
+                stream.Write(buff, 0, buff.Length);
             }
 
             return settingsFile;
@@ -57,9 +57,11 @@ namespace Snoop.Data
         {
             Trace.WriteLine($"Loading transient settings file from \"{settingsFile}\"");
 
-            using (var stream = new FileStream(settingsFile, FileMode.Open))
-            {
-                return Current = (TransientSettingsData)serializer.Deserialize(stream);
+            using (var stream = new FileStream(settingsFile, FileMode.Open)) {
+                var buff = new byte[stream.Length];
+                stream.Read(buff, 0, buff.Length);
+                var str = Encoding.UTF8.GetString(buff);
+                return Current = JsonConvert.DeserializeObject<TransientSettingsData>(str);
             }
         }
     }

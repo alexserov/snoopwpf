@@ -6,12 +6,11 @@ namespace Snoop.InjectorLauncher
 
     public class ProcessWrapper
     {
-        public ProcessWrapper(Process process, IntPtr windowHandle)
+        public ProcessWrapper(Process process)
         {
             this.Process = process;
             this.Id = process.Id;
             this.Handle = NativeMethods.OpenProcess(NativeMethods.ProcessAccessFlags.All, false, process.Id);
-            this.WindowHandle = windowHandle;
 
             this.Bitness = GetBitnessAsString(this.Process);
 
@@ -35,16 +34,16 @@ namespace Snoop.InjectorLauncher
 
         public string Bitness { get; }
 
-        public string SupportedFrameworkName { get; }
+        public string SupportedFrameworkName { get; set; }
 
-        public static ProcessWrapper From(int processId, IntPtr windowHandle)
+        public static ProcessWrapper From(int processId)
         {
-            return new ProcessWrapper(Process.GetProcessById(processId), windowHandle);
+            return new ProcessWrapper(Process.GetProcessById(processId));
         }
 
         public static ProcessWrapper FromWindowHandle(IntPtr handle)
         {
-            return new ProcessWrapper(GetProcessFromWindowHandle(handle), handle);
+            return new ProcessWrapper(GetProcessFromWindowHandle(handle));
         }
 
         private static Process GetProcessFromWindowHandle(IntPtr windowHandle)

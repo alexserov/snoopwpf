@@ -5,15 +5,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-      <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
-      <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.7.0" />
+        <PackageReference Include="CommandLineParser" Version="2.9.0-preview1" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
         <PackageReference Include="System.Linq" Version="4.3.0" />
+        <PackageReference Include="System.Security.Permissions" Version="5.0.0-rc.1.20451.14" />
     </ItemGroup>
+    <PropertyGroup>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="..\Snoop.InjectorLauncher\InjectorLauncherCommandLineOptions.cs" Link="InjectorLauncherCommandLineOptions.cs">
+            <Link>Data\InjectorLauncherCommandLineOptions.cs</Link>
+        </Compile>
       <Compile Update="TransientSettingsData.cs">
-        <Link>Data\TransientSettingsData.cs</Link>
+          <Link>Data\TransientSettingsData.cs</Link>
       </Compile>
     </ItemGroup>
 

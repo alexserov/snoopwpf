@@ -7,9 +7,6 @@
         [Option('t', "targetPID", Required = true, HelpText = "The target process id.")]
         public int TargetPID { get; set; }
 
-        [Option('h', "targetHwnd", HelpText = "The target window handle.")]
-        public int TargetHwnd { get; set; }
-
         [Option('a', "assembly", Required = true)]
         public string Assembly { get; set; }
 
@@ -27,5 +24,7 @@
 
         [Option('d', "debug")]
         public bool Debug { get; set; }
+        [Option('f', "fw")]
+        public string ForcedFramework { get; set; }
     }
 }

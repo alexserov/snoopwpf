@@ -55,6 +55,10 @@ std::unique_ptr<FrameworkExecutor> GetExecutor(const std::wstring& framework)
 	{
 		return std::make_unique<NetFull4_0Executor>();
 	}
+	if (icase_cmp(framework, L"new_net40"))
+    {
+    	return std::make_unique<NetFull4_0Launcher>();
+    }
 
 	OutputDebugStringEx(L"Framework '%s' is not supported.", framework.c_str());
 	

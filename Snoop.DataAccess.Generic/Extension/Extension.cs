@@ -8,6 +8,7 @@ namespace Snoop.DataAccess.Sessions {
     using System.Net;
     using System.Reflection;
     using System.Runtime.CompilerServices;
+    using System.Runtime.InteropServices;
     using System.Text.RegularExpressions;
     using System.Threading;
     using Snoop.Data;
@@ -38,15 +39,24 @@ namespace Snoop.DataAccess.Sessions {
         public static IExtension From(IDataAccess element) {
             return ((IDataAccessInternal)element)?.Extension ?? Instance;
         }
+
+        public static int StartSnoop(string extH) {
+            var ptr = new IntPtr(Int64.Parse(extH));
+            var gch = GCHandle.FromIntPtr(ptr);
+            var to = gch.Target as IExtension;
+            to.StartSnoop();
+            return 0;
+        }
     }
 
     public interface IExtension {
         T Get<T>() where T : IDataAccessStatic;
+        void StartSnoop();
     }
     
     public abstract class ExtensionBase<TExtension> : IExtension where TExtension : ExtensionBase<TExtension>, new() {
         private readonly string name;
-
+        TransientSettingsData data;
         Dictionary<Type, IDataAccessStatic> registeredInterfaces;
 
         static ExtensionBase() { }
@@ -55,12 +65,13 @@ namespace Snoop.DataAccess.Sessions {
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomainOnAssemblyResolve;
             var wh = new AutoResetEvent(false);
             var snoopUIThread = new Thread(() => {
+                
                 var ext = new TExtension();
                 ExtensionLocator.Instance = ext;
                 ext.RegisterInterfaces();
-                var data = TransientSettingsData.LoadCurrent(path);
+                ext.data = TransientSettingsData.LoadCurrent(path);
                 wh.Set();
-                StartSnoop(data, ext);
+                ext.StartSnoopOverride("abcd");
             });
             snoopUIThread.SetApartmentState(ApartmentState.STA);
             snoopUIThread.Start();
@@ -68,11 +79,13 @@ namespace Snoop.DataAccess.Sessions {
             return 0;
         }
 
-        static void StartSnoop(TransientSettingsData data, IExtension ext) {
+        protected virtual void StartSnoopOverride(string exth) { ExtensionLocator.StartSnoop(exth); }
+
+        public void StartSnoop() {
             var asmSnoop = Assembly.LoadFrom(data.PathToSnoop);
             var tSnoopManager = asmSnoop.GetType("Snoop.Infrastructure.SnoopManager");
             var mStartSnoop = tSnoopManager.GetMethod("CreateSnoopWindow", BindingFlags.Static | BindingFlags.Public);
-            mStartSnoop.Invoke(null, new object[] { ext, data, data.StartTarget });
+            mStartSnoop.Invoke(null, new object[] { this, data, data.StartTarget });
         }
 
         static Assembly CurrentDomainOnAssemblyResolve(object sender, ResolveEventArgs args) {

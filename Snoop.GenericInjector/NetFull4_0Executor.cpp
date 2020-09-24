@@ -72,3 +72,51 @@ int NetFull4_0Executor::Execute(LPCWSTR pwzAssemblyPath, LPCWSTR pwzTypeName, LP
 
 	return hr;
 }
+
+
+ICLRRuntimeHost* NetFull4_0Launcher::GetNETFullCLRRuntimeHost()
+{
+	 ICLRMetaHost              *pMetaHost = nullptr;
+        ICLRRuntimeInfo         *pCLRRuntimeInfo = nullptr;
+        ICLRRuntimeHost         *pCLRRuntimeHost = nullptr;                
+            HRESULT hr;
+            // Получаем среду выполнения
+            hr = CLRCreateInstance( CLSID_CLRMetaHost, IID_ICLRMetaHost, (LPVOID*)&pMetaHost );
+            if ( FAILED(hr) ) return nullptr;
+    
+            hr = pMetaHost->GetRuntime( L"v4.0.30319", IID_ICLRRuntimeInfo, (LPVOID*)&pCLRRuntimeInfo );
+    
+            BOOL bCLRIsLoadable;
+            hr = pCLRRuntimeInfo->IsLoadable( &bCLRIsLoadable );
+            if ( FAILED( hr ) ) return nullptr;
+            if ( ! bCLRIsLoadable ) return nullptr;
+            
+            hr = pCLRRuntimeInfo->GetInterface( CLSID_CLRRuntimeHost, IID_ICLRRuntimeHost, (LPVOID*)&pCLRRuntimeHost );
+            if ( FAILED(hr) ) return nullptr; 
+            
+            // Запускаем CLR
+            hr = pCLRRuntimeHost->Start();
+            if ( FAILED(hr) ) return nullptr;                 
+
+	return pCLRRuntimeHost;
+}
+
+int NetFull4_0Launcher::Execute(LPCWSTR pwzAssemblyPath, LPCWSTR pwzTypeName, LPCWSTR pwzMethodName, LPCWSTR pwzArgument, DWORD* pReturnValue)
+{
+	auto host = GetNETFullCLRRuntimeHost();
+
+	if (!host)
+	{
+		return E_FAIL;
+	}
+
+	this->Log(L"Trying to ExecuteInDefaultAppDomain...");
+
+	const auto hr = host->ExecuteInDefaultAppDomain(pwzAssemblyPath, pwzTypeName, pwzMethodName, pwzArgument, pReturnValue);
+
+	this->Log(L"ExecuteInDefaultAppDomain finished.");
+
+	host->Release();
+
+	return hr;
+}

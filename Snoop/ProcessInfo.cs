@@ -62,7 +62,7 @@
             var ext = ExtensionLocator.Select(targetHwnd);
             var hwndStr = targetHwnd.ToInt64().ToString();
             var set = new TransientSettingsData() { StartTarget = target, PathToSnoop = typeof(SnoopManager).Assembly.Location, TargetWindowHandle = targetHwnd.ToInt64() };
-            InjectorLauncherManager.Launch(this, targetHwnd, ext.ExtensionPath, "Snoop.DataAccess.Extension", "Start", set.WriteToFile());
+            InjectorLauncherManager.Launch(IsProcess64Bit, this.Process.Id, Program.Debug, ext.ExtensionPath, "Snoop.DataAccess.ExtensionExecutor", "Start", set.WriteToFile());
         }
 
         public AttachResult Magnify(IntPtr targetHwnd)

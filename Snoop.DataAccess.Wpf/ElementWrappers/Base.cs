@@ -2,7 +2,6 @@
     using System;
     using System.Windows;
     using System.Windows.Media;
-    using Newtonsoft.Json;
     using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Internal.Interfaces;
     using Snoop.DataAccess.Sessions;
@@ -18,7 +17,6 @@
 
         public virtual Type DataAccessType { get { return typeof(ISnoopObject); } }
 
-        [JsonIgnore]
         public object Source { get; }
 
         public static ISnoopObject Create(object source) {
