@@ -30,13 +30,14 @@
             }
 
             this.Property = this.Setter.Property.Name;
-
+#if TODO
             var propertyDescriptor = DependencyPropertyDescriptor.FromProperty(this.Setter.Property, element.GetType());
             var targetForPropertyInformation = TemplateHelper.GetChildFromTemplateIfNeeded(element, this.Setter.TargetName);
             var binding = this.CreateBinding(targetForPropertyInformation, propertyDescriptor, this.Setter);
             var propertyInformation = new PropertyInformation(targetForPropertyInformation, propertyDescriptor, binding, GetDisplayName(this.Setter));
 
             this.Value = propertyInformation;
+#endif
         }
 
         public Setter Setter { get; }

@@ -24,10 +24,12 @@
         {
             this.InitializeComponent();
 
+            #if TODO
             this.Properties = new ObservableCollection<PropertyInformation>(TypeDescriptor.GetProperties(Settings.Default)
                                                                                           .OfType<PropertyDescriptor>()
                                                                                           .Where(x => realSettingsProperties.Contains(x.Name))
                                                                                           .Select(x => new PropertyInformation(Settings.Default, x, x.Name, x.DisplayName)));
+#endif
         }
 
         public ObservableCollection<PropertyInformation> Properties

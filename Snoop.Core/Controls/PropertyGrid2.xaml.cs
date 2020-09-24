@@ -14,6 +14,7 @@ namespace Snoop.Controls
     using System.Windows.Input;
     using System.Windows.Threading;
     using JetBrains.Annotations;
+    using Snoop.DataAccess.Interfaces;
     using Snoop.Infrastructure;
 
     public partial class PropertyGrid2 : INotifyPropertyChanged
@@ -89,10 +90,10 @@ namespace Snoop.Controls
         private static void OnTargetChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var propertyGrid = (PropertyGrid2)d;
-            propertyGrid.ChangeTarget(e.NewValue);
+            propertyGrid.ChangeTarget(e.NewValue as ISnoopObject);
         }
 
-        private void ChangeTarget(object newTarget)
+        private void ChangeTarget(ISnoopObject newTarget)
         {
             if (this.target != newTarget)
             {
@@ -377,10 +378,6 @@ namespace Snoop.Controls
                 {
                     newTarget = property.Binding;
                 }
-                else if (Keyboard.Modifiers == ModifierKeys.Control)
-                {
-                    newTarget = property.BindingExpression;
-                }
                 else if (Keyboard.Modifiers == ModifierKeys.None)
                 {
                     newTarget = property.Value;
@@ -426,7 +423,7 @@ namespace Snoop.Controls
             this.processIncrementalCall.Enqueue(this.Dispatcher);
         }
 
-        private object target;
+        private ISnoopObject target;
 
         private IEnumerator<PropertyInformation> propertiesToAdd;
         private readonly DelayedCall processIncrementalCall;
@@ -451,7 +448,7 @@ namespace Snoop.Controls
 
         private static int CompareValueSources(PropertyInformation one, PropertyInformation two)
         {
-            return string.Compare(one.ValueSource.BaseValueSource.ToString(), two.ValueSource.BaseValueSource.ToString());
+            return string.Compare(one.ValueSource.BaseValueSource, two.ValueSource.BaseValueSource);
         }
 
         #region INotifyPropertyChanged Members

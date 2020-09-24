@@ -44,13 +44,17 @@
                         instance = source;
                     }
                 }
-
+#if TODO
                 var realInstance = TemplateHelper.GetChildFromTemplateIfNeeded(this.source, condition.SourceName) as DependencyObject;
 
                 yield return new ConditionItem(condition.Property, realInstance, condition.Value)
                 {
                     SourceName = condition.SourceName
                 };
+                #else
+                yield break;
+#endif
+                
             }
         }
     }

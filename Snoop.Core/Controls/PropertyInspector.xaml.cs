@@ -45,7 +45,7 @@ namespace Snoop.Controls
 
             this.CommandBindings.Add(new CommandBinding(DelveCommand, this.HandleDelve, CanDelve));
             this.CommandBindings.Add(new CommandBinding(DelveBindingCommand, this.HandleDelveBinding, CanDelveBinding));
-            this.CommandBindings.Add(new CommandBinding(DelveBindingExpressionCommand, this.HandleDelveBindingExpression, CanDelveBindingExpression));
+            // this.CommandBindings.Add(new CommandBinding(DelveBindingExpressionCommand, this.HandleDelveBindingExpression, CanDelveBindingExpression));
             this.CommandBindings.Add(new CommandBinding(CopyResourceNameCommand, this.HandleCopyResourceName, this.CanCopyResourceName));
             this.CommandBindings.Add(new CommandBinding(CopyXamlCommand, this.HandleCopyXaml, this.CanCopyXaml));
 
@@ -367,10 +367,10 @@ namespace Snoop.Controls
             this.PushTarget(((PropertyInformation)e.Parameter).Binding);
         }
 
-        private void HandleDelveBindingExpression(object sender, ExecutedRoutedEventArgs e)
-        {
-            this.PushTarget(((PropertyInformation)e.Parameter).BindingExpression);
-        }
+        // private void HandleDelveBindingExpression(object sender, ExecutedRoutedEventArgs e)
+        // {
+        //     this.PushTarget(((PropertyInformation)e.Parameter).BindingExpression);
+        // }
 
         private static void CanDelve(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -394,16 +394,16 @@ namespace Snoop.Controls
             e.Handled = true;
         }
 
-        private static void CanDelveBindingExpression(object sender, CanExecuteRoutedEventArgs e)
-        {
-            if (e.Parameter is PropertyInformation propertyInformation
-                && propertyInformation.BindingExpression != null)
-            {
-                e.CanExecute = true;
-            }
-
-            e.Handled = true;
-        }
+        // private static void CanDelveBindingExpression(object sender, CanExecuteRoutedEventArgs e)
+        // {
+        //     if (e.Parameter is PropertyInformation propertyInformation
+        //         && propertyInformation.BindingExpression != null)
+        //     {
+        //         e.CanExecute = true;
+        //     }
+        //
+        //     e.Handled = true;
+        // }
 
         private void HandleNavigateToAssemblyInExplorer(object sender, ExecutedRoutedEventArgs e)
         {

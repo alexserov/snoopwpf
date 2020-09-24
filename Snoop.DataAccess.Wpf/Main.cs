@@ -15,6 +15,7 @@ namespace Snoop.DataAccess {
         public override void StartSnoop() { SnoopManager.CreateSnoopWindow(this, this.data, this.data.StartTarget); }
 
         public override void RegisterInterfaces() {
+            this.Set<IDAS_TypeDescriptor>(new DAS_TypeDescriptor());
             this.Set<IDAS_CurrentApplication>(new DAS_CurrentApplication());
             this.Set<IDAS_InputManager>(new DAS_InputManager());
             this.Set<IDAS_Mouse>(new DAS_Mouse());

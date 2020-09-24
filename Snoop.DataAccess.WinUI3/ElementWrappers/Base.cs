@@ -1,5 +1,6 @@
 ﻿namespace Snoop.DataAccess.WinUI3 {
     using System;
+    using System.ComponentModel;
     using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Media;
     using Snoop.DataAccess.Interfaces;
@@ -9,7 +10,7 @@
     public abstract class SnoopObjectBase : DataAccess, ISnoopObject {
 
         protected SnoopObjectBase(object source) {
-            this.TypeName = source.GetType().FullName;
+            this.TypeName = source?.GetType()?.FullName;
             this.Source = source;
         }
 
@@ -30,6 +31,8 @@
             if (source == null)
                 return null;
             switch (source) {
+                case PropertyDescriptor descriptor:
+                    return new SO_PropertyDescriptor(descriptor);
                 case Window window:
                     return new SO_Window(window);
                 case FrameworkElement frameworkElement:
@@ -45,7 +48,7 @@
                 case DependencyObject dependencyObject:
                     return new SO_DependencyObject(dependencyObject);
                 default:
-                    throw new NotImplementedException();
+                    return new SO_Dumb(source);
             }
         }
     }

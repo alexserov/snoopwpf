@@ -111,7 +111,7 @@ namespace Snoop.Infrastructure
             else
             {
                 if (this.ShowDefaults == false
-                    && property.ValueSource.BaseValueSource == BaseValueSource.Default)
+                    && property.ValueSource.BaseValueSource == "Default")
                 {
                     return false;
                 }
@@ -133,13 +133,16 @@ namespace Snoop.Infrastructure
             {
                 return true;
             }
-
+#if TODO
             if (property.DependencyProperty is null)
             {
                 return false;
             }
 
             return uncommonTypes.Contains(property.DependencyProperty.OwnerType);
+#else
+            return false;
+            #endif
         }
 
         private static readonly List<Type> uncommonTypes = new List<Type>

@@ -31,11 +31,11 @@ All other rights reserved.
                         <Label Style="{x:Null}" Margin="0" Padding="0" Content="Delve Binding" />
 					</MenuItem.Header>
 				</MenuItem>
-				<MenuItem Style="{x:Null}" Command="{x:Static controls:PropertyInspector.DelveBindingExpressionCommand}" CommandParameter="{Binding}">
-					<MenuItem.Header>
-                        <Label Style="{x:Null}" Margin="0" Padding="0" Content="Delve BindingExpression" />
-					</MenuItem.Header>
-				</MenuItem>
+				<!-- <MenuItem Style="{x:Null}" Command="{x:Static controls:PropertyInspector.DelveBindingExpressionCommand}" CommandParameter="{Binding}"> -->
+				<!-- 	<MenuItem.Header> -->
+    <!--                     <Label Style="{x:Null}" Margin="0" Padding="0" Content="Delve BindingExpression" /> -->
+				<!-- 	</MenuItem.Header> -->
+				<!-- </MenuItem> -->
 				<MenuItem Style="{x:Null}" Command="{x:Static controls:PropertyGrid2.ShowBindingErrorsCommand}" CommandParameter="{Binding}">
 					<MenuItem.Header>
                         <Label Style="{x:Null}" Margin="0" Padding="0" Content="Display Binding Errors" />

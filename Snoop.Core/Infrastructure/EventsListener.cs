@@ -89,7 +89,12 @@ namespace Snoop.Infrastructure
             this.evt = evt;
         }
 
-        public IEnumerable Properties => PropertyInformation.GetProperties(this.evt);
+        public IEnumerable Properties =>
+#if TODO
+            PropertyInformation.GetProperties(this.evt);
+#else
+            null;
+        #endif
 
         public override string ToString()
         {

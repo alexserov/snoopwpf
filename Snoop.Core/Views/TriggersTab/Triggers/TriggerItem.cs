@@ -24,12 +24,16 @@
 
         protected override IEnumerable<ConditionItem> GetConditions()
         {
+            #if TODO
             var realInstance = TemplateHelper.GetChildFromTemplateIfNeeded(this.source, this.trigger.SourceName) as DependencyObject;
 
             yield return new ConditionItem(this.trigger.Property, realInstance, this.trigger.Value)
             {
                 SourceName = this.trigger.SourceName
             };
+#else
+            yield break;
+            #endif
         }
     }
 }

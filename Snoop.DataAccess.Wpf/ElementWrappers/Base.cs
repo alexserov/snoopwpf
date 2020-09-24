@@ -1,6 +1,8 @@
 ﻿namespace Snoop.DataAccess.Wpf {
     using System;
+    using System.ComponentModel;
     using System.Windows;
+    using System.Windows.Data;
     using System.Windows.Media;
     using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Internal.Interfaces;
@@ -29,6 +31,12 @@
 
         static ISnoopObject CreateImpl(object source) {
             switch (source) {
+                case Binding descriptor:
+                    return new SO_Binding(descriptor);
+                case ValueSource descriptor:
+                    return new SO_ValueSource(descriptor);
+                case PropertyDescriptor descriptor:
+                    return new SO_PropertyDescriptor(descriptor);
                 case Window window:
                     return new SO_Window(window);
                 case FrameworkElement frameworkElement:
@@ -46,7 +54,7 @@
                 case DependencyObject dependencyObject:
                     return new SO_DependencyObject(dependencyObject);
                 default:
-                    throw new NotImplementedException();
+                    return new SO_Dumb(source);
             }
         }
     }

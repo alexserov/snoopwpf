@@ -5,5 +5,6 @@
         double GetActualHeight();
         double GetActualWidth();
         string GetName();
+        ISO_DependencyObject Parent { get; }
     }
 }

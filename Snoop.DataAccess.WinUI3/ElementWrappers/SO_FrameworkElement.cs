@@ -18,6 +18,12 @@
 
         public double GetActualWidth() { return this.source.OnUI(x => x.ActualWidth); }
         public string GetName() { return this.source.OnUI(x => x.Name); }
+
+        public ISO_DependencyObject Parent {
+            get {
+                return (ISO_DependencyObject)Create(this.source.OnUI(x => x.Parent));
+            }
+        }
     }
 
 }

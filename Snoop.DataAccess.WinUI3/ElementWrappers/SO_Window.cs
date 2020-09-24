@@ -22,5 +22,8 @@
         public double GetActualHeight() { return this.GetRenderSize().Height;}
         public double GetActualWidth() { return this.GetRenderSize().Width;}
         public string GetName() { return ""; }
+        public ISO_DependencyObject Parent {
+            get { return null; }
+        }
     }
 }

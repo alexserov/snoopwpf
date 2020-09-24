@@ -11,8 +11,8 @@
 
     public class Extension : ExtensionBase<Extension>
     {
-        public override void RegisterInterfaces()
-        {
+        public override void RegisterInterfaces() {
+            this.Set<IDAS_TypeDescriptor>(new DAS_TypeDescriptor());
             this.Set<IDAS_CurrentApplication>(new DAS_CurrentApplication());
             this.Set<IDAS_InputManager>(new DAS_InputManager());
             this.Set<IDAS_Mouse>(new DAS_Mouse());
@@ -35,7 +35,7 @@
             {
                 try {
                     var targetPath = Path.Combine(executingLocation, Path.GetFileName(file));
-                    if (!File.Exists(targetPath) || file.StartsWith("Snoop"))
+                    if (!File.Exists(targetPath) || Path.GetFileName(file).StartsWith("Snoop"))
                         File.Copy(file, targetPath, true);
                 }
                 catch
