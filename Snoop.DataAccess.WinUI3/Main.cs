@@ -7,9 +7,12 @@
     using System.Reflection;
     using System.Runtime.Loader;
     using System.Text.RegularExpressions;
+    using Microsoft.UI.Xaml.Controls;
     using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Sessions;
     using Snoop.DataAccess.WinUI3;
+    using Snoop.Infrastructure;
+
     public class Extension : ExtensionBase<Extension> {
         public override void RegisterInterfaces() {
             this.Set<IDAS_CurrentApplication>(new DAS_CurrentApplication());
@@ -20,16 +23,11 @@
             this.Set<IDAS_WindowHelper>(new DAS_WindowHelper());
         }
 
-        protected override void StartSnoopOverride(string handle) {
-            InjectorLauncherManager.Launch(IntPtr.Size == 8, Process.GetCurrentProcess().Id, false, typeof(ExtensionLocator).Assembly.Location, typeof(ExtensionLocator).FullName, nameof(ExtensionLocator.StartSnoop), handle, "new_net40");
-        }
+        public override void StartSnoop() { SnoopManager.CreateSnoopWindow(this, this.data, this.data.StartTarget); }
         public Extension() : base("WinUI3") { }
     }
 
     public class ExtensionExecutor {
-        public ExtensionExecutor() {
-            
-        }
         public static int Start(string param) {
             AssemblyLoadContext.Default.Resolving+=DefaultOnResolving;
             AssemblyLoadContext.Default.ResolvingUnmanagedDll+=DefaultOnResolvingUnmanagedDll;
@@ -44,13 +42,14 @@
         static Assembly DefaultOnResolving(AssemblyLoadContext arg1, AssemblyName arg2) {
             var currentDir = Path.GetDirectoryName(typeof(ExtensionExecutor).Assembly.Location);
             var asmName = arg2.Name;
-            foreach(var segment in new[] { "", @"..\" })
+            foreach(var segment in new[] { "" })
             {
                 var path = Path.Combine(currentDir, segment, $"{asmName}.dll");
                 path = Path.GetFullPath(path);
                 if (File.Exists(path))
                     return Assembly.LoadFrom(path);
-            }            
+            }
+            var fwdir = typeof(Control).Assembly.Location;
             return null;
         }
     }

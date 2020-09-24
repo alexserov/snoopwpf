@@ -18,7 +18,7 @@ namespace Snoop.Controls
     using Snoop.Infrastructure;
     using Snoop.Infrastructure.Extensions;
     using Snoop.Infrastructure.Helpers;
-    using Snoop.Windows;
+    using Snoop.SnoopWindows;
 
     public partial class PropertyInspector : INotifyPropertyChanged
     {

@@ -3,8 +3,10 @@
     <PropertyGroup>
         <TargetFramework>net472</TargetFramework>
         <UseWPF>true</UseWPF>
+        <AppendTargetFrameworkToOutputPath>True</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
     <ItemGroup>
+      <ProjectReference Include="..\Snoop.Core\Snoop.Core.csproj" />
       <ProjectReference Include="..\Snoop.DataAccess.Generic\Snoop.DataAccess.Generic.csproj" />
     </ItemGroup>
 

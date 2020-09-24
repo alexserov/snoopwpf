@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Github\snoopwpf" t="IncludeFlat">
-      <e p=".build" t="IncludeRecursive">
-        <e p="_build.csproj" t="IncludeRecursive" />
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="boot" t="Include" />
-        <e p="Build.cs" t="Include" />
-        <e p="ci" t="Include" />
-        <e p="config" t="Include" />
-        <e p="Directory.build.props" t="Include" />
-        <e p="Directory.build.targets" t="Include" />
-        <e p="FileHelper.cs" t="Include" />
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="_build.AssemblyInfo.cs" t="Include" />
-            <e p="RefitStubs.g.cs" t="Include" />
-          </e>
-        </e>
-      </e>
       <e p=".editorconfig" t="Include" />
-      <e p=".nuke" t="Include" />
       <e p="appveyor.yml" t="Include" />
       <e p="Artwork" t="Include">
         <e p="Banner.bmp" t="Include" />
@@ -30,8 +12,6 @@
         <e p="SnoopCamera.design" t="Include" />
       </e>
       <e p="bin" t="ExcludeRecursive" />
-      <e p="build.ps1" t="Include" />
-      <e p="build.sh" t="Include" />
       <e p="Changelog.md" t="Include" />
       <e p="DataAccess" t="Include">
         <e p="WinUI3" t="Include" />
@@ -39,7 +19,6 @@
       </e>
       <e p="Directory.build.props" t="Include" />
       <e p="Directory.build.targets" t="Include" />
-      <e p="GitVersion.yml" t="Include" />
       <e p="global.json" t="Include" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="paket.dependencies" t="Include" />
@@ -68,15 +47,17 @@
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="App.g.cs" t="Include" />
-            <e p="AppChooser.g.cs" t="Include" />
-            <e p="GeneratedInternalTypeHelper.g.cs" t="Include" />
-            <e p="Snoop.AssemblyInfo.cs" t="Include" />
-            <e p="Views" t="Include">
-              <e p="SettingsView.g.cs" t="Include" />
+            <e p="net472" t="Include">
+              <e p="App.g.cs" t="Include" />
+              <e p="AppChooser.g.cs" t="Include" />
+              <e p="GeneratedInternalTypeHelper.g.cs" t="Include" />
+              <e p="Snoop.AssemblyInfo.cs" t="Include" />
+              <e p="Views" t="Include">
+                <e p="SettingsView.g.cs" t="Include" />
+              </e>
+              <e p="WindowFinder.g.cs" t="Include" />
+              <e p="WindowInfoControl.g.cs" t="Include" />
             </e>
-            <e p="WindowFinder.g.cs" t="Include" />
-            <e p="WindowInfoControl.g.cs" t="Include" />
           </e>
         </e>
         <e p="ProcessInfo.cs" t="Include" />
@@ -99,15 +80,6 @@
         <e p="WindowInfo.cs" t="Include" />
         <e p="WindowInfoControl.xaml" t="Include" />
         <e p="WindowInfoControl.xaml.cs" t="Include" />
-      </e>
-      <e p="Snoop.Console" t="IncludeRecursive">
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="Snoop.Console.AssemblyInfo.cs" t="Include" />
-          </e>
-        </e>
-        <e p="Program.cs" t="Include" />
-        <e p="Snoop.Console.csproj" t="IncludeRecursive" />
       </e>
       <e p="Snoop.Core" t="IncludeRecursive">
         <e p="AttachedProperties" t="Include">
@@ -153,7 +125,6 @@
           <e p="DynamicResourceToValueConverter.cs" t="Include" />
           <e p="FilterTypeToIntConverter.cs" t="Include" />
           <e p="InvertBoolConverter.cs" t="Include" />
-          <e p="IsPowerShellAvailableToVisibilityConverter.cs" t="Include" />
           <e p="IsSupportedRuntimeTypeConverter.cs" t="Include" />
           <e p="NullStyleConverter.cs" t="Include" />
           <e p="ObjectToStringConverter.cs" t="Include" />
@@ -239,67 +210,6 @@
           <e p="IValidator.cs" t="Include" />
           <e p="IVEHandler.cs" t="Include" />
           <e p="tag_VerError.cs" t="Include" />
-        </e>
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="net472" t="Include">
-              <e p="Controls" t="Include">
-                <e p="Previewer.g.cs" t="Include" />
-                <e p="PropertyGrid2.g.cs" t="Include" />
-                <e p="PropertyInspector.g.cs" t="Include" />
-                <e p="ValueEditors" t="Include">
-                  <e p="Details" t="Include">
-                    <e p="ValueEditorDetailsWindow.g.cs" t="Include" />
-                  </e>
-                  <e p="MouseWheelValueEditor.g.cs" t="Include" />
-                </e>
-                <e p="ZoomerControl.g.cs" t="Include" />
-              </e>
-              <e p="GeneratedInternalTypeHelper.g.cs" t="Include" />
-              <e p="PowerShell" t="Include">
-                <e p="EmbeddedShellView.g.cs" t="Include" />
-              </e>
-              <e p="SampleData" t="Include">
-                <e p="ScreenshotVisualSample.g.cs" t="Include" />
-              </e>
-              <e p="Snoop.Core.AssemblyInfo.cs" t="Include" />
-              <e p="Views" t="Include">
-                <e p="BehaviorsTab" t="Include">
-                  <e p="BehaviorsView.g.cs" t="Include" />
-                </e>
-                <e p="DebugListenerTab" t="Include">
-                  <e p="DebugListenerControl.g.cs" t="Include" />
-                  <e p="SetFiltersWindow.g.cs" t="Include" />
-                </e>
-                <e p="EventsView.g.cs" t="Include" />
-                <e p="MethodsTab" t="Include">
-                  <e p="FullTypeSelector.g.cs" t="Include" />
-                  <e p="MethodsControl.g.cs" t="Include" />
-                  <e p="ParameterCreator.g.cs" t="Include" />
-                  <e p="TypeSelector.g.cs" t="Include" />
-                </e>
-                <e p="TriggersTab" t="Include">
-                  <e p="TriggersView.g.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Windows" t="Include">
-                <e p="EditUserFilters.g.cs" t="Include" />
-                <e p="ErrorDialog.g.cs" t="Include" />
-                <e p="ScreenshotDialog.g.cs" t="Include" />
-                <e p="SnoopUI.g.cs" t="Include" />
-                <e p="Zoomer.g.cs" t="Include" />
-              </e>
-            </e>
-          </e>
-        </e>
-        <e p="PowerShell" t="Include">
-          <e p="EmbeddedShellView.xaml" t="Include" />
-          <e p="EmbeddedShellView.xaml.cs" t="Include" />
-          <e p="ShellConstants.cs" t="Include" />
-          <e p="SnoopPSHost.cs" t="Include" />
-          <e p="SnoopPSHostRawUserInterface.cs" t="Include" />
-          <e p="SnoopPSHostUserInterface.cs" t="Include" />
-          <e p="VisualTreeProvider.cs" t="Include" />
         </e>
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
@@ -467,15 +377,6 @@
         </e>
         <e p="Tree.cs" t="Include" />
       </e>
-      <e p="Snoop.DataAccess.WinUI3.FW4Executor" t="IncludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="Class1.cs" t="Include" />
-        <e p="obj" t="ExcludeRecursive" />
-        <e p="Properties" t="Include">
-          <e p="AssemblyInfo.cs" t="Include" />
-        </e>
-        <e p="Snoop.DataAccess.WinUI3.FW4Executor.csproj" t="IncludeRecursive" />
-      </e>
       <e p="Snoop.DataAccess.WinUI3.Locator" t="IncludeRecursive">
         <e p="Locator.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
@@ -571,6 +472,96 @@
       <e p="Snoop.ruleset" t="Include" />
       <e p="Snoop.sln" t="IncludeFlat" />
       <e p="Solution Items" t="Include" />
+      <e p="temp\Snoop.Core\obj.fwclassic\net472" t="ExcludeRecursive">
+        <e p="Controls" t="Include">
+          <e p="Previewer.g.cs" t="Include" />
+          <e p="PropertyGrid2.g.cs" t="Include" />
+          <e p="PropertyInspector.g.cs" t="Include" />
+          <e p="ValueEditors" t="Include">
+            <e p="Details" t="Include">
+              <e p="ValueEditorDetailsWindow.g.cs" t="Include" />
+            </e>
+            <e p="MouseWheelValueEditor.g.cs" t="Include" />
+          </e>
+          <e p="ZoomerControl.g.cs" t="Include" />
+        </e>
+        <e p="GeneratedInternalTypeHelper.g.cs" t="Include" />
+        <e p="SampleData" t="Include">
+          <e p="ScreenshotVisualSample.g.cs" t="Include" />
+        </e>
+        <e p="Snoop.Core.AssemblyInfo.cs" t="Include" />
+        <e p="Views" t="Include">
+          <e p="BehaviorsTab" t="Include">
+            <e p="BehaviorsView.g.cs" t="Include" />
+          </e>
+          <e p="DebugListenerTab" t="Include">
+            <e p="DebugListenerControl.g.cs" t="Include" />
+            <e p="SetFiltersWindow.g.cs" t="Include" />
+          </e>
+          <e p="EventsView.g.cs" t="Include" />
+          <e p="MethodsTab" t="Include">
+            <e p="FullTypeSelector.g.cs" t="Include" />
+            <e p="MethodsControl.g.cs" t="Include" />
+            <e p="ParameterCreator.g.cs" t="Include" />
+            <e p="TypeSelector.g.cs" t="Include" />
+          </e>
+          <e p="TriggersTab" t="Include">
+            <e p="TriggersView.g.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Windows" t="Include">
+          <e p="EditUserFilters.g.cs" t="Include" />
+          <e p="ErrorDialog.g.cs" t="Include" />
+          <e p="ScreenshotDialog.g.cs" t="Include" />
+          <e p="SnoopUI.g.cs" t="Include" />
+          <e p="Zoomer.g.cs" t="Include" />
+        </e>
+      </e>
+      <e p="temp\Snoop.Core\obj.net\net5.0" t="ExcludeRecursive">
+        <e p="Controls" t="Include">
+          <e p="Previewer.g.cs" t="Include" />
+          <e p="PropertyGrid2.g.cs" t="Include" />
+          <e p="PropertyInspector.g.cs" t="Include" />
+          <e p="ValueEditors" t="Include">
+            <e p="Details" t="Include">
+              <e p="ValueEditorDetailsWindow.g.cs" t="Include" />
+            </e>
+            <e p="MouseWheelValueEditor.g.cs" t="Include" />
+          </e>
+          <e p="ZoomerControl.g.cs" t="Include" />
+        </e>
+        <e p="GeneratedInternalTypeHelper.g.cs" t="Include" />
+        <e p="SampleData" t="Include">
+          <e p="ScreenshotVisualSample.g.cs" t="Include" />
+        </e>
+        <e p="Snoop.Core.AssemblyInfo.cs" t="Include" />
+        <e p="Views" t="Include">
+          <e p="BehaviorsTab" t="Include">
+            <e p="BehaviorsView.g.cs" t="Include" />
+          </e>
+          <e p="DebugListenerTab" t="Include">
+            <e p="DebugListenerControl.g.cs" t="Include" />
+            <e p="SetFiltersWindow.g.cs" t="Include" />
+          </e>
+          <e p="EventsView.g.cs" t="Include" />
+          <e p="MethodsTab" t="Include">
+            <e p="FullTypeSelector.g.cs" t="Include" />
+            <e p="MethodsControl.g.cs" t="Include" />
+            <e p="ParameterCreator.g.cs" t="Include" />
+            <e p="TypeSelector.g.cs" t="Include" />
+          </e>
+          <e p="TriggersTab" t="Include">
+            <e p="TriggersView.g.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Windows" t="Include">
+          <e p="EditUserFilters.g.cs" t="Include" />
+          <e p="ErrorDialog.g.cs" t="Include" />
+          <e p="ScreenshotDialog.g.cs" t="Include" />
+          <e p="SnoopUI.g.cs" t="Include" />
+          <e p="Zoomer.g.cs" t="Include" />
+        </e>
+      </e>
     </e>
     <e p="C:\Users\serov.alexey\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
     <e p="C:\Users\serov.alexey\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Snoop.-683336641.00" t="ExcludeRecursive" />

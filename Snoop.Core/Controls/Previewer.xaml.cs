@@ -11,7 +11,7 @@ namespace Snoop.Controls
     using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Sessions;
     using Snoop.Infrastructure.Extensions;
-    using Snoop.Windows;
+    using Snoop.SnoopWindows;
 
     public partial class Previewer
     {

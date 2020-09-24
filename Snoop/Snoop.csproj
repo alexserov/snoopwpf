@@ -4,12 +4,19 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputType>WinExe</OutputType>
     <UseWpf>true</UseWpf>
+    <UseWindowsForms>True</UseWindowsForms>
 
     <ApplicationIcon>..\Artwork\Snoop.ico</ApplicationIcon>
     <ApplicationManifest>../Shared/app.manifest</ApplicationManifest>
     <StartupObject>Snoop.Program</StartupObject>
+    <AppendTargetFrameworkToOutputPath>True</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
+    <DefineConstants>net40</DefineConstants>
+  </PropertyGroup>
   <!-- <PropertyGroup>
     <PublishSingleFile>True</PublishSingleFile>
   </PropertyGroup> -->
@@ -22,12 +29,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

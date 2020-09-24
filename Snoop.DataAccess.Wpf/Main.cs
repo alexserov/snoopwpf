@@ -6,9 +6,13 @@ namespace Snoop.DataAccess {
     using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Sessions;
     using Snoop.DataAccess.Wpf;
-    
+    using Snoop.Infrastructure;
+
     public class Extension : ExtensionBase<Extension> {
         public Extension() : base("Wpf") { }
+
+
+        public override void StartSnoop() { SnoopManager.CreateSnoopWindow(this, this.data, this.data.StartTarget); }
 
         public override void RegisterInterfaces() {
             this.Set<IDAS_CurrentApplication>(new DAS_CurrentApplication());

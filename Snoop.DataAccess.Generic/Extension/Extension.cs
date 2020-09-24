@@ -39,14 +39,6 @@ namespace Snoop.DataAccess.Sessions {
         public static IExtension From(IDataAccess element) {
             return ((IDataAccessInternal)element)?.Extension ?? Instance;
         }
-
-        public static int StartSnoop(string extH) {
-            var ptr = new IntPtr(Int64.Parse(extH));
-            var gch = GCHandle.FromIntPtr(ptr);
-            var to = gch.Target as IExtension;
-            to.StartSnoop();
-            return 0;
-        }
     }
 
     public interface IExtension {
@@ -56,7 +48,7 @@ namespace Snoop.DataAccess.Sessions {
     
     public abstract class ExtensionBase<TExtension> : IExtension where TExtension : ExtensionBase<TExtension>, new() {
         private readonly string name;
-        TransientSettingsData data;
+        protected TransientSettingsData data;
         Dictionary<Type, IDataAccessStatic> registeredInterfaces;
 
         static ExtensionBase() { }
@@ -71,7 +63,7 @@ namespace Snoop.DataAccess.Sessions {
                 ext.RegisterInterfaces();
                 ext.data = TransientSettingsData.LoadCurrent(path);
                 wh.Set();
-                ext.StartSnoopOverride("abcd");
+                ext.StartSnoop();
             });
             snoopUIThread.SetApartmentState(ApartmentState.STA);
             snoopUIThread.Start();
@@ -79,14 +71,7 @@ namespace Snoop.DataAccess.Sessions {
             return 0;
         }
 
-        protected virtual void StartSnoopOverride(string exth) { ExtensionLocator.StartSnoop(exth); }
-
-        public void StartSnoop() {
-            var asmSnoop = Assembly.LoadFrom(data.PathToSnoop);
-            var tSnoopManager = asmSnoop.GetType("Snoop.Infrastructure.SnoopManager");
-            var mStartSnoop = tSnoopManager.GetMethod("CreateSnoopWindow", BindingFlags.Static | BindingFlags.Public);
-            mStartSnoop.Invoke(null, new object[] { this, data, data.StartTarget });
-        }
+        public abstract void StartSnoop();
 
         static Assembly CurrentDomainOnAssemblyResolve(object sender, ResolveEventArgs args) {
             var fileName = args.Name;

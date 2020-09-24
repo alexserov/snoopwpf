@@ -36,9 +36,8 @@
                         errs => ErrorHandler(args, errs.ToList(), helpWriter));
         }
 
-        private static void InitDataAccessExtensions()
-        {
-            var snoopDir = Path.GetDirectoryName(typeof(App).Assembly.Location);
+        private static void InitDataAccessExtensions() {
+            var snoopDir = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(typeof(App).Assembly.Location), @"..\"));
             var extensions = Directory.GetFiles(snoopDir, "Snoop.DataAccess.*.Locator.dll", SearchOption.AllDirectories);
             foreach (var element in extensions)
             {

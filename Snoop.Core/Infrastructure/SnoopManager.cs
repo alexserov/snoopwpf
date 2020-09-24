@@ -15,7 +15,7 @@
     using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Sessions;
     using Snoop.Infrastructure.Helpers;
-    using Snoop.Windows;
+    using Snoop.SnoopWindows;
     
     public class SnoopManager
     {

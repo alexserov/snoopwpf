@@ -3,7 +3,7 @@
 // Please see http://go.microsoft.com/fwlink/?LinkID=131993 for details.
 // All other rights reserved.
 
-namespace Snoop.Windows
+namespace Snoop.SnoopWindows
 {
     using System;
     using System.Collections.Generic;

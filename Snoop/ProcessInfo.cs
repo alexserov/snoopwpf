@@ -61,7 +61,7 @@
         public void Start(IntPtr targetHwnd, SnoopStartTarget target) {
             var ext = ExtensionLocator.Select(targetHwnd);
             var hwndStr = targetHwnd.ToInt64().ToString();
-            var set = new TransientSettingsData() { StartTarget = target, PathToSnoop = typeof(SnoopManager).Assembly.Location, TargetWindowHandle = targetHwnd.ToInt64() };
+            var set = new TransientSettingsData() { StartTarget = target, TargetWindowHandle = targetHwnd.ToInt64() };
             InjectorLauncherManager.Launch(IsProcess64Bit, this.Process.Id, Program.Debug, ext.ExtensionPath, "Snoop.DataAccess.ExtensionExecutor", "Start", set.WriteToFile());
         }
 
@@ -93,7 +93,6 @@
             {
                 StartTarget = startTarget,
                 TargetWindowHandle = targetWindowHandle.ToInt64(),
-                PathToSnoop =  typeof(SnoopManager).Assembly.Location,
                 MultipleAppDomainMode = settings.MultipleAppDomainMode,
                 MultipleDispatcherMode = settings.MultipleDispatcherMode,
                 SetWindowOwner = settings.SetOwnerWindow

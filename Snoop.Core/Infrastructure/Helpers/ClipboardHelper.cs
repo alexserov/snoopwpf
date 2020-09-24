@@ -2,7 +2,7 @@
 {
     using System;
     using System.Windows.Forms;
-    using Snoop.Windows;
+    using Snoop.SnoopWindows;
 
     public static class ClipboardHelper
     {

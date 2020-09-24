@@ -27,7 +27,6 @@ namespace Snoop.Data
         public bool SetWindowOwner { get; set; }
 
         public long TargetWindowHandle { get; set; }
-        public string PathToSnoop { get; set; }
 
         public string WriteToFile()
         {

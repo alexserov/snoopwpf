@@ -17,7 +17,7 @@ namespace Snoop.Views
     using System.Windows.Media;
     using JetBrains.Annotations;
     using Snoop.Infrastructure;
-    using Snoop.Windows;
+    using Snoop.SnoopWindows;
 
     public partial class EventsView : INotifyPropertyChanged
     {

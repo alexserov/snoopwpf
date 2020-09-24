@@ -14,7 +14,7 @@ namespace Snoop.Controls
     using System.Windows.Media;
     using Snoop.Data.Tree;
     using Snoop.Infrastructure.Helpers;
-    using Snoop.Windows;
+    using Snoop.SnoopWindows;
 
     public class ProperTreeView : TreeView
     {

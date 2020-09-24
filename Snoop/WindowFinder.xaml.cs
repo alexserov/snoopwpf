@@ -13,7 +13,7 @@ namespace Snoop
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
     using Snoop.Infrastructure;
-    using Snoop.Windows;
+    using Snoop.SnoopWindows;
 
     public enum WindowFinderType
     {

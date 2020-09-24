@@ -5,7 +5,7 @@ Please see http://go.microsoft.com/fwlink/?LinkID=131993 for details.
 All other rights reserved.
 -->
 <windows:SnoopMainBaseWindow
-	x:Class="Snoop.Windows.SnoopUI"
+	x:Class="Snoop.SnoopWindows.SnoopUI"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
 	xmlns:snoop="clr-namespace:Snoop"
@@ -13,8 +13,7 @@ All other rights reserved.
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:d="http://schemas.microsoft.com/expression/interactivedesigner/2006"
     xmlns:converters="clr-namespace:Snoop.Converters"
-    xmlns:windows="clr-namespace:Snoop.Windows"
-    xmlns:powerShell="clr-namespace:Snoop.PowerShell"
+    xmlns:windows="clr-namespace:Snoop.SnoopWindows"
     xmlns:controls="clr-namespace:Snoop.Controls"
     xmlns:tree="clr-namespace:Snoop.Data.Tree"
     xmlns:views="clr-namespace:Snoop.Views"
@@ -380,26 +379,6 @@ All other rights reserved.
 					RootTarget="{Binding CurrentSelection.Target}"
 					IsSelected="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}"
 				/>
-			</TabItem>
-
-			<TabItem Style="{x:Null}"
-				     Visibility="{Binding Converter={x:Static converters:IsPowerShellAvailableToVisibilityConverter.DefaultInstance}}">
-				<TabItem.Header>
-					<TextBlock Style="{x:Null}" Text="PowerShell">
-						<TextBlock.ToolTip>
-							<StackPanel Style="{x:Null}" MaxWidth="300">
-								<TextBlock Style="{x:Null}" Text="PowerShell View"/>
-								<TextBlock
-									Style="{x:Null}"
-									Text="A view which lets you script the Snooped app using PowerShell."
-									TextWrapping="Wrap"
-								/>
-							</StackPanel>
-						</TextBlock.ToolTip>
-					</TextBlock>
-				</TabItem.Header>
-
-                <powerShell:EmbeddedShellView IsSelected="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" />
 			</TabItem>
 
 			<TabItem Style="{x:Null}">

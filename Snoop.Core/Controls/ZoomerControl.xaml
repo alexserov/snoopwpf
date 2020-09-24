@@ -13,7 +13,7 @@ All other rights reserved.
 	mc:Ignorable="d"
 	Focusable="True"
 	xmlns:snoop="clr-namespace:Snoop"
-	xmlns:windows="clr-namespace:Snoop.Windows"
+	xmlns:windows="clr-namespace:Snoop.SnoopWindows"
 	d:DesignWidth="300"
 	d:DesignHeight="300"
 >

@@ -5,9 +5,19 @@
 
     <UseWpf>true</UseWpf>
     <UseWindowsForms>true</UseWindowsForms>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFrameworks>net472;net5.0</TargetFrameworks>
+    <AppendTargetFrameworkToOutputPath>True</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>  
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
+    <DefineConstants>net40</DefineConstants>
+    <IntermediateOutputPath>..\temp\snoop.core\obj.fwclassic</IntermediateOutputPath>
   </PropertyGroup>
-
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0'">
+    <DefineConstants>net50</DefineConstants>
+    <IntermediateOutputPath>..\temp\snoop.core\obj.net</IntermediateOutputPath>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <IncludeAssets>runtime</IncludeAssets>
+  </PropertyGroup>
   <ItemGroup>
     <Resource Include="..\Artwork\*.ico" />
 
@@ -24,8 +34,6 @@
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2020.2.0-eap" />
-    <PackageReference Include="Microsoft.PowerShell.5.ReferenceAssemblies" Version="1.1.0" />
-    <PackageReference Include="Microsoft.PowerShell.Native" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>

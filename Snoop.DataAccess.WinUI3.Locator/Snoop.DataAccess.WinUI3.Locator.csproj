@@ -2,6 +2,9 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <AppendTargetFrameworkToOutputPath>True</AppendTargetFrameworkToOutputPath>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <Version>1.0.0-pre</Version>
     </PropertyGroup>
 
     <ItemGroup>

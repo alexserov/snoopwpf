@@ -11,7 +11,7 @@ All other rights reserved.
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d"
       xmlns:snoop="clr-namespace:Snoop"
-      xmlns:windows="clr-namespace:Snoop.Windows"
+      xmlns:windows="clr-namespace:Snoop.SnoopWindows"
       xmlns:controls="clr-namespace:Snoop.Controls"
       xmlns:methodsTab="clr-namespace:Snoop.Views.MethodsTab"
       Width="700" 

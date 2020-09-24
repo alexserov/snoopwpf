@@ -1,4 +1,4 @@
-﻿namespace Snoop.Windows
+﻿namespace Snoop.SnoopWindows
 {
     using System;
     using System.Windows;

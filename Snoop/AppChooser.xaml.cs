@@ -20,7 +20,7 @@ namespace Snoop
     using Snoop.Infrastructure;
     using Snoop.Properties;
     using Snoop.Views;
-    using Snoop.Windows;
+    using Snoop.SnoopWindows;
 
     public partial class AppChooser
     {
@@ -102,19 +102,22 @@ namespace Snoop
             this.keyboardHook = new LowLevelKeyboardHook(PresentationSource.FromVisual(this));
             this.keyboardHook.LowLevelKeyUp += KeyboardHook_LowLevelKeyUp;
             this.keyboardHook.Start();
-
-            // load the window placement details from the user settings.
-            SnoopWindowUtils.LoadWindowPlacement(this, Settings.Default.AppChooserWindowPlacement);
+// #if !net40
+//             // load the window placement details from the user settings.
+//             SnoopWindowUtils.LoadWindowPlacement(this, Settings.Default.AppChooserWindowPlacement);
+// #endif
         }
 
         private static void KeyboardHook_LowLevelKeyUp(object sender, KeyEventArgs e)
         {
-            if (Settings.Default.GlobalHotKey.Matches(null, e))
-            {
-                var thread = new Thread(AttachToForegroundWindow);
-                thread.SetApartmentState(ApartmentState.STA);
-                thread.Start();
-            }
+// #if !net40
+//             if (Settings.Default.GlobalHotKey.Matches(null, e))
+//             {
+//                 var thread = new Thread(AttachToForegroundWindow);
+//                 thread.SetApartmentState(ApartmentState.STA);
+//                 thread.Start();
+//             }
+// #endif
         }
 
         private static void AttachToForegroundWindow()
@@ -137,7 +140,9 @@ namespace Snoop
             base.OnClosing(e);
 
             // persist the window placement details to the user settings.
+#if Net40
             SnoopWindowUtils.SaveWindowPlacement(this, wp => Settings.Default.AppChooserWindowPlacement = wp);
+#endif
 
             Settings.Default.Save();
         }
