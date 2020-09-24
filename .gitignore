@@ -1,6 +1,7 @@
 Build/
 Intermediate/
 bin/
+temp/
 obj/
 output/
 artifacts/
@@ -10,6 +11,7 @@ packages/
 paket-files/
 .tmp/
 *.vs
+*.idea
 *.vscode
 *.user
 *.opensdf
