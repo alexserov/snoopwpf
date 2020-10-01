@@ -1,16 +1,16 @@
-﻿namespace Snoop.DataAccess
-{
+﻿namespace Snoop.DataAccess {
     using System;
+    using System.Diagnostics;
     using System.IO;
     using System.Reflection;
+    using System.Runtime.CompilerServices;
     using System.Runtime.Loader;
     using Snoop.DataAccess.Interfaces;
     using Snoop.DataAccess.Sessions;
     using Snoop.DataAccess.WinUI3;
     using Snoop.Infrastructure;
 
-    public class Extension : ExtensionBase<Extension>
-    {
+    public class Extension : ExtensionBase<Extension> {
         public override void RegisterInterfaces() {
             this.Set<IDAS_TypeDescriptor>(new DAS_TypeDescriptor());
             this.Set<IDAS_CurrentApplication>(new DAS_CurrentApplication());
@@ -25,52 +25,83 @@
         public Extension() : base("WinUI3") { }
     }
 
-    public class ExtensionExecutor
-    {
-        public static int Start(string param)
-        {
-            var executingLocation = AppDomain.CurrentDomain.BaseDirectory;
-            var thisLocation = Path.GetDirectoryName(typeof(ExtensionExecutor).Assembly.Location);
-            foreach (var file in Directory.GetFiles(thisLocation, "*.dll", SearchOption.AllDirectories))
-            {
-                try {
-                    var targetPath = Path.Combine(executingLocation, Path.GetFileName(file));
-                    if (!File.Exists(targetPath) || Path.GetFileName(file).StartsWith("Snoop"))
-                        File.Copy(file, targetPath, true);
-                }
-                catch
-                {
-                    //whoops
-                }
-            }                
-
+    public class ExtensionExecutor {
+        [MethodImpl(MethodImplOptions.NoOptimization | MethodImplOptions.NoInlining)]
+        public static int Start(string param) {
+            PrepareWpfAsmLoader();
             AssemblyLoadContext.Default.Resolving += DefaultOnResolving;
-            AssemblyLoadContext.Default.ResolvingUnmanagedDll += DefaultOnResolvingUnmanagedDll;
-            var generic = Assembly.LoadFrom(Path.Combine(Path.GetDirectoryName(typeof(ExtensionExecutor).Assembly.Location), "Snoop.DataAccess.Generic.dll"));
             return (int)typeof(ExtensionExecutor).Assembly.GetType("Snoop.DataAccess.Extension").GetMethod("StartCore", BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy).Invoke(null, new[] { param });
         }
 
-        static IntPtr DefaultOnResolvingUnmanagedDll(Assembly arg1, string arg2)
-        {
-            return IntPtr.Zero;
+
+        static string GetAttachedAppPath() {
+            return AppDomain.CurrentDomain.BaseDirectory;
         }
 
-        static Assembly DefaultOnResolving(AssemblyLoadContext arg1, AssemblyName arg2)
-        {
-            //var currentDir = Path.GetDirectoryName(typeof(ExtensionExecutor).Assembly.Location);
-            var asmName = $"{arg2.Name}.dll";
-            //foreach (var segment in new[] { "" })
-            //{
-            //    var path = Path.Combine(currentDir, segment, asmName);
-            //    path = Path.GetFullPath(path);
-            //    if (File.Exists(path))
-            //        return Assembly.LoadFrom(path);
-            //}
-            //var fwdir = Path.Combine(Path.GetDirectoryName(typeof(ExtensionExecutor).Assembly.Location), IntPtr.Size == 8 ? "WPFx64" : "WPFx86");
-            var fwdir = AppDomain.CurrentDomain.BaseDirectory;
-            var file = Path.Combine(fwdir, asmName);
-            if (File.Exists(file))
-                return Assembly.LoadFrom(file);
+        static void PrepareWpfAsmLoader() {
+            var elAsm = typeof(ExtensionExecutor).Assembly;
+            var rootDir = GetAssemblyLoaderSolutionPath();
+            if (!Directory.Exists(rootDir)) {
+                Directory.CreateDirectory(rootDir);
+                foreach (var element in new[] {
+                    "App.xaml",
+                    "App.xaml.cs",
+                    "Snoop.DataAccess.WinUI3.WpfAsmLoader.csproj",
+                }) {
+                    var prefix = "Snoop.DataAccess.WinUI3.WpfAsmLoader";
+                    var resourceName = string.Join('.', prefix, element);
+                    var fileFullName = Path.Combine(rootDir, element);
+                    if (!Directory.Exists(rootDir))
+                        Directory.CreateDirectory(rootDir);
+                    using var resourceStream = elAsm.GetManifestResourceStream(resourceName);
+                    using var fileStream = new FileStream(fileFullName, FileMode.CreateNew, FileAccess.Write);
+                    resourceStream.CopyTo(fileStream);
+                }
+            }
+
+            if (!Directory.Exists(GetAssemblyLoaderBinariesPath())) {
+                var arc = IntPtr.Size == 8 ? "x64" : "x86";
+                // ReSharper disable once PossibleNullReferenceException
+                var dotnetPSI = new ProcessStartInfo("dotnet") {
+                    Arguments = $@"publish -f ""net5.0"" -c ""Debug"" -r ""win-{arc}"" -o ""{GetAssemblyLoaderBinariesPath()}"" ""{rootDir}\Snoop.DataAccess.WinUI3.WpfAsmLoader.csproj""",
+                    Verb = "runas",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                };
+                var proc = new Process();
+                proc.StartInfo = dotnetPSI;
+                proc.OutputDataReceived += (sender, args) => { Debug.WriteLine(args.Data); };
+
+                proc.Start();
+                proc.BeginOutputReadLine();
+                proc.WaitForExit();
+            }
+        }
+
+        static string GetAssemblyLoaderSolutionPath() { return Path.Combine(GetAttachedAppPath(), "Snoop.WpfAsmLoader"); }
+        static string GetAssemblyLoaderBinariesPath() { return Path.Combine(GetAssemblyLoaderSolutionPath(), $"pub{(IntPtr.Size == 8 ? "x64" : "x86")}"); }
+        static string GetGetSnoopDataAccessBinariesPath() { return Path.GetDirectoryName(typeof(ExtensionExecutor).Assembly.Location);}
+
+        static string GetAssemblyFileName(AssemblyName name) {
+            return $"{name.Name}.dll";
+        }
+        
+
+        static Assembly DefaultOnResolving(AssemblyLoadContext arg1, AssemblyName arg2) {
+            var asmFileName = GetAssemblyFileName(arg2);
+            var targetFileName = Path.Combine(GetAttachedAppPath(), asmFileName);
+            var sourceFileName = Path.Combine(GetAssemblyLoaderBinariesPath(), asmFileName);
+            var alternativeSourceFileName = Path.Combine(GetGetSnoopDataAccessBinariesPath(), asmFileName);             
+            try {
+                if (File.Exists(sourceFileName))
+                    File.Copy(sourceFileName, targetFileName, true);
+                else if (File.Exists(alternativeSourceFileName))
+                    File.Copy(alternativeSourceFileName, targetFileName, true);
+            } catch {
+                //bdyeetsch!!!
+            }
+            if (File.Exists(targetFileName))
+                return Assembly.LoadFrom(targetFileName);
             return null;
         }
     }

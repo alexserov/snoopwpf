@@ -23,4 +23,19 @@
       <ProjectReference Include="..\Snoop.DataAccess.Generic\Snoop.DataAccess.Generic.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="WpfAsmLoader\Properties\PublishProfiles\x64.pubxml" />
+      <None Remove="WpfAsmLoader\Properties\PublishProfiles\x86.pubxml" />
+      <Page Remove="WpfAsmLoader\App.xaml" />
+      <EmbeddedResource Include="WpfAsmLoader\App.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </EmbeddedResource>
+      <Compile Remove="WpfAsmLoader\App.xaml.cs" />
+      <EmbeddedResource Include="WpfAsmLoader\App.xaml.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="WpfAsmLoader\Snoop.DataAccess.WinUI3.WpfAsmLoader.csproj" />
+    </ItemGroup>
+
 </Project>
