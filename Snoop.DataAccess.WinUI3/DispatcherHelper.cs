@@ -25,6 +25,8 @@
         }
 
         public TResult Invoke<TResult>(Func<TResult> func) {
+            if (dispatcher.HasThreadAccess)
+                return func();
             TResult result = default;
             EventWaitHandle wh = new EventWaitHandle(false, EventResetMode.ManualReset);
             this.dispatcher.TryEnqueue(() => {
@@ -35,6 +37,10 @@
             return result;
         }
         public void Invoke(Action func) {
+            if (dispatcher.HasThreadAccess) {
+                func();
+                return;
+            }
             EventWaitHandle wh = new EventWaitHandle(false, EventResetMode.ManualReset);
             this.dispatcher.TryEnqueue(() => {
                 func();

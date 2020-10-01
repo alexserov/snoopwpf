@@ -419,7 +419,7 @@ namespace Snoop.Infrastructure
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool GetCursorPos(ref POINT pt);
+        public static extern bool GetCursorPos(ref POINT pt);
 
         [DllImport("user32.dll")]
         private static extern IntPtr WindowFromPoint(POINT Point);

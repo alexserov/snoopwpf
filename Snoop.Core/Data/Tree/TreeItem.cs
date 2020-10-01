@@ -128,8 +128,6 @@ namespace Snoop.Data.Tree
 
                 this.isExpanded = value;
                 this.OnPropertyChanged(nameof(this.IsExpanded));
-                if(this.isExpanded)
-                    this.Reload();
             }
         }
 
@@ -212,8 +210,8 @@ namespace Snoop.Data.Tree
         }
 
         protected virtual void ReloadCore() {
-            if(Parent!=null && !Parent.IsExpanded)
-                return;
+            // if(Parent!=null && !Parent.IsExpanded)
+            //     return;
             var childrenCount = VisualTreeHelper2.GetChildrenCount(Target);
             for (int i = 0; i < childrenCount; i++) {
                 var child = VisualTreeHelper2.GetChild(Target, i);
@@ -222,14 +220,14 @@ namespace Snoop.Data.Tree
             }
         }
 
-        public virtual TreeItem FindNode(object target)
+        public virtual TreeItem FindNode(ISnoopObject target)
         {
             if (target is null)
             {
                 return null;
             }
 
-            if (ReferenceEquals(this.Target, target))
+            if (ReferenceEquals(this.Target?.Source, target?.Source))
             {
                 return this;
             }

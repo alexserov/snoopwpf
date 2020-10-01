@@ -302,10 +302,10 @@ namespace Snoop.SnoopWindows
         {
             get
             {
-                if (this.CurrentSelection?.Target is DependencyObject selectedItem)
-                {
-                    return FocusManager.GetFocusScope(selectedItem);
-                }
+                // if (this.CurrentSelection?.Target is DependencyObject selectedItem)
+                // {
+                //     return FocusManager.GetFocusScope(selectedItem);
+                // }
 
                 return null;
             }
@@ -531,7 +531,9 @@ namespace Snoop.SnoopWindows
 
         #region Private Event Handlers
 
-        void HandlePreProcessInput()
+        void HandlePreProcessInput() { Dispatcher.BeginInvoke(new Action(HandlePreProcessInputCurrentThread)); }
+
+        void HandlePreProcessInputCurrentThread()
         {
             this.OnPropertyChanged(nameof(this.CurrentFocus));
 

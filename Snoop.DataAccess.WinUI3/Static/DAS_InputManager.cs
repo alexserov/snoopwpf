@@ -26,13 +26,22 @@ namespace Snoop.DataAccess.WinUI3 {
 
         public DAS_InputManager() {
             var wnd = WindowLocator.GetWindow();
-            // this.injector = InputInjector.TryCreate();
+            if(wnd==null)
+                return;
+            wnd.OnUI(x => {
+                var wndContent = wnd?.Content;
+                if (wndContent == null)
+                    return;
+                wndContent.PointerMoved += OnPointerMoved;
+                wndContent.PointerEntered += this.OnPointerEntered;
+                wndContent.PointerExited += this.OnPointerExited;
+            });
         }
 
-        void OnMouseMoved(MouseDevice sender, MouseEventArgs args) {
-            this.preProcessInput();
-        }
-        
+        void OnPointerExited(object sender, PointerRoutedEventArgs e) { this.preProcessInput(); }
+        void OnPointerEntered(object sender, PointerRoutedEventArgs e) { this.preProcessInput(); }
+        void OnPointerMoved(object sender, PointerRoutedEventArgs e) { this.preProcessInput(); }
+
     }
 
     class WindowLocator {
