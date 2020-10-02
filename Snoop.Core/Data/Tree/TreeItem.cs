@@ -14,6 +14,7 @@ namespace Snoop.Data.Tree
     using System.Windows.Media;
     using JetBrains.Annotations;
     using Snoop.DataAccess.Interfaces;
+    using Snoop.DataAccess.Sessions;
     using Snoop.Infrastructure.Helpers;
 
     public class TreeItem : INotifyPropertyChanged
@@ -160,8 +161,9 @@ namespace Snoop.Data.Tree
             return sb.ToString();
         }
 
-        protected virtual void OnIsSelectedChanged()
-        {
+        protected virtual void OnIsSelectedChanged() {
+            if (IsSelected)
+                ExtensionLocator.From(this.Target).Get<IDAS_AdornerService>().HighlightedElement = this.Target;
         }
 
         /// <summary>

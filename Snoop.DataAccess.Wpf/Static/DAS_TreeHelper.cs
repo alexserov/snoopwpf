@@ -22,5 +22,14 @@
 
             return null;
         }
+
+        public ISnoopObject GetParent(ISnoopObject itemToFind) {
+            var uw = itemToFind.UW<object>();
+            if (uw is Visual visual) {
+                return SnoopObjectBase.Create(visual.OnUI(VisualTreeHelper.GetParent));
+            }
+
+            return null;
+        }
     }
 }

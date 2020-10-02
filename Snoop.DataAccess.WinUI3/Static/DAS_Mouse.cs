@@ -1,4 +1,5 @@
 ﻿namespace Snoop.DataAccess.WinUI3 {
+    using System;
     using System.Linq;
     using System.Reflection;
     using System.Runtime.InteropServices;
@@ -23,13 +24,11 @@
                 if (this.wnd == null)
                     return SnoopObjectBase.Create(null);
                 return SnoopObjectBase.Create(this.wnd.OnUI<UIElement>(x => {
-                    Snoop.Infrastructure.POINT cp = default;
-                    if (Snoop.Infrastructure.NativeMethods.GetCursorPos(ref cp)) {
-                        var children = VisualTreeHelper.FindElementsInHostCoordinates(new Point((cp.X - x.Bounds.Left), cp.Y - x.Bounds.Top), x.Content);
-                        return children.FirstOrDefault() ?? x.Content;
-                    }
-
-                    return this.wnd.Content;
+                    var coreWindow = CoreWindow.GetForCurrentThread();
+                    var pointerPosition = coreWindow.PointerPosition;
+                    pointerPosition = new Point(pointerPosition.X - coreWindow.Bounds.Left, pointerPosition.Y - coreWindow.Bounds.Top);
+                    var children = VisualTreeHelper.FindElementsInHostCoordinates(pointerPosition, x.Content);
+                    return children.FirstOrDefault() ?? x.Content;
                 }));
             }
         }

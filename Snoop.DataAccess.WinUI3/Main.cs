@@ -22,6 +22,7 @@
             this.Set<IDAS_RootProvider>(new DAS_RootProvider());
             this.Set<IDAS_TreeHelper>(new DAS_TreeHelper());
             this.Set<IDAS_WindowHelper>(new DAS_WindowHelper());
+            this.Set<IDAS_AdornerService>(new DAS_AdornerService());
         }
 
         public override void StartSnoop() { SnoopManager.CreateSnoopWindow(this, this.data, this.data.StartTarget); }

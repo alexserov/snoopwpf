@@ -31,6 +31,16 @@
 
             return null;
         }
+
+        public ISnoopObject GetParent(ISnoopObject itemToFind) {   
+            var uw = itemToFind.UW<object>();
+            if (uw is DependencyObject visual) {
+                return SnoopObjectBase.Create(visual.OnUI(x => VisualTreeHelper.GetParent(x)));
+            }
+
+            return null;
+        }
+
         public static IEnumerable<DependencyObject> GetParents(DependencyObject visual) {
             var parent = visual;
             while (parent != null) {

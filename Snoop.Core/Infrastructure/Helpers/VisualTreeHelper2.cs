@@ -99,8 +99,9 @@ namespace Snoop.Infrastructure.Helpers
         }
 
         public static ISO_DependencyObject GetParent(ISO_DependencyObject itemToFind) {
-            throw new NotImplementedException(); }
-
+            return ExtensionLocator.From(itemToFind).Get<IDAS_TreeHelper>().GetParent(itemToFind) as ISO_DependencyObject;
+        }
+        
 
         public static int GetChildrenCount(ISnoopObject dependencyObject) {
             return ExtensionLocator.From(dependencyObject).Get<IDAS_TreeHelper>().GetChildrenCount(dependencyObject);
